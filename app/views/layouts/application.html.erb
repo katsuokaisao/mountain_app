@@ -16,22 +16,13 @@
         <li class="header-list-item" ><h1><%= link_to '100山', root_path, class: "header-list-item-link" %></h1></li>
       </div>
       <div class="header-list-right">
-        <li class="header-list-item" ><%= link_to 'Sign up', root_path, class: "header-list-item-link header-list-item-signup" %></li>
-        <li class="header-list-item" ><%= link_to 'Sign in', root_path, class: "header-list-item-link" %></li>
+        <li class="header-list-item" ><%= link_to '新規登録', new_user_registration_path, class: "header-list-item-link header-list-item-signup" %></li>
+        <li class="header-list-item" ><%= link_to 'ログイン', new_user_session_path, class: "header-list-item-link" %></li>
       </div>
     </ul>
     </header>
-    <div class="main-image">
-      <div class="main-image-background">
-
-      </div>
-      <div class="main-image-contents">
-        <div class="main-image-contents-container">
-          <h2>人と山と触れ合う</h2>
-          <%= link_to 'アカウント作成', root_path, class: 'account-button' %>
-        </div>
-      </div>
-    </div>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
     <%= yield %>
     <footer>
       <div class="footer-navi"></div>
