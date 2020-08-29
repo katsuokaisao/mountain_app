@@ -1,0 +1,41 @@
+/*
+ *= require_tree .
+ *= require_self
+ */
+
+* {
+  margin:0; padding:0;
+}
+
+/* header */
+
+header {
+  width: 100%;
+  padding: 15px 0;
+  background-color: darkcyan;
+}
+
+.header-list-right {
+  margin: auto 0;
+}
+
+.header-list {
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.header-list-item {
+  display: inline-block;
+  list-style: none;
+}
+
+.header-list-item-link {
+  color: white;
+  text-decoration: none;
+} 
+
+.header-list-item-signup {
+  margin-right: 5px;
+}
