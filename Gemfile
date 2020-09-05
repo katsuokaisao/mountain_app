@@ -26,14 +26,16 @@ gem 'jbuilder', '~> 2.7'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'devise'
-gem 'rails-i18n'
+gem 'unicorn', '5.4.1'
+gem 'sprockets', '<4.0.0'
 # rails-i18nがなくて日本語化対応につまずいた
-gem 'rubocop', require: false
-gem 'rubocop-rails'
+gem 'rails-i18n'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
+  gem 'rubocop', require: false
+  gem 'rubocop-rails'
   gem 'foreman'
   gem 'rspec-rails'
   gem 'spring-commands-rspec'
@@ -54,6 +56,4 @@ group :development do
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'sprockets', '<4.0.0'
-gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
-gem 'unicorn', '5.4.1'
+# gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
