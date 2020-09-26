@@ -14,7 +14,7 @@ default: &default
   encoding: utf8mb4
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: root
-  password: <%= ENV.fetch("MYSQL_PASSWORD", "password") %>
+  password: password
   host: db
 
 development:
@@ -49,7 +49,9 @@ test:
 #
 production:
   <<: *default
-  database: mountain_app_production
-  username: mountain_app
-  password: <%= ENV['DOCKER_APP_DATABASE_PASSWORD'] %>
+  database: <%= ENV['DB_DATABASE'] %>
+  host: <%= ENV['DB_HOST'] %>
+  username: <%= ENV['DB_USERNAME'] %>
+  password: <%= ENV['DB_PASSWORD'] %>
   # host: RDSのエンドポイントを設定
+  # ここで呼び出す（定義はECRのタスク定義の環境変数）

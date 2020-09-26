@@ -16,7 +16,7 @@ services:
     command: bundle exec unicorn -p 3000 -c /mountain_app/config/unicorn.conf.rb
     volumes: 
       - .:/mountain_app
-      - tmp-data:/mountain_app/tmp/sockets
+      # - tmp-data:/mountain_app/tmp/sockets
       - public-data:/mountain_app/public
     ports: 
       - "3000:3000"
@@ -32,10 +32,10 @@ services:
       - "80:80"
     restart: always
     volumes: 
-      - tmp-data:/mountain_app/tmp/sockets
+      # - tmp-data:/mountain_app/tmp/sockets
       - public-data:/mountain_app/public
 volumes: 
   mysql-data:
     driver: local
-  tmp-data:
+  # tmp-data:
   public-data:
