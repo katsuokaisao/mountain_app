@@ -1,6 +1,7 @@
 FROM ruby:2.6.6
 RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -\
     && echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list \
+    && sed -i '/deb http:\/\/deb.debian.org\/debian jessie-updates main/d' /etc/apt/sources.list \
     && apt update -qq && apt install -y vim build-essential libpq-dev nodejs yarn graphviz\
     && apt clean \
     && rm -r /var/lib/apt/lists/*
