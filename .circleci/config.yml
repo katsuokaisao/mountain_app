@@ -16,36 +16,36 @@ executors: #jobでexecutorから使用できる
           MYSQL_ALLOW_EMPTY_PASSWORD: 'true'
           MYSQL_ROOT_HOST: '%'
 
-jobs:
-  test: 
-    working_directory: /mountain_app
-    executor: test-executor
-    # steps: 
-    #   - checkout
-    #   - run:
-    #       name: 
-    #       command: 
-    #   - run: 
-    #       name: yarnをアップグレード
-    #       command:
-    #   - run:
-    #       name: webpackをコンパイル
-    #       command:
-    #   - run:
-    #       name: データベースを作成
-    #       command: 
-    #   - run: 
-    #       name: Rubocop修正
-    #       command: 
-    #   - run:
-    #       name: Rspceテスト
-    #       command: 
+# jobs:
+#   test: 
+#     working_directory: /mountain_app
+#     executor: test-executor
+#     steps: 
+#       - checkout
+#       - run:
+#           name: 
+#           command: 
+#       - run: 
+#           name: yarnをアップグレード
+#           command:
+#       - run:
+#           name: webpackをコンパイル
+#           command:
+#       - run:
+#           name: データベースを作成
+#           command: 
+#       - run: 
+#           name: Rubocop修正
+#           command: 
+#       - run:
+#           name: Rspceテスト
+#           command: 
     
 workflows:
   version: 2
   build-and-deploy: 
     jobs:
-      - test
+      # - test
       - aws-ecr/build-and-push-image:
           name: rails-build-and-push-image
           requires:
