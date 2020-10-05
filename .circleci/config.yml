@@ -1,7 +1,87 @@
 version: 2.1
-jobs: 
-  build: 
+orbs:
+  aws-ecr: circleci/aws-ecr@6.12.0
+  aws-ecs: circleci/aws-ecs@1.3.0
+
+executors: #jobでexecutorから使用できる
+  test-executor: 
     docker:
-      - image: cimg/node:lts
-    steps: 
-      - run: echo "hello world"
+      - image: cimg/ruby:2.6
+        environment: 
+          BUNDLE_PATH: /usr/local/bundle/gems
+          BUNDLER_VERSION: 2.0.2
+          RAILS_ENV: test
+      - image: cimg/mysql:8.0
+        environment: 
+          MYSQL_ALLOW_EMPTY_PASSWORD: 'true'
+          MYSQL_ROOT_HOST: '%'
+
+jobs:
+  test: 
+    working_directory: /mountain_app
+    executor: test-executor
+    # steps: 
+    #   - checkout
+    #   - run:
+    #       name: 
+    #       command: 
+    #   - run: 
+    #       name: yarnをアップグレード
+    #       command:
+    #   - run:
+    #       name: webpackをコンパイル
+    #       command:
+    #   - run:
+    #       name: データベースを作成
+    #       command: 
+    #   - run: 
+    #       name: Rubocop修正
+    #       command: 
+    #   - run:
+    #       name: Rspceテスト
+    #       command: 
+    
+workflows:
+  version: 2
+  build-and-deploy: 
+    jobs:
+      - test
+      - aws-ecr/build-and-push-image:
+          name: rails-build-and-push-image
+          requires:
+            - test
+          aws-access-key-id: AWS_ACCESS_KEY_ID
+          aws-secret-access-key: AWS_SECRET_ACCESS_KEY
+          region: AWS_REGION 
+          account-url: AWS_ECR_ACCOUNT_URL #ECRのURI（末尾の/nginxや/railsを除いた物）
+          create-repo: true
+          repo: 'rails' #リポジトリ名
+          tag: "${CIRCLE_SHA1}" #リポジトリの最終コミットのハッシュ（ビルドイン環境変数の一つ）
+          path: '/mountain_app/'
+          filters: 
+            branches: 
+              only: master
+      - aws-ecr/build-and-push-image:
+          name: nginx-build-and-push-image
+          requires: 
+            - test
+          aws-access-key-id: AWS_ACCESS_KEY_ID
+          aws-secret-access-key: AWS_SECRET_ACCESS_KEY
+          region: AWS_REGION 
+          account-url: AWS_ECR_ACCOUNT_URL #ECRのURI（末尾の/nginxや/railsを除いた物）
+          repo: 'nginx' #リポジトリ名
+          tag: "${CIRCLE_SHA1}" #リポジトリの最終コミットのハッシュ（ビルドイン環境変数の一つ）
+          path: '/mountain_app/nginx/'
+          dockerfile: 'Dockerfile.production'
+          filters: 
+            branches: 
+              only: master
+      # - aws-ecs/deploy-service-update:
+      #     name: rails-deploy-and-push-image
+      #     requires: 
+      #       - rails-build-and-push-image
+      # - aws-ecs/deploy-service-update:
+      #     name: nginx-deploy-and-push-image
+      #     requires:
+      #       - nginx-deploy-and-push-image
+      
