@@ -57,7 +57,7 @@ workflows:
           create-repo: true
           repo: 'rails' #リポジトリ名
           tag: "${CIRCLE_SHA1}" #リポジトリの最終コミットのハッシュ（ビルドイン環境変数の一つ）
-          path: './project/'
+          path: '~/project/' 
           filters: 
             branches: 
               only: master
@@ -72,7 +72,7 @@ workflows:
           create-repo: true
           repo: 'nginx' #リポジトリ名
           tag: "${CIRCLE_SHA1}" #リポジトリの最終コミットのハッシュ（ビルドイン環境変数の一つ）
-          path: './project/nginx/'
+          path: '~/project/nginx/'
           dockerfile: 'Dockerfile.production'
           filters: 
             branches: 
