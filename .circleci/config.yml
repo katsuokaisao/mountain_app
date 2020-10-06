@@ -11,6 +11,7 @@ executors: #jobでexecutorから使用できる
           BUNDLE_PATH: /usr/local/bundle/gems
           BUNDLER_VERSION: 2.0.2
           RAILS_ENV: test
+          DB_HOST: 127.0.0.1
       - image: circleci/mysql:8.0
         environment: 
           MYSQL_ALLOW_EMPTY_PASSWORD: 'true'
@@ -21,6 +22,7 @@ jobs:
     executor: test-executor
     steps: 
       - checkout
+      - run: echo 'pwd'
       - restore_cache:
           keys: 
             - v1-rails-bundle-{{ checksum "Gemfile.lock" }}
@@ -33,7 +35,7 @@ jobs:
       - save_cache:
           key: v1-rails-bundle-{{ checksum "Gemfile.lock" }}
           paths:
-            - ./vendor/bundle
+            - /usr/local/bundle/gems/gems
       - run:
           name: データベースの起動を待機
           command: |
