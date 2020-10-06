@@ -57,7 +57,7 @@ workflows:
           create-repo: true
           repo: 'rails' #リポジトリ名
           tag: "${CIRCLE_SHA1}" #リポジトリの最終コミットのハッシュ（ビルドイン環境変数の一つ）
-          path: '/mountain_app/'
+          path: './project/'
           filters: 
             branches: 
               only: master
@@ -69,9 +69,10 @@ workflows:
           aws-secret-access-key: AWS_SECRET_ACCESS_KEY
           region: AWS_REGION 
           account-url: AWS_ECR_ACCOUNT_URL #ECRのURI（末尾の/nginxや/railsを除いた物）
+          create-repo: true
           repo: 'nginx' #リポジトリ名
           tag: "${CIRCLE_SHA1}" #リポジトリの最終コミットのハッシュ（ビルドイン環境変数の一つ）
-          path: '/mountain_app/nginx/'
+          path: './project/nginx/'
           dockerfile: 'Dockerfile.production'
           filters: 
             branches: 
