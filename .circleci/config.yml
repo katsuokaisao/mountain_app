@@ -34,17 +34,6 @@ jobs:
           key: v1-rails-bundle-{{ checksum "Gemfile.lock" }}
           paths:
             - ./vendor/bundle
-      - restore_cache:
-          keys: 
-            - v1-rails-yarn-{{ checksum "yarn.lock" }}
-            - v1-rails-yarn-
-      - run:
-          name: node_modulesの依存関係のインストール
-          command: yarn install
-      - save_cache:
-          key: v1-rails-yarn-{{ checksum "yarn.lock" }}
-          paths:
-            - ~/.cache/yarn
       - run:
           name: データベースの起動を待機
           command: |
