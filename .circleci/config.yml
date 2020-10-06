@@ -8,7 +8,7 @@ executors: #jobでexecutorから使用できる
     docker:
       - image: cimg/ruby:2.6
         environment: 
-          BUNDLE_PATH: /usr/local/bundle/gems
+          BUNDLE_PATH: vendor/bundle
           BUNDLER_VERSION: 2.0.2
           RAILS_ENV: test
           DB_HOST: 127.0.0.1
@@ -31,11 +31,11 @@ jobs:
           name: gemの依存関係のインストール
           command: |
             gem install bundler -v 2.0.2
-            bundle check || bundle install
+            bundle check || bundle install --path vendor/bundle
       - save_cache:
           key: v1-rails-bundle-{{ checksum "Gemfile.lock" }}
           paths:
-            - /usr/local/bundle/gems/gems
+            - vendor/bundle
       - run:
           name: データベースの起動を待機
           command: |
