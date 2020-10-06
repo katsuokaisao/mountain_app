@@ -11,45 +11,59 @@ executors: #jobでexecutorから使用できる
           BUNDLE_PATH: /usr/local/bundle/gems
           BUNDLER_VERSION: 2.0.2
           RAILS_ENV: test
-      - image: cimg/mysql:8.0
+      - image: circleci/mysql:8.0
         environment: 
           MYSQL_ALLOW_EMPTY_PASSWORD: 'true'
           MYSQL_ROOT_HOST: '%'
-
-# jobs:
-#   test: 
-#     working_directory: /mountain_app
-#     executor: test-executor
-#     steps: 
-#       - checkout
-#       - run:
-#           name: 
-#           command: 
-#       - run: 
-#           name: yarnをアップグレード
-#           command:
-#       - run:
-#           name: webpackをコンパイル
-#           command:
-#       - run:
-#           name: データベースを作成
-#           command: 
-#       - run: 
-#           name: Rubocop修正
-#           command: 
-#       - run:
-#           name: Rspceテスト
-#           command: 
+        # command: mysql --default-authentication-plugin=mysql_native_password
+jobs:
+  test: 
+    executor: test-executor
+    steps: 
+      - checkout
+      - restore_cache:
+          keys: 
+            - v1-rails-bundle-{{ checksum "Gemfile.lock" }}
+            - v1-rails-bundle-
+      - run:
+          name: gemの依存関係のインストール
+          command: |
+            gem install bundler -v 2.0.2
+            bundle check || bundle install
+      - save_cache:
+          key: v1-rails-bundle-{{ checksum "Gemfile.lock" }}
+          paths:
+            - ./vendor/bundle
+      - restore_cache:
+          keys: 
+            - v1-rails-yarn-{{ checksum "yarn.lock" }}
+            - v1-rails-yarn-
+      - run:
+          name: node_modulesの依存関係のインストール
+          command: yarn install
+      - save_cache:
+          key: v1-rails-yarn-{{ checksum "yarn.lock" }}
+          paths:
+            - ~/.cache/yarn
+      - run:
+          name: データベースの起動を待機
+          command: |
+            dockerize -wait tcp://127.0.0.1:3306 -timeout 120s
+      - run: bundle exec rake db:create
+      - run: bundle exec rake db:schema:load -trace
+      - run:
+          name: Rspceテスト
+          command: bin/rails rspec
     
 workflows:
   version: 2
   build-and-deploy: 
     jobs:
-      # - test
+      - test
       - aws-ecr/build-and-push-image:
           name: rails-build-and-push-image
-          # requires:
-          #   - test
+          requires:
+            - test
           aws-access-key-id: AWS_ACCESS_KEY_ID
           aws-secret-access-key: AWS_SECRET_ACCESS_KEY
           region: AWS_REGION 
@@ -57,14 +71,14 @@ workflows:
           create-repo: true
           repo: 'rails' #リポジトリ名
           tag: "${CIRCLE_SHA1}" #リポジトリの最終コミットのハッシュ（ビルドイン環境変数の一つ）
-          path: '~/project/' 
+          path: '~/project/' # mountain_appディレクトリがprojectディクトリに置き換えられている
           filters: 
             branches: 
               only: master
       - aws-ecr/build-and-push-image:
           name: nginx-build-and-push-image
-          # requires: 
-          #   - test
+          requires: 
+            - test
           aws-access-key-id: AWS_ACCESS_KEY_ID
           aws-secret-access-key: AWS_SECRET_ACCESS_KEY
           region: AWS_REGION 
