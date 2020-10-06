@@ -9,7 +9,7 @@ executors: #jobでexecutorから使用できる
       - image: cimg/ruby:2.6
         environment: 
           BUNDLE_PATH: vendor/bundle
-          BUNDLER_VERSION: 2.0.2
+          BUNDLER_VERSION: 2.1.4
           RAILS_ENV: test
           DB_HOST: 127.0.0.1
       - image: circleci/mysql:8.0
@@ -30,8 +30,9 @@ jobs:
       - run:
           name: gemの依存関係のインストール
           command: |
-            gem install bundler -v 2.0.2
-            bundle check || bundle install --path vendor/bundle
+            sudo gem update --system
+            bundle config set path 'vendor/bundle'
+            bundle check || bundle install
       - save_cache:
           key: v1-rails-bundle-{{ checksum "Gemfile.lock" }}
           paths:
