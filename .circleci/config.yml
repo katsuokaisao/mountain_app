@@ -96,7 +96,7 @@ workflows:
       - aws-ecs/deploy-service-update:
           name: nginx-deploy-service-update
           requires:
-            - nginx-deploy-and-push-image
+            - nginx-build-and-push-image
           family: mountain
           cluster-name: mountain
           service-name: mountain
