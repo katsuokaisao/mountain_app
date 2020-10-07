@@ -55,7 +55,6 @@ workflows:
     jobs:
       - test
       - aws-ecr/build-and-push-image:
-          working_directory: ~/mountain_app
           name: rails-build-and-push-image
           requires:
             - test
@@ -63,15 +62,13 @@ workflows:
           aws-secret-access-key: AWS_SECRET_ACCESS_KEY
           region: AWS_REGION 
           account-url: AWS_ECR_ACCOUNT_URL #ECRのURI（末尾の/nginxや/railsを除いた物）
-          create-repo: true
           repo: 'rails' #リポジトリ名
           tag: "${CIRCLE_SHA1}" #リポジトリの最終コミットのハッシュ（ビルドイン環境変数の一つ）
-          path: '~/mountain_app/' # mountain_appディレクトリがprojectディクトリに置き換えられている
+          path: '~/project/' # mountain_appディレクトリがprojectディクトリに置き換えられている
           filters: 
             branches: 
               only: master
       - aws-ecr/build-and-push-image:
-          working_directory: ~/mountain_app
           name: nginx-build-and-push-image
           requires: 
             - test
@@ -79,16 +76,14 @@ workflows:
           aws-secret-access-key: AWS_SECRET_ACCESS_KEY
           region: AWS_REGION 
           account-url: AWS_ECR_ACCOUNT_URL #ECRのURI（末尾の/nginxや/railsを除いた物）
-          create-repo: true
           repo: 'nginx' #リポジトリ名
           tag: "${CIRCLE_SHA1}" #リポジトリの最終コミットのハッシュ（ビルドイン環境変数の一つ）
-          path: '~/mountain_app/nginx/'
+          path: '~/project/nginx/'
           dockerfile: 'Dockerfile.production'
           filters: 
             branches: 
               only: master
       - aws-ecs/deploy-service-update:
-          working_directory: ~/mountain_app
           name: rails-deploy-service-update
           requires: 
             - rails-build-and-push-image
@@ -97,7 +92,6 @@ workflows:
           service-name: mountain
           container-image-name-updates: 'container=rails, image-and-tag=${AWS_ECR_ACCOUNT_URL}/rails:${CIRCLE_SHA1}'
       - aws-ecs/deploy-service-update:
-          working_directory: ~/mountain_app
           name: nginx-deploy-service-update
           requires:
             - nginx-build-and-push-image
