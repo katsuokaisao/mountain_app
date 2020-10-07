@@ -25,7 +25,6 @@ jobs:
     executor: test-executor
     steps: 
       - checkout
-      - run: echo 'pwd'
       - restore_cache:
           keys: 
             - v1-rails-bundle-{{ checksum "Gemfile.lock" }}
@@ -86,12 +85,19 @@ workflows:
           filters: 
             branches: 
               only: master
-      # - aws-ecs/deploy-service-update:
-      #     name: rails-deploy-and-push-image
-      #     requires: 
-      #       - rails-build-and-push-image
-      # - aws-ecs/deploy-service-update:
-      #     name: nginx-deploy-and-push-image
-      #     requires:
-      #       - nginx-deploy-and-push-image
-      
+      - aws-ecs/deploy-service-update:
+          name: rails-deploy-and-push-image
+          requires: 
+            - rails-build-and-push-image
+          family: mountain #タスク名
+          cluster-name: mountain
+          service-name: mountain
+          container-image-name-updates: 'container=rails, image-and-tag=${AWS_ECR_ACCOUNT_URL}/rails:${CIRCLE_SHA1}'
+      - aws-ecs/deploy-service-update:
+          name: nginx-deploy-and-push-image
+          requires:
+            - nginx-deploy-and-push-image
+          family: mountain
+          cluster-name: mountain
+          service-name: mountain
+          container-image-name-updates: 'container=nginx, image-and-tag=${AWS_ECR_ACCOUNT_URL}/nginx:${CIRCLE_SHA1}'
