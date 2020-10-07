@@ -15,7 +15,7 @@ executors: #jobでexecutorから使用できる
       - image: circleci/mysql:8.0-ram
         environment: 
           MYSQL_USER: test-user
-          MYSQL_DB: mountain_app_test #これはdatabase.ymlと一致させる
+          MYSQL_DB: mountain_app_test
           MYSQL_PASSWORD: password
           MYSQL_ROOT_PASSWORD: password
         command: mysqld --default-authentication-plugin=mysql_native_password
@@ -55,6 +55,7 @@ workflows:
     jobs:
       - test
       - aws-ecr/build-and-push-image:
+          working_directory: ~/mountain_app
           name: rails-build-and-push-image
           requires:
             - test
@@ -65,11 +66,12 @@ workflows:
           create-repo: true
           repo: 'rails' #リポジトリ名
           tag: "${CIRCLE_SHA1}" #リポジトリの最終コミットのハッシュ（ビルドイン環境変数の一つ）
-          path: '~/project/' # mountain_appディレクトリがprojectディクトリに置き換えられている
+          path: '~/mountain_app/' # mountain_appディレクトリがprojectディクトリに置き換えられている
           filters: 
             branches: 
               only: master
       - aws-ecr/build-and-push-image:
+          working_directory: ~/mountain_app
           name: nginx-build-and-push-image
           requires: 
             - test
@@ -80,12 +82,13 @@ workflows:
           create-repo: true
           repo: 'nginx' #リポジトリ名
           tag: "${CIRCLE_SHA1}" #リポジトリの最終コミットのハッシュ（ビルドイン環境変数の一つ）
-          path: '~/project/nginx/'
+          path: '~/mountain_app/nginx/'
           dockerfile: 'Dockerfile.production'
           filters: 
             branches: 
               only: master
       - aws-ecs/deploy-service-update:
+          working_directory: ~/mountain_app
           name: rails-deploy-service-update
           requires: 
             - rails-build-and-push-image
@@ -94,6 +97,7 @@ workflows:
           service-name: mountain
           container-image-name-updates: 'container=rails, image-and-tag=${AWS_ECR_ACCOUNT_URL}/rails:${CIRCLE_SHA1}'
       - aws-ecs/deploy-service-update:
+          working_directory: ~/mountain_app
           name: nginx-deploy-service-update
           requires:
             - nginx-build-and-push-image
