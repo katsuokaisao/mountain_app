@@ -14,7 +14,7 @@ executors: #jobでexecutorから使用できる
           DB_HOST: 127.0.0.1
       - image: circleci/mysql:8.0-ram
         environment: 
-          # MYSQL_USER: root 
+          MYSQL_USER: test-user
           MYSQL_DB: mountain_app_test #これはdatabase.ymlと一致させる
           MYSQL_PASSWORD: password
           MYSQL_ROOT_PASSWORD: password
