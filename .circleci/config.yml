@@ -20,7 +20,7 @@ executors: #jobでexecutorから使用できる
           MYSQL_ROOT_PASSWORD: password
         command: mysqld --default-authentication-plugin=mysql_native_password
     working_directory: ~/mountain_app
-jobs:
+# jobs:
   # test: 
   #   executor: test-executor
   #   steps: 
