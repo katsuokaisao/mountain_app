@@ -54,35 +54,35 @@ workflows:
   build-and-deploy: 
     jobs:
       # - test
-      # - aws-ecr/build-and-push-image:
-      #     name: rails-build-and-push-image
-      #     requires:
-      #       - test
-      #     aws-access-key-id: AWS_ACCESS_KEY_ID
-      #     aws-secret-access-key: AWS_SECRET_ACCESS_KEY
-      #     region: AWS_REGION 
-      #     account-url: AWS_ECR_ACCOUNT_URL #ECRのURI（末尾の/nginxや/railsを除いた物）
-      #     repo: 'rails' #リポジトリ名
-      #     tag: "${CIRCLE_SHA1}" #リポジトリの最終コミットのハッシュ（ビルドイン環境変数の一つ）
-      #     path: '~/project/' # mountain_appディレクトリがprojectディクトリに置き換えられている
-      #     filters: 
-      #       branches: 
-      #         only: master
-      # - aws-ecr/build-and-push-image:
-      #     name: nginx-build-and-push-image
-      #     requires: 
-      #       - test
-      #     aws-access-key-id: AWS_ACCESS_KEY_ID
-      #     aws-secret-access-key: AWS_SECRET_ACCESS_KEY
-      #     region: AWS_REGION 
-      #     account-url: AWS_ECR_ACCOUNT_URL #ECRのURI（末尾の/nginxや/railsを除いた物）
-      #     repo: 'nginx' #リポジトリ名
-      #     tag: "${CIRCLE_SHA1}" #リポジトリの最終コミットのハッシュ（ビルドイン環境変数の一つ）
-      #     path: '~/project/nginx/'
-      #     dockerfile: 'Dockerfile.production'
-      #     filters: 
-      #       branches: 
-      #         only: master
+      - aws-ecr/build-and-push-image:
+          name: rails-build-and-push-image
+          requires:
+            - test
+          aws-access-key-id: AWS_ACCESS_KEY_ID
+          aws-secret-access-key: AWS_SECRET_ACCESS_KEY
+          region: AWS_REGION 
+          account-url: AWS_ECR_ACCOUNT_URL #ECRのURI（末尾の/nginxや/railsを除いた物）
+          repo: 'rails' #リポジトリ名
+          tag: "${CIRCLE_SHA1}" #リポジトリの最終コミットのハッシュ（ビルドイン環境変数の一つ）
+          path: '~/project/' # mountain_appディレクトリがprojectディクトリに置き換えられている
+          filters: 
+            branches: 
+              only: master
+      - aws-ecr/build-and-push-image:
+          name: nginx-build-and-push-image
+          requires: 
+            - test
+          aws-access-key-id: AWS_ACCESS_KEY_ID
+          aws-secret-access-key: AWS_SECRET_ACCESS_KEY
+          region: AWS_REGION 
+          account-url: AWS_ECR_ACCOUNT_URL #ECRのURI（末尾の/nginxや/railsを除いた物）
+          repo: 'nginx' #リポジトリ名
+          tag: "${CIRCLE_SHA1}" #リポジトリの最終コミットのハッシュ（ビルドイン環境変数の一つ）
+          path: '~/project/nginx/'
+          dockerfile: 'Dockerfile.production'
+          filters: 
+            branches: 
+              only: master
       - aws-ecs/deploy-service-update:
           name: rails-deploy-service-update
           # requires: 
