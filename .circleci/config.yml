@@ -85,16 +85,16 @@ workflows:
               only: master
       - aws-ecs/deploy-service-update:
           name: rails-deploy-service-update
-          # requires: 
-          #   - rails-build-and-push-image
+          requires: 
+            - rails-build-and-push-image
           family: mountain #タスク名
           cluster-name: mountain
           service-name: mountain
           container-image-name-updates: 'container=rails, image-and-tag=${AWS_ECR_ACCOUNT_URL}/rails:${CIRCLE_SHA1}'
       - aws-ecs/deploy-service-update:
           name: nginx-deploy-service-update
-          # requires:
-          #   - nginx-build-and-push-image
+          requires:
+            - nginx-build-and-push-image
           family: mountain
           cluster-name: mountain
           service-name: mountain
