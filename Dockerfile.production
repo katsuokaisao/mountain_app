@@ -7,11 +7,11 @@ RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -\
     && rm -r /var/lib/apt/lists/*
 ENV APP_ROOT /mountain_app
 WORKDIR /${APP_ROOT}
-RUN mkdir tmp/pids
 COPY Gemfile ${APP_ROOT}/Gemfile
 COPY Gemfile.lock ${APP_ROOT}/Gemfile.lock
 RUN bundle install
 COPY . /${APP_ROOT}
+RUN mkdir tmp/pids
 
 COPY entrypoint.sh /usr/bin
 RUN chmod +x /usr/bin/entrypoint.sh
