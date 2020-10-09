@@ -15,7 +15,7 @@ server {
 
   # path for static files
   # /users/newにリクエストが送られると/mountain_app/public/users/newを参照する 
-  root /home/circleci/project/public;
+  root /mountain_app/public;
 
   #デフォで1m(1MB)と小すぎるので大きくしてあげる
   client_max_body_size 500m;
