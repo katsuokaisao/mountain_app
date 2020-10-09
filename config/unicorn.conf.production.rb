@@ -4,14 +4,14 @@ $timeout = 30
 $app_dir = "/mountain_app" 
 $listen  = 3000
 $pid     = File.expand_path 'tmp/pids/unicorn.pid', $app_dir
-$std_log = File.expand_path 'log/unicorn.log', $app_dir
+# $std_log = File.expand_path 'log/unicorn.log', $app_dir
 # set config
 listen  $listen
 pid $pid
 worker_processes  $worker
 working_directory $app_dir
-stderr_path $std_log
-stdout_path $std_log
+stderr_path $stder
+stdout_path $stdout
 timeout $timeout
 # loading booster
 preload_app true
