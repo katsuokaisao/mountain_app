@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>DockerApp</title>
+    <title>山と人</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -15,10 +15,18 @@
       <div class="header-list-left">
         <li class="header-list-item" ><h1><%= link_to '100山', root_path, class: "header-list-item-link" %></h1></li>
       </div>
+      <% unless user_signed_in? %>
       <div class="header-list-right">
         <li class="header-list-item" ><%= link_to '新規登録', new_user_registration_path, class: "header-list-item-link header-list-item-signup" %></li>
         <li class="header-list-item" ><%= link_to 'ログイン', new_user_session_path, class: "header-list-item-link" %></li>
       </div>
+      <% else %>
+        <div class="header-list-right">
+        <ul>
+          <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
+        </ul>
+        </div>
+      <% end %>
     </ul>
     </header>
     <%= yield %>
