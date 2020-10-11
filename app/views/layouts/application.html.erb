@@ -12,20 +12,26 @@
   <body>
     <header>
     <ul class="header-list">
+    <% unless user_signed_in? %>
       <div class="header-list-left">
         <li class="header-list-item" ><h1><%= link_to '100山', root_path, class: "header-list-item-link" %></h1></li>
       </div>
-      <% unless user_signed_in? %>
       <div class="header-list-right">
         <li class="header-list-item" ><%= link_to '新規登録', new_user_registration_path, class: "header-list-item-link header-list-item-signup" %></li>
         <li class="header-list-item" ><%= link_to 'ログイン', new_user_session_path, class: "header-list-item-link" %></li>
       </div>
-      <% else %>
-        <div class="header-list-right">
-        <ul>
+    <% else %>
+      <div class="header-list-left">
+        <li class="header-list-item" ><h1><%= link_to '100山', dailys_home_path , class: "header-list-item-link" %></h1></li>
+      </div>
+      <div class="header-list-right">
+        <p>設定</p>
+        <ul class="signin-dropdown-menu">
+          <li><%= link_to 'マイページ', "#" %></li>
+          <li><%= link_to '登録情報変更', edit_user_registration_path %></li>
           <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
         </ul>
-        </div>
+      </div>
       <% end %>
     </ul>
     </header>
