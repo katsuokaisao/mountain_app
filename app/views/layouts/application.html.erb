@@ -4,7 +4,6 @@
     <title>山と人</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag 'application', media: 'all' %>
     <%= javascript_pack_tag 'application' %>
   </head>
@@ -19,6 +18,7 @@
       <div class="header-list-right">
         <li class="header-list-item" ><%= link_to '新規登録', new_user_registration_path, class: "header-list-item-link header-list-item-signup" %></li>
         <li class="header-list-item" ><%= link_to 'ログイン', new_user_session_path, class: "header-list-item-link" %></li>
+        <li class="header-list-item" ><%= link_to 'ゲストログイン', users_guest_sign_in_path, class: "header-list-item-link guest-login-item" ,method: :post %></li>
       </div>
     <% else %>
       <div class="header-list-left">

@@ -1,3 +1,29 @@
-<div class="main-capture">
-  <%= image_tag 'IMG_3264_Original.jpg', class: 'capture-image' %>
+<div class="tab-wrapper">
+  <ul class="tab">
+    <li class="tab-list"><%= link_to '山々', "#" %></li>
+    <li class="tab-list"><%= link_to '山日記', dailys_own_path %></li>
+    <li class="tab-list"><%= link_to '山友', "#" %></li>
+  </ul>
 </div>
+
+<div class="icon-nav-wrapper">
+  <div class="icon-nav">
+    <%= link_to dailys_home_path do %>
+      <i class="fas fa-home fa-3x"></i>
+    <% end %>
+    <%= link_to dailys_own_path do %>
+      <i class="fas fa-user-circle fa-3x"></i>
+    <% end %>
+    <%= link_to dailys_mountain_path do %>
+      <i class="fas fa-mountain fa-3x"></i>
+    <% end %>
+  </div>
+  <div class="daily-create">
+    <%= link_to dailys_home_path do %>
+      <i class="fas fa-book fa-3x"></i>
+    <% end %>
+  </div>
+</div>
+
+
+

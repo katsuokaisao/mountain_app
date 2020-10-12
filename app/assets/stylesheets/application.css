@@ -1,3 +1,9 @@
+@import '@fortawesome/fontawesome-free/js/all';
+@import '@fortawesome/fontawesome-free/scss/fontawesome';
+@import '@fortawesome/fontawesome-free/scss/solid';
+@import '@fortawesome/fontawesome-free/scss/regular';
+@import '@fortawesome/fontawesome-free/scss/brands';
+@import '@fortawesome/fontawesome-free/scss/v4-shims';
 /*
  *= require_tree .
  *= require_self
@@ -38,7 +44,13 @@ header {
 .header-list-item-link {
   color: white;
   text-decoration: none;
+  font-weight: 700;
 } 
+
+.guest-login-item {
+  color: red;
+  opacity: 0.7;
+}
 
 .header-list-item-signup {
   margin-right: 5px;
@@ -73,4 +85,53 @@ header {
   font-size: 32px;
   color: white;
   position: relative;
+  text-align: center;
 }
+
+.tab-wrapper {
+  width: 50%;
+  margin: 60px auto 30px;
+  padding: 10px;
+  border: 3px solid black;
+}
+
+.tab-wrapper .tab {
+  list-style: none;
+    display: flex;
+    justify-content: space-around;
+}
+
+.tab-wrapper .tab li a {
+  font-size: 30px;
+  text-decoration:none;
+  color: green;
+}
+
+.tab-wrapper .tab li a:hover {
+  border-bottom: 3px solid green;
+}
+
+.tab-wrapper .tab li a:visited {
+
+}
+
+.tab-wrapper .tab li a:active {
+
+}
+
+.icon-nav-wrapper {
+  width: 50%;
+  margin: 0 auto;
+}
+
+.icon-nav-wrapper .icon-nav {
+  width: 35%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-around;
+}
+
+.icon-nav-wrapper .daily-create {
+  text-align: right;
+}
+
