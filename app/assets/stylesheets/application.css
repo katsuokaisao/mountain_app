@@ -87,6 +87,11 @@ header {
   font-weight: 600;
 }
 
+.signin-dropdown-menu .logout {
+  padding-top: 3px;
+  border-top: 2px solid black;
+}
+
 .signin-dropdown-menu li a:link {
   /* color: black; */
 }
@@ -154,6 +159,10 @@ header {
 
 i {
   color: green;
+}
+
+.icon-nav-wrapper {
+  margin-bottom: 60px;
 }
 
 .icon-nav-wrapper .icon-nav a {
