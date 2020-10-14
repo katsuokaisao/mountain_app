@@ -188,7 +188,13 @@ i {
   left: -5px;
 }
 
-.icon-nav-wrapper .daily-create a {
+.daily-create {
+  width: 50%;
+  margin: 0 auto;
+  text-align: right;
+}
+
+.daily-create a {
   position: relative;
   text-align: center;
 }
