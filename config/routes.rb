@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :mountains, only: [:index, :show]
   get 'dailys/home'
   get 'dailys/own'
   get 'dailys/mountain'

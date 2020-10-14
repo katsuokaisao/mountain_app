@@ -29,8 +29,11 @@ header {
 .header-list-right {
   margin: auto 0;
   position: relative;
-  width: 150px;
   text-align: center;
+}
+
+.header-lits-right-signed {
+  width: 150px;
 }
 
 .header-list {
