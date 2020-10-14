@@ -1,4 +1,14 @@
-ActiveRecord::Schema.define(version: 2020_08_29_075023) do
+ActiveRecord::Schema.define(version: 2020_10_14_044145) do
+
+  create_table "mountains", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "area", null: false
+    t.string "prefecture", null: false
+    t.integer "height", null: false
+    t.text "feature"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "username", null: false
