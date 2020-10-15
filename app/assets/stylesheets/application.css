@@ -36,6 +36,14 @@ header {
   width: 150px;
 }
 
+.signin-dropdown-menu {
+  display: none;
+}
+
+.is-active {
+  display: block;
+}
+
 .header-list {
   display: flex;
   justify-content: space-between;
