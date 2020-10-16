@@ -26,24 +26,6 @@ header {
   background-color: darkcyan;
 }
 
-.header-list-right {
-  margin: auto 0;
-  position: relative;
-  text-align: center;
-}
-
-.header-lits-right-signed {
-  width: 150px;
-}
-
-.signin-dropdown-menu {
-  display: none;
-}
-
-.is-active {
-  display: block;
-}
-
 .header-list {
   display: flex;
   justify-content: space-between;
@@ -51,27 +33,44 @@ header {
   margin: 0 auto;
 }
 
+.header-list .header-list-right {
+  margin: auto 0;
+  position: relative;
+  text-align: center;
+}
+
+.header-list .header-list-right-signed {
+  width: 150px;
+}
+
+.header-list .header-list-right p{
+  font-size: 32px;
+  color: white;
+  position: relative;
+  text-align: center;
+}
+
 .header-list-item {
   display: inline-block;
   list-style: none;
 }
 
-.header-list-item-link {
+.header-list-item .header-list-item-link {
   color: white;
   text-decoration: none;
   font-weight: 700;
 } 
 
-.guest-login-item {
+.header-list-item .header-list-item-signup {
+  margin-right: 5px;
+}
+
+.header-list-item .guest-login-item {
   color: white;
   margin-left: 10px;
 }
 
-.header-list-item-signup {
-  margin-right: 5px;
-}
-
-.signin-dropdown-menu {
+.header-list .header-list-right-signed .signin-dropdown-menu {
   position: absolute;
   z-index: 20;
   background: white;
@@ -80,37 +79,31 @@ header {
   left: 50%;
   transform: translate(-50%);
   width: 100%;
+  display: none;
 }
 
-.signin-dropdown-menu li{
-  /* border-bottom: 3px solid gray; */
+.header-list .header-list-right-signed .is-active {
+  display: block;
+}
+
+.header-list .header-list-right-signed .signin-dropdown-menu li{
   margin: 5px 0;
   padding: 0px 3px;
   text-align: center;
 }
 
-.signin-dropdown-menu li a {
+.header-list .header-list-right-signed .signin-dropdown-menu li a {
   color: black;
   text-decoration: none;
   font-weight: 600;
 }
 
-.signin-dropdown-menu .logout {
+.header-list .header-list-right-signed .signin-dropdown-menu .logout {
   padding-top: 3px;
   border-top: 2px solid black;
 }
 
-.signin-dropdown-menu li a:link {
-  /* color: black; */
-}
-
-.header-list-right p{
-  font-size: 32px;
-  color: white;
-  position: relative;
-  text-align: center;
-}
-
+/* tab */
 .tab-wrapper {
   width: 50%;
   margin: 60px auto 30px;
@@ -142,6 +135,7 @@ header {
 
 }
 
+/* icon */
 .icon-nav-wrapper {
   width: 50%;
   margin: 0 auto;
@@ -204,6 +198,8 @@ i {
   font-size: 16px;
   left: -5px;
 }
+
+/* 日記作成ボタン */
 
 .daily-create {
   width: 50%;
