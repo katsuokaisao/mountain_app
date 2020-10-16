@@ -1,3 +1,4 @@
+// index.html.erb
 .table-wrapper {
   width: 45%;
   margin: 0 auto;
@@ -32,6 +33,63 @@
     }
     tr:hover {
       background-color: #d4faff;
+    }
+  }
+}
+
+// show.html.erb
+.mountain-information {
+  width: 50%;
+  margin: 80px auto 0;
+  .mountain-information-top {
+    align-items: center;
+    margin-bottom: 40px;
+    i {
+      color: #008B8B;
+    }
+    p {
+      font-size: 20px;
+      display: inline-block;
+    }
+    .mountain-name {
+      font-size: 32px;
+      width: 40%;
+      display: inline-block;
+    }
+    .mountain-prefecture {
+      width: 20%;
+    }
+    .mountain-height {
+      width: 20%;
+    }
+  }
+  .mountain-photo-wrapper {
+
+  }
+  .mountain-feature-wrapper {
+    i {
+      color: #008B8B;
+      margin-left: -5px;
+    }
+    .feature-title {
+      font-size: 28px;
+      margin-bottom: 10px;
+      background: linear-gradient(transparent 70%, #5bb7ae 70%);
+      display: inline;
+      letter-spacing: 5px;
+    }
+    .box {
+      padding: 0.5em 1em;
+      margin: 1em 0;
+      background: #f4f4f4;
+      border-left: solid 6px #5bb7ae;
+      box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.33);
+      .feature-text {
+        font-size: 20px;
+        margin: 0; 
+        padding: 0;
+        text-align: justify;
+      }
     }
   }
 }

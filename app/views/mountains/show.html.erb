@@ -1,2 +1,21 @@
 <%= render 'layouts/tab' %>
-<%= render 'layouts/icon-nav' %>
+
+<div class="mountain-information">
+  <div class="mountain-information-top">
+    <h3 class="mountain-name"><%= @mountain.name %></h3>
+    <i class="fas fa-star fa-2x"></i>
+    <p class="mountain-prefecture"><%= @mountain.prefecture %></p>
+    <i class="fas fa-star fa-2x"></i>
+    <p class="mountain-height"><%= @mountain.height %>m</p>
+  </div>
+  <div class="mountain-photo-wrapper">
+
+  </div>
+  <div class="mountain-feature-wrapper">
+    <i class="fas fa-star fa-2x"></i>
+    <h4 class="feature-title">特徴</h4>
+    <div class="box">
+      <p class="feature-text"><%= @mountain.feature %></p>
+    </div>
+  </div>
+</div>

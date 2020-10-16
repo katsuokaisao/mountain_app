@@ -11,7 +11,7 @@
     </tr>
     <% @mountains.each do |mountain| %>
       <tr>
-        <td><%= mountain.name %></td>
+        <td><%= link_to mountain.name, mountain_path(mountain.id) %></td>
         <td><%= mountain.area %></td>
         <td><%= mountain.prefecture%></td>
         <td><%= mountain.height %>m</td>
