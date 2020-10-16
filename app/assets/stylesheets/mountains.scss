@@ -1,7 +1,7 @@
 // index.html.erb
 .table-wrapper {
   width: 45%;
-  margin: 0 auto;
+  margin: 50px auto 0;
   h2 {
     text-align: center;
     margin-bottom: 20px;
@@ -21,6 +21,15 @@
       th, td {
         padding: 20px 0;
         border-bottom: 1px solid #eee;
+      }
+      td {
+        a {
+          text-decoration: none;
+          border-bottom: 4px solid #d4faff;
+        }
+        a:hover {
+          border-bottom: 3px solid red;
+        }
       }
       th {
         width: 20%;
