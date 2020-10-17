@@ -1,0 +1,40 @@
+.daily-form-wrapper {
+  width: 50%;
+  margin: 30px auto;
+  background: white;
+  padding: 60px 0 60px;
+  h3 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 30px;
+  }
+  .daily-form {
+    width: 80%;
+    margin: 0 auto;
+    .field {
+      margin-bottom: 20px;
+      label {
+        display: block;
+      }
+      input {
+        border: 1px solid #ddd;
+        border-radius: 6px;
+        padding-left: 1em;
+        padding-right: 1em;
+        height: 48px;
+        width: 100%;
+        font-size: 18px;
+        background: #eaedf2;
+        box-sizing: border-box;
+      }
+      textarea {
+        width: 100%;
+        height: 100px;
+      }
+    }
+    .btn {
+      width: 100%;
+      height: 48px;
+    }
+  }
+}

@@ -3,6 +3,11 @@ Rails.application.routes.draw do
   get 'dailys/home'
   get 'dailys/own'
   get 'dailys/mountain'
+  get 'dailys/new', to: 'dailys#new'
+  post 'dailys', to: 'dailys#create'
+  get 'dailys/:id/edit', to: 'dailys#edit'
+  patch 'dailys/:id', to: 'dailys#update'
+  delete 'dailys/:id', to: 'dailys#destroy'
   devise_for :users
   devise_scope :user do
     get '/users/sign_out' => 'devise/sessions#destroy'
