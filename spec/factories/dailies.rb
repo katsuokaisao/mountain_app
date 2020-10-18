@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :daily do
-    mountain-name { "MyString" }
+    mountain_name { "MyString" }
     title { "MyString" }
     comment { "MyText" }
     user { nil }

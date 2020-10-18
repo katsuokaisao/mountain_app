@@ -1,9 +1,12 @@
 <div class="daily-form-wrapper">
   <h3>投稿する</h3>
-  <%= form_with model: @daily, class: 'daily-form' do |f| %>
+  <%= form_with url: dailies_path, scope: :daily, local: true, class: 'daily-form' do |f| %>
+    <%= f.hidden_field :user_id, :value => current_user.id %>
+    <%= f.hidden_field :mountain_id, :value => 1 %>
+
     <div class="field">
-      <%= f.label :name, '山の名前' %>
-      <%= f.text_field :name %>
+      <%= f.label :mountain_name, '山の名前' %>
+      <%= f.text_field :mountain_name %>
     </div>
     <div class="field">
       <%= f.label :title, 'タイトル' %>
