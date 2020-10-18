@@ -7,14 +7,23 @@
     <div class="field">
       <%= f.label :mountain_name, '山の名前' %>
       <%= f.text_field :mountain_name %>
+      <% if @daily.errors.include?(:mountain_name) %>
+        <p style="color: red"><%= @daily.errors.full_messages_for(:mountain_name).first %></p>
+      <% end %>
     </div>
     <div class="field">
       <%= f.label :title, 'タイトル' %>
       <%= f.text_field :title %>
+      <% if @daily.errors.include?(:title) %>
+        <p style="color: red"><%= @daily.errors.full_messages_for(:title).first %></p>
+      <% end %>
     </div>
     <div class="field">
       <%= f.label :comment, '内容' %>
       <%= f.text_area :comment %>
+      <% if @daily.errors.include?(:comment) %>
+        <p style="color: red"><%= @daily.errors.full_messages_for(:comment).first %></p>
+      <% end %>
     </div>
     <%= f.submit "投稿する", class: "btn" %>
   <% end %>

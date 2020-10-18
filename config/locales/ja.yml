@@ -7,7 +7,12 @@ ja:
 #      already_confirmed: "was already confirmed"
       not_locked: "は凍結されていません"
 #      not_locked: "was not locked"
-
+  activerecord:
+    attributes:
+      daily:
+        mountain_name: 山の名前
+        title: タイトル
+        comment: 内容
   devise:
     failure:
       unauthenticated: 'ログインしてください。'
