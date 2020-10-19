@@ -1,12 +1,12 @@
 <div class="icon-nav-wrapper">
   <div class="icon-nav">
-    <%= link_to dailys_home_path do %>
+    <%= link_to user_dailys_home_path(current_user.id) do %>
       <i class="fas fa-home fa-3x"></i>
     <% end %>
-    <%= link_to dailys_own_path do %>
+    <%= link_to user_dailys_own_path(current_user.id) do %>
       <i class="fas fa-user-circle fa-3x"></i>
     <% end %>
-    <%= link_to dailys_mountain_path do %>
+    <%= link_to user_dailys_mountain_path(current_user.id) do %>
       <i class="fas fa-mountain fa-3x"></i>
     <% end %>
   </div>

@@ -1,5 +1,25 @@
+<%# if current_user == @user %>
 <%= render 'layouts/tab' %>
 <%= render 'layouts/icon-nav' %>
 <%= render 'layouts/daily-create'%>
 
-
+<div class="post-content">
+  <a href="">
+    <div class="post-box">
+      <div class="post-box-left">
+        <img src="" alt="" class="">
+        <p></p>
+        <p></p>
+      </div>
+      <div class="post-box-center">
+        <h4 class="post-title"></h4>
+        <p></p>
+      </div>
+      <div class="post-box-right"></div>
+    </div>
+  </a>
+</div>
+<%# else %>
+<%# tabもicon-navもdaily-createもいらない %>
+<%# その代わり戻るボタンでさっきいた場所に戻れるようにする redirect_back %>
+<%# end %>

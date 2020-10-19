@@ -1,7 +1,7 @@
 <div class="tab-wrapper box17">
   <ul class="tab">
     <li class="tab-list"><%= link_to '山々', mountains_path %></li>
-    <li class="tab-list"><%= link_to '山日記', dailys_own_path %></li>
+    <li class="tab-list"><%= link_to '山日記', user_dailys_own_path(current_user.id) %></li>
     <li class="tab-list"><%= link_to '山友', "#" %></li>
   </ul>
 </div>

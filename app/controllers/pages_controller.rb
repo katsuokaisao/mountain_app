@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
   def home
-    redirect_to dailys_own_path if user_signed_in? 
+    redirect_to user_dailys_own_path(current_user.id) if user_signed_in? 
   end
 end
