@@ -11,6 +11,7 @@ class DailysController < ApplicationController
   def own
     # current_userに限らずそのページのuser自身の投稿一覧
     @user = User.find(params[:user_id])
+    @dailys = @user.dailys
   end
 
   def mountain
@@ -25,8 +26,14 @@ class DailysController < ApplicationController
 
   def create
     @daily = Daily.new(daily_create_params)
-    if @daily.save
+    mountains = Mountain.all
+    name_matched_mountain = mountains.select { 
+      |mountain| mountain.name == @daily.mountain_name
+    }
+    if name_matched_mountain.first && @daily.valid?
       flash[:success] = "投稿できました！"
+      @daily.mountain_id = name_matched_mountain.first.id
+      @daily.save
       redirect_to user_dailys_own_path
     else
       flash[:danger] = "投稿に失敗しました。"

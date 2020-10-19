@@ -3,22 +3,45 @@
 <%= render 'layouts/icon-nav' %>
 <%= render 'layouts/daily-create'%>
 
-<div class="post-content">
-  <a href="">
-    <div class="post-box">
-      <div class="post-box-left">
-        <img src="" alt="" class="">
-        <p></p>
-        <p></p>
+<% @dailys.each do |daily| %>
+  <div class="post-content">
+    <%# link_to ~~~_path do %>
+      <div class="post-box">
+        <div class="post-box-left">
+          <img src="" alt="" class="">
+          <p><%= daily.user.username %></p>
+          <p><%= daily.updated_at %></p>
+        </div>
+        <div class="post-box-center">
+          <h4 class="post-title"><%= daily.title %></h4>
+          <table>
+            <tr>
+              <th>山名</th>
+              <td><%= daily.mountain.name %></td>
+            </tr>
+            <tr>
+              <th>場所</th>
+              <td><%= daily.mountain.area %></td>
+              <td><%= daily.mountain.prefecture %></td>
+            </tr>
+            <tr>
+              <th>標高</th>
+              <td><%= daily.mountain.height %>m</td>
+            </tr>
+          </table>
+        </div>
+        <div class="post-box-right">
+          <% if daily.images.attached? %>
+            <%= link_to daily.images.first, "data-lightbox"=> daily.images.first do  %>
+              <%= image_tag daily.images.first.variant(resize_to_fill: [200, 200]) %>
+            <% end %>
+          <% end %>
+        </div>
       </div>
-      <div class="post-box-center">
-        <h4 class="post-title"></h4>
-        <p></p>
-      </div>
-      <div class="post-box-right"></div>
-    </div>
-  </a>
-</div>
+  </div>
+<% end %>
+
+
 <%# else %>
 <%# tabもicon-navもdaily-createもいらない %>
 <%# その代わり戻るボタンでさっきいた場所に戻れるようにする redirect_back %>
