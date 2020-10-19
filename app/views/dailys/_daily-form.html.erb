@@ -1,6 +1,6 @@
 <div class="daily-form-wrapper">
   <h3>投稿する</h3>
-  <%= form_with url: dailies_path, scope: :daily, local: true, class: 'daily-form' do |f| %>
+  <%= form_with url: user_dailys_path, scope: :daily, local: true, class: 'daily-form' do |f| %>
     <%= f.hidden_field :user_id, :value => current_user.id %>
     <%= f.hidden_field :mountain_id, :value => 1 %>
 
@@ -24,6 +24,9 @@
       <% if @daily.errors.include?(:comment) %>
         <p style="color: red"><%= @daily.errors.full_messages_for(:comment).first %></p>
       <% end %>
+    </div>
+    <div class="field">
+      <%= f.file_field :images, multiple: true , class: 'image-up'%>
     </div>
     <%= f.submit "投稿する", class: "btn" %>
   <% end %>

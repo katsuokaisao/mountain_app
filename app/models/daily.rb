@@ -4,4 +4,5 @@ class Daily < ApplicationRecord
   validates :mountain_name, presence: true, length: {maximum: 30}
   validates :title, presence: true, length: {maximum: 30}
   validates :comment, presence: true, length: {maximum: 600}
+  has_many_attached :images
 end
