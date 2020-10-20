@@ -18,12 +18,10 @@ require "sprockets/railtie"
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
-
 module DockerApp
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.0
-    config.i18n.default_locale = :ja
     config.generators do |g|
       g.test_framework :rspec,
       fixtures: true, 
@@ -31,12 +29,7 @@ module DockerApp
       helper_specs: false,
       routing_specs: false
     end
-    # Settings in config/environments/* take precedence over those specified here.
-    # Application configuration can go into files in config/initializers
-    # -- all .rb files in that directory are automatically loaded after loading
-    # the framework and any gems in your application.
-
-    # Don't generate system test files.
-    config.generators.system_tests = nil
+    config.time_zone = "Asia/Tokyo"
+    config.i18n.default_locale = :ja
   end
 end
