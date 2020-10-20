@@ -5,12 +5,11 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag 'application', media: 'all' %>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/css/lightbox.css" rel="stylesheet">
+    <%= javascript_pack_tag 'application' %>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js">
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/js/lightbox.min.js" type="text/javascript">
     </script>
-    <%= javascript_pack_tag 'application' %>
   </head>
 
   <body>
@@ -24,6 +23,7 @@
         <li class="header-list-item" ><%= link_to '新規登録', new_user_registration_path, class: "header-list-item-link header-list-item-signup" %></li>
         <li class="header-list-item" ><%= link_to 'ログイン', new_user_session_path, class: "header-list-item-link" %></li>
         <li class="header-list-item" ><%= link_to 'ゲストログイン', users_guest_sign_in_path, class: "header-list-item-link guest-login-item" ,method: :post %></li>
+        <br id="dropdown-trigger" style="display: none">
       </div>
     <% else %>
       <div class="header-list-left">
@@ -32,7 +32,6 @@
       <div class="header-list-right header-list-right-signed">
         <i class="fas fa-user-circle fa-3x" id="dropdown-trigger"></i>
         <ul class="signin-dropdown-menu" id="dropdown">
-          <li><%= link_to 'マイページ', "#" %></li>
           <li><%= link_to '登録情報変更', edit_user_registration_path %></li>
           <li class="logout"><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
         </ul>
