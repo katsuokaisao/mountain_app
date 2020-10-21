@@ -35,6 +35,12 @@ header {
   margin: 0 auto;
 }
 
+.header-list-left .header-list-item .header-list-item-link {
+  height: 80px;
+  display: table-cell;
+  vertical-align: middle;
+}
+
 .header-list .header-list-right {
   margin: auto 0;
   position: relative;
@@ -43,6 +49,11 @@ header {
 
 .header-list .header-list-right-signed {
   width: 150px;
+}
+
+.header-list .header-list-right-signed img {
+  width: 80px;
+  height: 80px;
 }
 
 .header-list .header-list-right p{

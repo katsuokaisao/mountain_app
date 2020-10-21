@@ -5,14 +5,46 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
-  # def new
-  #   super
-  # end
+  def new
+    super
+  end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+    # ここでUser.new（と同等の操作）を行う
+    build_resource(sign_up_params)
+
+    # ここでUser.save（と同等の操作）を行う
+    resource.save
+    profile = Profile.create(user_id: resource.id, introduce_text: "ここにプロフィール文を入れてください")
+
+    # ブロックが与えられたらresource(=User)を呼ぶ
+    yield resource if block_given?
+    if resource.persisted?
+    # 先程のresource.saveが成功していたら
+      if resource.active_for_authentication?
+      # confirmable/lockableどちらかのactive_for_authentication?がtrueだったら
+        # flashメッセージを設定
+        set_flash_message! :notice, :signed_up
+        # サインアップ操作
+        sign_up(resource_name, resource)
+        # リダイレクト先を指定
+        respond_with resource, location: after_sign_up_path_for(resource)
+      else
+        set_flash_message! :notice, :"signed_up_but_#{resource.inactive_message}"
+        # sessionを削除
+        expire_data_after_sign_in!
+        respond_with resource, location: after_inactive_sign_up_path_for(resource)
+      end
+    else
+    # 先程のresource.saveが失敗していたら
+      # passwordとpassword_confirmationをnilにする
+      clean_up_passwords resource
+      # validatable有効時に、パスワードの最小値を設定する
+      set_minimum_password_length
+      respond_with resource
+    end
+  end
 
   # GET /resource/edit
   # def edit

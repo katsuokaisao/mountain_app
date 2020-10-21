@@ -1,8 +1,9 @@
+<%= render 'layouts/tab' %>
 <div class="profile-wrapper">
   <div class="profile-image">
   <%= form_with model: @profile, url: user_profiles_path, local: true do |f| %>
     <% if @profile.avatar.attached? %>
-      <%= image_tag @profile.avatar %>
+      <%= image_tag @profile.avatar.variant(resize_to_fill: [200, 200]) %>
     <% else %>
       <%= image_tag 'stockfoto_12670415.jpg' %>
     <% end %>

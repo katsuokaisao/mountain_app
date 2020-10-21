@@ -8,6 +8,6 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
-    dailys_own_path(resource)
+    user_dailys_own_path(resource)
   end
 end
