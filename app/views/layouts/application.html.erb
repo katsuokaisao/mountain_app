@@ -32,6 +32,7 @@
       <div class="header-list-right header-list-right-signed">
         <i class="fas fa-user-circle fa-3x" id="dropdown-trigger"></i>
         <ul class="signin-dropdown-menu" id="dropdown">
+          <li><%= link_to 'プロフィール', edit_user_profiles_path(current_user.id) %></li>
           <li><%= link_to '登録情報変更', edit_user_registration_path %></li>
           <li class="logout"><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
         </ul>

@@ -15,6 +15,8 @@ Rails.application.routes.draw do
     get    'dailys/:id/edit', to: 'dailys#edit'
     patch  'dailys/:id',      to: 'dailys#update'
     delete 'dailys/:id',      to: 'dailys#destroy'
+    # profile
+    resource :profiles, only: [:edit, :update, :create]
   end
   resources :mountains, only: [:index, :show]
 end 

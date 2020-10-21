@@ -3,6 +3,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   validates :username, presence: true
   has_many :dailys
+  has_one :profile, dependent: :destroy
 
   def self.guest
     find_or_create_by!(username: 'ゲスト', email: 'guest@example.com') do |user|
