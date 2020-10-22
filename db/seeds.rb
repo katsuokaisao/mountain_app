@@ -98,3 +98,19 @@ Mountain.create(name: '阿蘇山', area: '九州', prefecture: '熊本県', heig
 Mountain.create(name: '霧島山', area: '九州', prefecture: '宮城・鹿児島県', height: 1700, feature: '霧島山（きりしまやま）は、九州南部の宮崎県と鹿児島県県境付近に広がる火山群の総称であり、霧島連山、霧島連峰、霧島山地あるいは霧島火山群とも呼ばれる。最高峰の韓国岳（標高1,700m）と、霊峰高千穂峰（標高1,574m）の間や周辺に山々が連なって山塊を成している。' )
 Mountain.create(name: '開聞岳', area: '九州', prefecture: '鹿児島県', height: 924, feature: '開聞岳（かいもんだけ）は、鹿児島県の薩摩半島の南端に位置する標高924mの火山。1964年（昭和39年）3月16日に、霧島屋久国立公園に指定された 。日本百名山、新日本百名山及び九州百名山に選定されている。山麓の北東半分は陸地に、南西半分は海に面しており、見事な円錐形の山容から別名「薩摩富士」とも呼ばれる。所在地は鹿児島県指宿市。' )
 Mountain.create(name: '宮之浦岳', area: '九州', prefecture: '鹿児島県', height: 1936, feature: '宮之浦岳（みやのうらだけ）は、鹿児島県の屋久島中央部の山である。標高1,936 mで、屋久島の最高峰であり九州地方の最高峰でもある（九州本土の最高峰は大分県の九重連山・中岳で標高1,791m）。山域は、ユネスコの世界遺産「屋久島」として登録されている。' )
+
+user1 = User.guest
+user2 = User.create(username: 'isao', email: 'isao@email.com', password: 'foobar', password_confirmation: 'foobar')
+user3 = User.create(username: '坂本龍一', email: 'sakamoto@email.com', password: 'foobar', password_confirmation: 'foobar')
+user4 = User.create(username: '久石譲', email: 'hisaishi@email.com', password: 'foobar', password_confirmation: 'foobar')
+user4 = User.create(username: '学級委員長', email: 'president@email.com', password: 'foobar', password_confirmation: 'foobar')
+user4 = User.create(username: '睡眠第一です', email: 'sleep@email.com', password: 'foobar', password_confirmation: 'foobar')
+
+users = User.all
+users.each do |user|
+  Profile.create(user_id: user.id, introduce_text: "ここにプロフィール文を入れてください")
+  mountains52 = Mountain.limit(52)
+  mountains52.each do |mountain| 
+    Daily.create!(mountain_name: mountain.name, title: "#{mountain.name}に行ってみた", comment: "#{mountain.name}に行ってみた"*10, user_id: user.id, mountain_id: mountain.id)
+  end
+end
