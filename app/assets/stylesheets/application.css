@@ -10,7 +10,7 @@
 @import '@fortawesome/fontawesome-free/scss/regular';
 @import '@fortawesome/fontawesome-free/scss/brands';
 @import '@fortawesome/fontawesome-free/scss/v4-shims';
-
+ 
 * {
   margin:0; padding:0;
   color: #333333;
@@ -253,4 +253,41 @@ i {
   bottom: -25px;
   font-size: 16px;
   left: 4px;
+}
+
+/* pagination */
+/*ページネーション自体のデザイン*/
+.pagination {
+  width: 50%;
+  margin: 50px auto 100px;
+  text-align: center;
+}
+
+.pagination .page {
+  display: inline-block;
+  margin-right: 3px;
+  font-size: 20px;
+  padding: 0 4px;
+}
+
+.pagination .page a {          
+  border: none;     /*枠線をなくす*/
+  color: #696969;   /*文字の色を変える*/
+}
+
+/* 表示しているページ番号のデザイン */
+.pagination .current  {     
+  background: #93c9ff;     /*背景の色を変える*/
+  border-radius: 15px; 
+  padding: 0 8px;    /*角を丸くする*/
+}
+
+/*ホバー時のデザイン*/
+.pagination .page a:hover {        
+  border-radius: 15px;    /*角を丸くする*/
+}
+
+.pagination i {
+  color:  #696969;
+  margin: 0 6px;
 }

@@ -11,7 +11,7 @@ class DailysController < ApplicationController
   def own
     # current_userに限らずそのページのuser自身の投稿一覧
     @user = User.find(params[:user_id])
-    @dailys = @user.dailys
+    @dailys = @user.dailys.page(params[:page]).per(6)
   end
 
   def mountain
