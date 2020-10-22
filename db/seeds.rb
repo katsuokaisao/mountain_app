@@ -111,6 +111,8 @@ users.each do |user|
   Profile.create(user_id: user.id, introduce_text: "ここにプロフィール文を入れてください")
   mountains52 = Mountain.limit(52)
   mountains52.each do |mountain| 
-    Daily.create!(mountain_name: mountain.name, title: "#{mountain.name}に行ってみた", comment: "#{mountain.name}に行ってみた"*10, user_id: user.id, mountain_id: mountain.id)
+    daily = Daily.create!(mountain_name: mountain.name, title: "#{mountain.name}に行ってみた", comment: "#{mountain.name}に行ってみた"*10, user_id: user.id, mountain_id: mountain.id)
+    daily.images.attach(io: File.open(Rails.root.join('app','assets', 'images', 'stockfoto_12670415.jpg')), filename: "stockfoto_12670415.jpg", content_type: "image/jpg")
+    daily = ""
   end
 end
