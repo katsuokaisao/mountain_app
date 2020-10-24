@@ -9,6 +9,7 @@
       border: 3px solid #454C50;
       background: #454C50;
       border-radius: 5px 5px 0 0;
+      padding: 5px;
       a {
         text-decoration: none;
         font-size: 28px;
@@ -42,7 +43,24 @@
           font-size: 14px;
         }
         form {
-
+          input[type="submit"] {
+            display: inline-block;
+            width: 100%;
+            border-radius: 3px;
+          }
+        }
+        .follow-form {
+          input[type="submit"] {
+            color: #454C50;
+            background: white;
+            border: 3px solid #454C50;
+          }
+        }
+        .unfollow-form {
+          input[type="submit"] {
+            color: white;
+            background: #454C50;
+          }
         }
       }
       .friends-list-center {
