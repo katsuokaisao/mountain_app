@@ -8,22 +8,15 @@ Rails.application.routes.draw do
     get '/users/sign_out' => 'devise/sessions#destroy'
     post 'users/guest_sign_in', to: 'users/sessions#new_guest'
   end
-  resources :user do
+  resources :users, only: [] do
     get    'dailys/home'
     get    'dailys/own'
     get    'dailys/mountain'
-    get    'dailys/new',      to: 'dailys#new'
-    post   'dailys',          to: 'dailys#create'
-    get    'dailys/:id/edit', to: 'dailys#edit'
-    patch  'dailys/:id',      to: 'dailys#update'
-    delete 'dailys/:id',      to: 'dailys#destroy'
-    # profile
+    resources :dailys, only: [:new, :create, :show, :destroy]
     resource :profiles, only: [:edit, :update, :create]
+    member do
+      get :following, :followers
     end
-    resources :users do
-      member do
-        get :following, :followers
-      end
     end
     resources :mountains, only: [:index, :show]
     resources :relationships, only: [:create, :destroy]
