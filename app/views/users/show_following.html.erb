@@ -6,6 +6,7 @@
       <li class="user-tab"><%= link_to 'フォロワー', followers_user_path(@user.id) %></li>
   </ul>
   <%= render 'user_list' %>
+  <%= paginate @users %>
 </div>
 <% else %>    
   <h4>まだフォロしている人がいません。</h4>
