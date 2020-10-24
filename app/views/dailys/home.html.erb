@@ -2,3 +2,37 @@
 <%= render 'layouts/icon-nav' %>
 <%= render 'layouts/daily-create'%>
 
+<% @dailys.each do |daily| %>
+  <div class="post-content">
+      <div class="post-box">
+        <div class="post-box-left">
+          <%= link_to user_dailys_own_path(daily.user.id) do %>
+            <% if daily.user.profile.avatar.attached? %>
+              <%= image_tag daily.user.profile.avatar.variant(resize_to_fill: [80, 80]), id: "dropdown-trigger" %>
+            <% else %>
+              <%= image_tag 'stockfoto_12670415.jpg', id: "dropdown-trigger" %>
+            <% end %>
+          <% end %>
+          <p><%= daily.user.username %>さん</p>
+          <p><%= l daily.updated_at %></p>
+        </div>
+        <div class="post-box-center">
+          <h4 class="post-title"><%= daily.title %></h4>
+          <p>山名：<span><%= daily.mountain.name %></span></p>
+          <p>場所：<span><%= daily.mountain.prefecture %></span></p>
+          <p>標高：<span><%= daily.mountain.height %>m</span></p>
+        </div>
+        <div class="post-box-text">
+          <p><%= daily.comment.slice(0..100) %></p>
+        </div>
+        <div class="post-box-right">
+          <% if daily.images.attached? %>
+            <%= link_to daily.images.first, "data-lightbox"=> daily.images.first do  %>
+              <%= image_tag daily.images.first.variant(resize_to_fill: [150, 150]) %>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+  </div>
+<% end %>
+  <%= paginate @dailys %>

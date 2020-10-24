@@ -6,6 +6,10 @@ class DailysController < ApplicationController
   
   def home
     # current_userとcurrent_userがフォローしている人の投稿一覧
+    @user = User.find(params[:user_id])
+    following_ids = @user.following_ids
+    id = @user.id
+    @dailys = Daily.where("user_id IN (?) OR user_id = ?", following_ids, id).page(params[:page]).per(8)
   end
 
   def own
