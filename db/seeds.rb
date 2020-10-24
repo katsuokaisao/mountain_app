@@ -103,10 +103,80 @@ user1 = User.guest
 user2 = User.create(username: 'isao', email: 'isao@email.com', password: 'foobar', password_confirmation: 'foobar')
 user3 = User.create(username: '坂本龍一', email: 'sakamoto@email.com', password: 'foobar', password_confirmation: 'foobar')
 user4 = User.create(username: '久石譲', email: 'hisaishi@email.com', password: 'foobar', password_confirmation: 'foobar')
-user4 = User.create(username: '学級委員長', email: 'president@email.com', password: 'foobar', password_confirmation: 'foobar')
-user4 = User.create(username: '睡眠第一です', email: 'sleep@email.com', password: 'foobar', password_confirmation: 'foobar')
+user5 = User.create(username: '学級委員長', email: 'president@email.com', password: 'foobar', password_confirmation: 'foobar')
+user6 = User.create(username: '睡眠第一です', email: 'sleep@email.com', password: 'foobar', password_confirmation: 'foobar')
+user7 = User.create(username: '山崎太郎', email: 'yamazaki@email.com', password: 'foobar', password_confirmation: 'foobar')
+user8 = User.create(username: '佐々木太郎', email: 'sasaki@email.com', password: 'foobar', password_confirmation: 'foobar')
+user9 = User.create(username: '間宮太郎', email: 'mamiya@email.com', password: 'foobar', password_confirmation: 'foobar')
+user10 = User.create(username: '小島ひろし', email: 'kojima@email.com', password: 'foobar', password_confirmation: 'foobar')
+user11 = User.create(username: '佐藤ひろし', email: 'satou@email.com', password: 'foobar', password_confirmation: 'foobar')
+user12 = User.create(username: '田中ひろし', email: 'tanaka@email.com', password: 'foobar', password_confirmation: 'foobar')
+user13 = User.create(username: '前田ひろし', email: 'maeda@email.com', password: 'foobar', password_confirmation: 'foobar')
+user14 = User.create(username: '川崎ひろし', email: 'kawasaki@email.com', password: 'foobar', password_confirmation: 'foobar')
+user15 = User.create(username: '千と千尋', email: 'sentochiro@email.com', password: 'foobar', password_confirmation: 'foobar')
 
 users = User.all
+relationship_user = users[1..14]
+relationship_user.each do |user|
+  user1.follow(user)
+  user.follow(user1)
+end
+relationship_user = users[2..14]
+relationship_user.each do |user|
+  user2.follow(user)
+  user.follow(user2)
+end
+relationship_user = users[3..14]
+relationship_user.each do |user|
+  user3.follow(user)
+  user.follow(user3)
+end
+relationship_user = users[4..14]
+relationship_user.each do |user|
+  user4.follow(user)
+  user.follow(user4)
+end
+relationship_user = users[6..14]
+relationship_user.each do |user|
+  user6.follow(user)
+  user.follow(user6)
+end
+relationship_user = users[7..14]
+relationship_user.each do |user|
+  user7.follow(user)
+  user.follow(user7)
+end
+relationship_user = users[8..14]
+relationship_user.each do |user|
+  user8.follow(user)
+  user.follow(user8)
+end
+relationship_user = users[9..14]
+relationship_user.each do |user|
+  user9.follow(user)
+  user.follow(user9)
+end
+relationship_user = users[10..14]
+relationship_user.each do |user|
+  user10.follow(user)
+  user.follow(user10)
+end
+relationship_user = users[11..14]
+relationship_user.each do |user|
+  user11.follow(user)
+  user.follow(user11)
+end
+relationship_user = users[12..14]
+relationship_user.each do |user|
+  user12.follow(user)
+  user.follow(user12)
+end
+relationship_user = users[13..14]
+relationship_user.each do |user|
+  user13.follow(user)
+  user.follow(user13)
+end
+
 users.each do |user|
   Profile.create(user_id: user.id, introduce_text: "ここにプロフィール文を入れてください")
   mountains52 = Mountain.limit(52)

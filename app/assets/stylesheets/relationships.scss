@@ -1,0 +1,60 @@
+.friends-content {
+  width: 500px;
+  margin: 80px auto;
+  .tab-group {
+    list-style: none;
+    display: flex;
+    margin-bottom: -10px;
+    .user-tab {
+      border: 3px solid #454C50;
+      background: #454C50;
+      border-radius: 5px 5px 0 0;
+      a {
+        text-decoration: none;
+        font-size: 28px;
+        color: white;
+      }
+    } 
+  }
+  .user-tab.is-active {
+    border: 3px solid #D7E6EF;
+    background: #D7E6EF;
+    border-radius: 5px 5px 0 0;
+    a {
+      color: black;
+    }
+  }
+  .friends-list-wrapper {
+    .friends-list {
+      border: 3px solid #D7E6EF;
+      background: #D7E6EF;
+      display: flex;
+      padding: 15px;
+      .friends-list-left {
+        img {
+          width: 80px;
+          height: 80px;
+          border-radius: 50%;
+        }
+        p {
+          padding-top: 5px;
+          text-align: center;
+          font-size: 14px;
+        }
+        form {
+
+        }
+      }
+      .friends-list-center {
+        p {
+          width: 350px;
+          padding: 10px;
+          font-size: 16px;
+        }
+      }
+      .friends-list-right {
+        width: 50px;
+      }
+    }
+  }
+}

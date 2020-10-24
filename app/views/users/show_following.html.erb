@@ -1,0 +1,12 @@
+<%= render 'layouts/tab' %>
+<% unless @users.empty? %>
+<div class="friends-content">
+  <ul class="tab-group">
+      <li class="user-tab is-active"><%= link_to 'フォロー', following_user_path(@user.id) %></li>
+      <li class="user-tab"><%= link_to 'フォロワー', followers_user_path(@user.id) %></li>
+  </ul>
+  <%= render 'user_list' %>
+</div>
+<% else %>    
+  <h4>まだフォロしている人がいません。</h4>
+<% end %>

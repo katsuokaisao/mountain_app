@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   root to: 'pages#home'
-
+  
   devise_for :users, controllers: {
     registrations: 'users/registrations',
   }
@@ -19,6 +19,12 @@ Rails.application.routes.draw do
     delete 'dailys/:id',      to: 'dailys#destroy'
     # profile
     resource :profiles, only: [:edit, :update, :create]
-  end
-  resources :mountains, only: [:index, :show]
+    end
+    resources :users do
+      member do
+        get :following, :followers
+      end
+    end
+    resources :mountains, only: [:index, :show]
+    resources :relationships, only: [:create, :destroy]
 end 
