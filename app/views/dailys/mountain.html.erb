@@ -2,25 +2,4 @@
 <%= render 'layouts/icon-nav' %>
 <%= render 'layouts/daily-create'%>
 
-<div class="table-wrapper">
-  <h2>地方で並び替え</h2>
-  <table class="table_box">
-    <tr>
-      <th>名前</th>
-      <th>地方</th>
-      <th>県</th>
-      <th>標高</th>
-    </tr>
-    <% @mountains.each do |mountain| %>
-      <tr>
-        <td><%= link_to mountain.name,   mountain_dailys_mountain_show_path(mountain.id) %></td>
-        <td><%= mountain.area %></td>
-        <td><%= mountain.prefecture%></td>
-        <td><%= mountain.height %>m</td>
-      </tr>
-    <% end %>
-  </table>
-</div>
-
-
-</div>
+<%= render 'layouts/mountain_list' %>

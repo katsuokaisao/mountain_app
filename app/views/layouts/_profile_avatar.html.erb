@@ -1,0 +1,5 @@
+<% if user.profile.avatar.attached? %>
+  <%= image_tag user.profile.avatar.variant(resize_to_fill: [80, 80])%>
+<% else %>
+  <%= image_tag 'stockfoto_12670415.jpg'%>
+<% end %>

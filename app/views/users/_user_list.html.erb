@@ -2,11 +2,7 @@
   <% @users.each do |user| %>
     <div class="friends-list">
       <div class="friends-list-left">
-        <% if user.profile.avatar.attached? %>
-          <%= image_tag user.profile.avatar.variant(resize_to_fill: [80, 80])%>
-        <% else %>
-          <%= image_tag 'stockfoto_12670415.jpg'%>
-        <% end %>
+        <%= render partial: 'layouts/profile_avatar', locals: {user: user} %>
         <p><%= user.username %></p>
         <div id="follow-form-<%= user.id %>">
           <% if @user.follow?(user) %>
@@ -14,8 +10,8 @@
           <% else %>
             <%= render partial: 'follow_form', locals: {user: user} %>
           <% end %>
-      </div>
         </div>
+      </div>
       <div class="friends-list-center">
         <p><%= user.profile.introduce_text %></p>
       </div>
