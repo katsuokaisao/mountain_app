@@ -88,3 +88,40 @@
   margin-top: 10px;
 }
 
+// show.html.erb 
+.daily-show {
+  width: 70%;
+  margin: 60px auto;
+  .user {
+    text-align: center;
+    img {
+      border-radius: 50%;
+    }
+    p {
+
+    }
+  }
+  .daily-wrapper {
+    .mountain-name {
+      font-size: 30px;
+    }
+    .title {
+      font-size: 30px;
+      margin-bottom: 10px;
+    }
+    .comment {
+      margin-bottom: 30px;
+      width: 70%;
+    }
+    .daily-photo-wrapper {
+      .daily-photo {
+        img {
+          width: 300px;
+          height: 300px;
+          object-fit: contain;
+          margin: 0 50px 50px 0;
+        }
+      }
+    }
+  }
+}

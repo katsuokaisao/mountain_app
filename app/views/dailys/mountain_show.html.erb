@@ -1,21 +1,23 @@
 <div class="card-wrapper">
   <% @dailys.each do |daily| %>
-    <div class="card card-skin">
-      <div class="card__imgframe">
-        <% if daily.user.profile.avatar.attached? %>
-              <%= image_tag daily.user.profile.avatar %>
-            <% else %>
-              <%= image_tag 'stockfoto_12670415.jpg' %>
-            <% end %>
-      </div>
-      <div class="card__textbox">
-        <div class="card__titletext">
-          <%= daily.title%>
+    <%= link_to  user_daily_path(daily.user.id, daily.id) do %>
+      <div class="card card-skin">
+        <div class="card__imgframe">
+          <% if daily.user.profile.avatar.attached? %>
+                <%= image_tag daily.user.profile.avatar %>
+              <% else %>
+                <%= image_tag 'stockfoto_12670415.jpg' %>
+              <% end %>
         </div>
-        <div class="card__overviewtext">
-          <%= daily.comment.slice(0..100) %>
+        <div class="card__textbox">
+          <div class="card__titletext">
+            <%= daily.title%>
+          </div>
+          <div class="card__overviewtext">
+            <%= daily.comment.slice(0..100) %>
+          </div>
         </div>
       </div>
-    </div>
+    <% end %>
   <% end %>
 </div>

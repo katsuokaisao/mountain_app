@@ -51,6 +51,12 @@ class DailysController < ApplicationController
   end
 
   def show 
+    user = User.find(params[:user_id])
+    @daily = Daily.find(params[:id])
+    unless user.dailys.include?(@daily) 
+      flash[:danger] = "不正な操作です"
+      redirect_back fallback_location: root_path
+    end
   end
 
   def destroy

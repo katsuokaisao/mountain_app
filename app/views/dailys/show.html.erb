@@ -1,0 +1,25 @@
+<div class="daily-show">
+  <div class="user">
+    <% if @daily.user.profile.avatar.attached? %>
+      <%= image_tag @daily.user.profile.avatar.variant(resize_to_fill: [200, 200]) %>
+    <% else %>
+      <%= image_tag 'stockfoto_12670415.jpg' %>
+    <% end %>
+    <p><%= @daily.user.username %></p>
+  </div>
+  <div class="daily-wrapper">
+    <h3 class="mountain-name"><%= @daily.mountain_name %></h3>
+    <h3 class="title"><%= @daily.title %></h3>
+    <p class="comment"><%= @daily.comment %></p>
+    <div class="daily-photo-wrapper">
+      <div class="daily-photo">
+          <% if @daily.images.attached? %>
+            <% @daily.images.each do |image|  %>
+              <%= image_tag image %>
+            <% end %>
+          <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
