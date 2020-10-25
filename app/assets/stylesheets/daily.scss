@@ -102,6 +102,12 @@
     }
   }
   .daily-wrapper {
+    position: relative;
+    a {
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
     .mountain-name {
       font-size: 30px;
     }

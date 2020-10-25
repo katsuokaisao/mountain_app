@@ -60,6 +60,16 @@ class DailysController < ApplicationController
   end
 
   def destroy
+    daily = Daily.find(params[:id])
+    user = User.find(params[:user_id])
+    if user.dailys.include?(daily)
+      flash[:success] = "投稿を削除しました"
+      daily.destroy
+      redirect_to root_path
+    else
+      flash[:danger] = "他の人の投稿は削除できません"
+      redirect_to root_path
+    end
   end
 
   private 
