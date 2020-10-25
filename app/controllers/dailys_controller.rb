@@ -18,10 +18,15 @@ class DailysController < ApplicationController
     @dailys = @user.dailys.page(params[:page]).per(6)
   end
 
+  def mountain_show
+    mountain = Mountain.find(params[:mountain_id])
+    @dailys = mountain.dailys
+  end
+
   def mountain
     # ここはただ山一覧を表示
     # ここから各山の投稿一覧に飛ぶ
-    # curretn_userのページではる
+    @mountains = Mountain.all
   end
 
   def new 
@@ -45,10 +50,7 @@ class DailysController < ApplicationController
     end
   end
 
-  def edit
-  end
-
-  def update
+  def show 
   end
 
   def destroy

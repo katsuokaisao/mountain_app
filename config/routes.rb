@@ -17,7 +17,10 @@ Rails.application.routes.draw do
     member do
       get :following, :followers
     end
-    end
-    resources :mountains, only: [:index, :show]
-    resources :relationships, only: [:create, :destroy]
+  end
+  resources :mountains, only: [:index, :show] do
+    get 'dailys/mountain_show'
+  end
+  resources :relationships, only: [:create, :destroy]
+  
 end 

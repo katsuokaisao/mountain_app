@@ -4,6 +4,7 @@ class User < ApplicationRecord
   validates :username, presence: true
   has_many :dailys, dependent: :destroy
   has_one  :profile, dependent: :destroy
+  
 
   # has_many :active_relationships
   # active_relationshipsメソッドで

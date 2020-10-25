@@ -32,11 +32,12 @@
               <%= image_tag daily.images.first.variant(resize_to_fill: [150, 150]) %>
             <% end %>
           <% end %>
+          <%= link_to '詳細を見る', user_daily_path(daily.user.id, daily.id) %>
         </div>
       </div>
   </div>
 <% end %>
-  <%= paginate @dailys %>
+<%= paginate @dailys %>
 <%# else %>
 <%# tabもicon-navもdaily-createもいらない %>
 <%# その代わり戻るボタンでさっきいた場所に戻れるようにする redirect_back %>
