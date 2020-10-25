@@ -3,10 +3,11 @@ class DailysController < ApplicationController
   # ownアクション以外は以外はcurrent_userである必要があるよね
   # own以外で他の人のページにアクセスできないし、アクセスできても
   # createやupdate、deleteができないようにする
-  
+  before_action :authenticate_user!
+  before_action :set_user, only: [:home, :own, :show, :destroy]
+  before_action :set_daily, only: [:show, :destroy]
   def home
     # current_userとcurrent_userがフォローしている人の投稿一覧
-    @user = User.find(params[:user_id])
     following_ids = @user.following_ids
     id = @user.id
     @dailys = Daily.where("user_id IN (?) OR user_id = ?", following_ids, id).page(params[:page]).per(8)
@@ -14,7 +15,6 @@ class DailysController < ApplicationController
 
   def own
     # current_userに限らずそのページのuser自身の投稿一覧
-    @user = User.find(params[:user_id])
     @dailys = @user.dailys.page(params[:page]).per(6)
   end
 
@@ -24,8 +24,6 @@ class DailysController < ApplicationController
   end
 
   def mountain
-    # ここはただ山一覧を表示
-    # ここから各山の投稿一覧に飛ぶ
     @mountains = Mountain.all
   end
 
@@ -51,18 +49,14 @@ class DailysController < ApplicationController
   end
 
   def show 
-    user = User.find(params[:user_id])
-    @daily = Daily.find(params[:id])
-    unless user.dailys.include?(@daily) 
+    unless @user.dailys.include?(daily) 
       flash[:danger] = "不正な操作です"
       redirect_back fallback_location: root_path
     end
   end
 
   def destroy
-    daily = Daily.find(params[:id])
-    user = User.find(params[:user_id])
-    if user.dailys.include?(daily)
+    if @user.dailys.include?(daily)
       flash[:success] = "投稿を削除しました"
       daily.destroy
       redirect_to root_path
@@ -75,5 +69,13 @@ class DailysController < ApplicationController
   private 
   def daily_create_params
     params.require(:daily).permit(:mountain_name, :title, :comment, :user_id, :mountain_id, images: [])
+  end
+
+  def set_user
+    @user = User.find(params[:user_id])
+  end
+
+  def set_daily
+    daily = Daily.find(params[:id])
   end
 end

@@ -1,4 +1,5 @@
 class UsersController < ApplicationController 
+  before_action :authenticate_user!
   def following
     @user  = User.find(params[:id])
     @users = @user.following.page(params[:page]).per(8)
