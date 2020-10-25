@@ -1,11 +1,11 @@
 class DailysController < ApplicationController
-  # 最初のpagesコントローラー以外はログイン必要
-  # ownアクション以外は以外はcurrent_userである必要があるよね
   # own以外で他の人のページにアクセスできないし、アクセスできても
   # createやupdate、deleteができないようにする
   before_action :authenticate_user!
-  before_action :set_user, only: [:home, :own, :show, :destroy]
+  before_action :set_user
+  before_action :current_user?
   before_action :set_daily, only: [:show, :destroy]
+
   def home
     # current_userとcurrent_userがフォローしている人の投稿一覧
     following_ids = @user.following_ids
@@ -49,16 +49,16 @@ class DailysController < ApplicationController
   end
 
   def show 
-    unless @user.dailys.include?(daily) 
+    unless @user.dailys.include?(@daily) 
       flash[:danger] = "不正な操作です"
       redirect_back fallback_location: root_path
     end
   end
 
   def destroy
-    if @user.dailys.include?(daily)
+    if @user.dailys.include?(@daily)
       flash[:success] = "投稿を削除しました"
-      daily.destroy
+      @daily.destroy
       redirect_to root_path
     else
       flash[:danger] = "他の人の投稿は削除できません"
@@ -76,6 +76,6 @@ class DailysController < ApplicationController
   end
 
   def set_daily
-    daily = Daily.find(params[:id])
+    @daily = Daily.find(params[:id])
   end
 end
