@@ -72,10 +72,8 @@
       width: 20%;
     }
   }
-  .mountain-photo-wrapper {
-
-  }
   .mountain-feature-wrapper {
+    margin-bottom: 60px;
     i {
       color: #008B8B;
       margin-left: -5px;
@@ -99,6 +97,25 @@
         padding: 0;
         text-align: justify;
       }
+    }
+  }
+  .mountain-photo-wrapper {
+    i {
+      color: #008B8B;
+      margin-left: -5px;
+      margin-bottom: 20px;
+    }
+    .feature-title {
+      font-size: 28px;
+      margin-bottom: 10px;
+      background: linear-gradient(transparent 70%, #5bb7ae 70%);
+      display: inline;
+      letter-spacing: 5px;
+      margin-bottom: 20px;
+    }
+    #map {
+      height: 600px;
+      width: 100%;
     }
   }
 }
