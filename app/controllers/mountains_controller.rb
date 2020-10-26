@@ -1,5 +1,5 @@
 class MountainsController < ApplicationController
-  # ログインしてなくても山情報は見れてもいいかも
+  # ログインしてなくてもcurrent_userじゃなくても山情報は見れてもいい
   def index
     @mountains = Mountain.all
   end
