@@ -26,7 +26,7 @@
       <% end %>
     </div>
     <div class="field">
-      <%= f.file_field :images, multiple: true , class: 'image-up'%>
+      <%= f.file_field :images, multiple: true ,  accept: "image/jpg, image/jpeg,image/gif,image/png", class: 'image-up'%>
       <% if @daily.errors.include?(:images) %>
         <p style="color: red"><%= @daily.errors.full_messages_for(:images).first %></p>
       <% end %>

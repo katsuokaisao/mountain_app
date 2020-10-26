@@ -1,3 +1,4 @@
+<% @title = "山日記" %>
 <div class="card-wrapper">
   <% @dailys.each do |daily| %>
     <%= link_to  user_daily_path(daily.user.id, daily.id) do %>

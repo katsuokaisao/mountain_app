@@ -2,8 +2,8 @@ class DailysController < ApplicationController
   # own以外で他の人のページにアクセスできないし、アクセスできても
   # createやupdate、deleteができないようにする
   before_action :authenticate_user!
-  before_action :set_user
-  before_action :current_user?
+  before_action :set_user, except: [:mountain, :mountain_show]
+  before_action :current_user?, except: [:mountain, :mountain_show]
   before_action :set_daily, only: [:show, :destroy]
 
   def home
