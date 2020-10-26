@@ -189,3 +189,5 @@ users.each do |user|
     daily = ""
   end
 end
+
+# `latitude: ${location.href.split('@')[1].split(',')[0]}, longitude: ${location.href.split('@')[1].split(',')[1]}`
