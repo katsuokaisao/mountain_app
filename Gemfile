@@ -30,6 +30,7 @@ gem 'sprockets', '<4.0.0'
 gem 'rails-i18n'
 gem 'lightbox2-rails'
 gem 'kaminari'
+gem 'active_storage_validations'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

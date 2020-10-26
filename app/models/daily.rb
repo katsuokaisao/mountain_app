@@ -5,4 +5,6 @@ class Daily < ApplicationRecord
   validates :title, presence: true, length: {maximum: 30}
   validates :comment, presence: true, length: {maximum: 600}
   has_many_attached :images
+  validates :images, content_type: {in: %[png jpg jpeg gif]},
+                    size: {less_than: 5.megabytes}
 end
