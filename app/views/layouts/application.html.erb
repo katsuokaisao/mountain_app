@@ -29,8 +29,8 @@
       <div class="header-list-left">
         <li class="header-list-item" ><h1><%= link_to '100山', user_dailys_own_path(current_user.id) , class: "header-list-item-link" %></h1></li>
       </div>
-      
       <div class="header-list-right header-list-right-signed">
+      <%= render 'layouts/daily-create' %>
         <% if current_user.profile.avatar.attached? %>
           <%= image_tag current_user.profile.avatar.variant(resize_to_fill: [60, 60]), id: "dropdown-trigger" %>
         <% else %>

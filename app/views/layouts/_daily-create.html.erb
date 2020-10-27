@@ -1,5 +1,5 @@
 <div class="daily-create">
-    <%= link_to new_user_daily_path(current_user.id) do %>
-      <i class="fas fa-book fa-3x"></i>
-    <% end %>
+  <div class="container">
+    <%= link_to '投稿する', new_user_daily_path(current_user.id), class: "btn-border" %>
+  </div>
 </div>
