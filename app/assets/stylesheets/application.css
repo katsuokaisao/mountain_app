@@ -31,7 +31,7 @@ header {
 .header-list {
   display: flex;
   justify-content: space-between;
-  width: 80%;
+  width: 75%;
   margin: 0 auto;
 }
 
@@ -91,9 +91,8 @@ header {
   background: white;
   list-style: none;
   border-radius: 5px;
-  left: 50%;
-  transform: translate(-50%);
-  width: 100%;
+  transform: translate(110%, 60%);
+  width: 110px;
   display: none;
 }
 
