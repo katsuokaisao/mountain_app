@@ -1,6 +1,6 @@
 // index.html.erb
 .table-wrapper {
-  width: 45%;
+  width: 60%;
   margin: 0 auto 0;
   h2 {
     text-align: center;
@@ -48,7 +48,8 @@
 
 // show.html.erb
 .mountain-information {
-  width: 50%;
+  max-width: 1000px;
+  width: 70%;
   margin: 0 auto 50px;
   .mountain-information-top {
     margin-bottom: 40px;

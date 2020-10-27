@@ -46,15 +46,9 @@
     </header>
     <% if user_signed_in? %>
       <div class="content">
-        <% if current_page?("/mountains/:id") %>
-          <div class="left left-google">
-            <%= render 'layouts/tab' %>
-          </div>
-        <% else %>
-          <div class="left">
-            <%= render 'layouts/tab' %>
-          </div>
-        <% end %>
+        <div class="left">
+          <%= render 'layouts/tab' %>
+        </div>
         <div class="right">
           <%= yield %>
         </div>

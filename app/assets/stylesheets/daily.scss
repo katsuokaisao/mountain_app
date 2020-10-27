@@ -45,8 +45,9 @@
 // mountain.html.erb
 
 .card-wrapper {
+  max-width: 1000px;
   width: 80%;
-  margin: 80px auto;
+  margin: 0 auto 80px;
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
