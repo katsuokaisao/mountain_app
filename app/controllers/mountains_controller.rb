@@ -6,5 +6,6 @@ class MountainsController < ApplicationController
 
   def show
     @mountain = Mountain.find(params[:id])
+    @apiKey = Rails.application.credentials.api_key[:GOOGLEMAP]
   end
 end
