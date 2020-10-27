@@ -24,19 +24,19 @@ body {
 
 header {
   width: 100%;
-  padding: 15px 0;
+  padding: 5px 0;
   background-color: darkcyan;
 }
 
 .header-list {
   display: flex;
   justify-content: space-between;
-  width: 90%;
+  width: 80%;
   margin: 0 auto;
 }
 
 .header-list-left .header-list-item .header-list-item-link {
-  height: 80px;
+  height: 60px;
   display: table-cell;
   vertical-align: middle;
 }
@@ -52,8 +52,8 @@ header {
 }
 
 .header-list .header-list-right-signed img {
-  width: 80px;
-  height: 80px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
 }
 
@@ -117,17 +117,32 @@ header {
   border-top: 2px solid black;
 }
 
+.content {
+  display: flex;
+}
+
+.left {
+  width: 25%;
+  border-right: 3px solid green;
+  padding-top: 50px;
+}
+
+.right {
+  flex-grow: 1;
+}
+
 /* tab */
 .tab-wrapper {
-  width: 50%;
-  margin: 60px auto 15px;
-  padding: 10px;
+  margin-bottom: 15px;
 }
 
 .tab-wrapper .tab {
   list-style: none;
-    display: flex;
-    justify-content: space-around;
+}
+
+.tab-wrapper .tab .tab-list {
+  width: 70%;
+  margin: 0 0 10px auto;
 }
 
 .tab-wrapper .tab li a {
@@ -148,42 +163,28 @@ header {
 
 }
 
-.box17{
+i {
+  color: green;
+}
+
+.tab-wrapper .tab-list a {
   position: relative;
-  padding: 0.5em 1.5em;
-  border-top: solid 2px #5bb7ae;
-  border-bottom: solid 2px #5bb7ae;
+  display: inline-block;
 }
-.box17:before, .box17:after{
-  content: '';
-  position: absolute;
-  top: -10px;
-  width: 2px;
-  height: -webkit-calc(100% + 20px);
-  height: calc(100% + 20px);
-  background-color: #5bb7ae;
+
+.tab-wrapper .tab-list a h4 {
+  color: green;
+  font-size: 24px;
 }
-.box17:before {left: 10px;}
-.box17:after {right: 10px;}
-.box17 p {
-  margin: 0; 
-  padding: 0;
+
+.tab-wrapper .tab-list a h4 i {
+  color: green;
+  margin-right: 10px;
+  width: 30px;
+  text-align: center;
 }
 
 /* icon */
-.icon-nav-wrapper {
-  width: 50%;
-  margin: 0 auto;
-  margin-bottom: 20px;
-}
-
-.icon-nav-wrapper .icon-nav {
-  width: 35%;
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-around;
-}
-
 .icon-nav-wrapper .daily-create {
   text-align: right;
 }
@@ -191,44 +192,7 @@ header {
 /* iconの色 */
 
 .header-list-right .fa-user-circle {
-  color: white;
-  
-}
-
-i {
-  color: green;
-}
-
-.icon-nav-wrapper .icon-nav a {
-  position: relative;
-}
-
-.icon-nav-wrapper .icon-nav a i {
-  color: green;
-}
-
-.icon-nav-wrapper .icon-nav a .fa-home:after {
-  content: 'home';
-  position: absolute;
-  top: 100%;
-  font-size: 16px;
-  left: 5px;
-}
-
-.icon-nav-wrapper .icon-nav a .fa-user-circle:after {
-  content: 'own';
-  position: absolute;
-  top: 100%;
-  font-size: 16px;
-  left: 6px;
-}
-
-.icon-nav-wrapper .icon-nav a .fa-mountain:after {
-  content: 'mountain';
-  position: absolute;
-  top: 100%;
-  font-size: 16px;
-  left: -5px;
+  color: white; 
 }
 
 /* 日記作成ボタン */

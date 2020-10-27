@@ -10,9 +10,7 @@
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/js/lightbox.min.js" type="text/javascript">
     </script>
-    
   </head>
-
   <body>
     <header>
     <ul class="header-list">
@@ -27,12 +25,14 @@
         <br id="dropdown-trigger" style="display: none">
       </div>
     <% else %>
+      </div>
       <div class="header-list-left">
         <li class="header-list-item" ><h1><%= link_to '100山', user_dailys_own_path(current_user.id) , class: "header-list-item-link" %></h1></li>
       </div>
+      
       <div class="header-list-right header-list-right-signed">
         <% if current_user.profile.avatar.attached? %>
-          <%= image_tag current_user.profile.avatar.variant(resize_to_fill: [80, 80]), id: "dropdown-trigger" %>
+          <%= image_tag current_user.profile.avatar.variant(resize_to_fill: [60, 60]), id: "dropdown-trigger" %>
         <% else %>
           <%= image_tag 'stockfoto_12670415.jpg', id: "dropdown-trigger" %>
         <% end %>
@@ -45,7 +45,14 @@
       <% end %>
     </ul>
     </header>
-    <%= yield %>
+    <div class="content">
+      <div class="left">
+        <%= render 'layouts/tab' %>
+      </div>
+      <div class="right">
+        <%= yield %>
+      </div>
+    </div>
     <%= javascript_pack_tag 'applicationjs' %>
   </body>
 </html>
