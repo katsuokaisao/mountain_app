@@ -128,8 +128,13 @@ header {
   padding-top: 50px;
 }
 
+.left-google {
+  width: 45%;
+}
+
 .right {
   flex-grow: 1;
+  margin-top: 50px;
 }
 
 /* tab */
@@ -142,7 +147,7 @@ header {
 }
 
 .tab-wrapper .tab .tab-list {
-  width: 70%;
+  width: 180px;
   margin: 0 0 10px auto;
 }
 
@@ -227,7 +232,7 @@ i {
 /*ページネーション自体のデザイン*/
 .pagination {
   width: 50%;
-  margin: 50px auto 100px;
+  margin: 50px auto 40px;
   text-align: center;
 }
 

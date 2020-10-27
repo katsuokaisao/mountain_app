@@ -25,7 +25,6 @@
         <br id="dropdown-trigger" style="display: none">
       </div>
     <% else %>
-      </div>
       <div class="header-list-left">
         <li class="header-list-item" ><h1><%= link_to '100山', user_dailys_own_path(current_user.id) , class: "header-list-item-link" %></h1></li>
       </div>
@@ -45,14 +44,24 @@
       <% end %>
     </ul>
     </header>
-    <div class="content">
-      <div class="left">
-        <%= render 'layouts/tab' %>
+    <% if user_signed_in? %>
+      <div class="content">
+        <% if current_page?("/mountains/:id") %>
+          <div class="left left-google">
+            <%= render 'layouts/tab' %>
+          </div>
+        <% else %>
+          <div class="left">
+            <%= render 'layouts/tab' %>
+          </div>
+        <% end %>
+        <div class="right">
+          <%= yield %>
+        </div>
       </div>
-      <div class="right">
-        <%= yield %>
-      </div>
-    </div>
+    <% else %>
+      <%= yield %>
+    <% end %>
     <%= javascript_pack_tag 'applicationjs' %>
   </body>
 </html>
