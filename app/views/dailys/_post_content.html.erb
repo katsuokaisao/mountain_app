@@ -1,33 +1,33 @@
 <% @dailys.each do |daily| %>
   <div class="post-content">
-      <div class="post-box">
-        <div class="post-box-left">
-          <%= link_to user_dailys_own_path(daily.user.id) do %>
-            <%= render partial: 'layouts/profile_avatar', locals: {user: daily.user} %>
-            <p><%= daily.user.username %>さん</p>
-          <% end %>
-          <p><%= l daily.updated_at %></p>
-        </div>
-        <div class="post-box-center">
-          <%= link_to  user_daily_path(daily.user.id, daily.id) do %>
-            <h4 class="post-title"><%= daily.title %></h4>
-          <% end %>
-          <p>山名：<span><%= daily.mountain.name %></span></p>
-          <p>場所：<span><%= daily.mountain.prefecture %></span></p>
-          <p>標高：<span><%= daily.mountain.height %>m</span></p>
-        </div>
-        <div class="post-box-text">
-          <p><%= daily.comment.slice(0..100) %></p>
-        </div>
-        <div class="post-box-right">
-          <% if daily.images.attached? %>
-            <%= link_to daily.images.first, "data-lightbox"=> daily.images.first do  %>
-              <%= image_tag daily.images.first.variant(resize_to_fill: [150, 150]) %>
-            <% end %>
-          <% end %>
-          <%= link_to '詳細を見る', user_daily_path(daily.user.id, daily.id) %>
-        </div>
+    <div class="post-box">
+      <div class="post-box-left">
+        <%= link_to user_dailys_own_path(daily.user.id) do %>
+          <%= render partial: 'layouts/profile_avatar', locals: {user: daily.user} %>
+          <p><%= daily.user.username %>さん</p>
+        <% end %>
+        <p><%= l daily.updated_at %></p>
       </div>
+      <div class="post-box-center">
+        <%= link_to  user_daily_path(daily.user.id, daily.id) do %>
+          <h4 class="post-title"><%= daily.title %></h4>
+        <% end %>
+        <p>山名：<span><%= daily.mountain.name %></span></p>
+        <p>場所：<span><%= daily.mountain.prefecture %></span></p>
+        <p>標高：<span><%= daily.mountain.height %>m</span></p>
+      </div>
+      <div class="post-box-text">
+        <p><%= daily.comment.slice(0..100) %></p>
+      </div>
+      <div class="post-box-right">
+        <% if daily.images.attached? %>
+          <%= link_to daily.images.first, "data-lightbox"=> daily.images.first do  %>
+            <%= image_tag daily.images.first.variant(resize_to_fill: [150, 150]) %>
+          <% end %>
+        <% end %>
+        <%= link_to '詳細を見る', user_daily_path(daily.user.id, daily.id) %>
+      </div>
+    </div>
   </div>
 <% end %>
 <%= paginate @dailys %>
