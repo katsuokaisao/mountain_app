@@ -1,14 +1,22 @@
 'user strict'
-
+// dropdownが開かれていない状態でdropdownTriggerをクリックすればdropdownが開く
+// dropdownが開いているならdropdownTriggerをもう一度クリックするかdropdownTrigger以外をクリックしても
+// dropdownが閉じる
 {
-  const dropdownTrigger = document.getElementById('dropdown-trigger');
+  const dropdownTrigger = document.getElementsByClassName('dropdown-trigger')[0];
   const dropdown = document.getElementById('dropdown');
   dropdownTrigger.addEventListener('click', function() {
-  if(dropdown.classList.contains('is-active') === true ) {
-    dropdown.classList.remove('is-active');
-  }else {
+  if(!dropdown.classList.contains('is-active')) {
     dropdown.classList.add('is-active');
-  } 
+  } else {
+    dropdown.classList.remove('is-active');
+  }
+  document.addEventListener('click', (e)=> {
+    const clickLocation = e.target;
+    if (!clickLocation.classList.contains('dropdown-trigger') && dropdown.classList.contains('is-active')) {
+      dropdown.classList.remove('is-active');
+    }
+  })
 });
 }
 
