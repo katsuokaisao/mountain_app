@@ -35,26 +35,19 @@ body {
   margin-top: 50px;
 }
 
-
-
-/* iconの色 */
-.header-list-right .fa-user-circle {
-  color: white; 
-}
-
 /* 日記作成ボタン */
-
+/* _daily-create.html.erb */
 .daily-create {
   margin-right: 10px;
 }
 
-.container {
+.daily-create .container {
   height: 60px;
   display: table-cell;
   vertical-align: middle;
 }
 
-.btn-border {
+.daily-create .container .btn-border {
   display: inline-block;
   text-align: left;
   border: 2px solid white;
@@ -69,14 +62,14 @@ body {
   text-align: center;
 }
 
-.btn-border:hover {
+.daily-create .container .btn-border:hover {
   background-color: gray;
   border-color: gray;
   color: white;
 }
 
 /* pagination */
-/*ページネーション自体のデザイン*/
+/* kaminari */
 .pagination {
   width: 50%;
   margin: 50px auto 40px;
@@ -90,21 +83,19 @@ body {
   padding: 0 4px;
 }
 
-.pagination .page a {          
-  border: none;     /*枠線をなくす*/
-  color: #696969;   /*文字の色を変える*/
-}
-
-/* 表示しているページ番号のデザイン */
-.pagination .current  {     
-  background: #93c9ff;     /*背景の色を変える*/
+.pagination .page.current  {     
+  background: #93c9ff; 
   border-radius: 15px; 
-  padding: 0 8px;    /*角を丸くする*/
+  padding: 0 8px;  
 }
 
-/*ホバー時のデザイン*/
+.pagination .page a {          
+  border: none;
+  color: #696969;
+}
+
 .pagination .page a:hover {        
-  border-radius: 15px;    /*角を丸くする*/
+  border-radius: 15px;
 }
 
 .pagination i {
