@@ -24,7 +24,9 @@
     </div>
 </div>
 <% end %>
-<%= render 'dailys/post_content' %>
+<div id="wrapper-for-ajax">
+  <%= render 'dailys/post_content' %>
+</div>
 <%# else %>
 <%# tabもicon-navもdaily-createもいらない %>
 <%# その代わり戻るボタンでさっきいた場所に戻れるようにする redirect_back %>

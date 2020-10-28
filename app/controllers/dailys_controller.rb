@@ -11,10 +11,18 @@ class DailysController < ApplicationController
     following_ids = @user.following_ids
     id = @user.id
     @dailys = Daily.where("user_id IN (?) OR user_id = ?", following_ids, id).page(params[:page]).per(8)
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def own
     @dailys = @user.dailys.page(params[:page]).per(6)
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def mountain_show
