@@ -1,27 +1,26 @@
-<div class="tab-wrapper">
-  <ul class="tab">
-    <li class="tab-list">
+<div class="side-nav-wrapper">
+  <ul class="side-nav">
+    <li class="side-nav-list">
       <%= link_to user_dailys_home_path(current_user.id) do %>
         <h4><i class="fas fa-home fa-1x"></i>ホーム</h4>
       <% end %>
     </li>
-    <li class="tab-list">
+    <li class="side-nav-list">
       <%= link_to user_dailys_own_path(current_user.id) do %>
         <h4><i class="fas fa-user-circle fa-1x"></i>マイページ</h4>
       <% end %>
     </li>
-    <li class="tab-list">
+    <li class="side-nav-list">
       <%= link_to user_dailys_mountain_path(current_user.id) do %>
         <h4><i class="fas fa-mountain fa-1x"></i>山</h4>
       <% end %>
     </li>
-    
-    <li class="tab-list">
+    <li class="side-nav-list">
       <%= link_to following_user_path(current_user.id) do %>
         <h4>山友</h4>
       <% end %>
     </li>
-    <li class="tab-list">
+    <li class="side-nav-list">
       <%= link_to mountains_path  do %>
         <h4>山情報</h4>
       <% end %>

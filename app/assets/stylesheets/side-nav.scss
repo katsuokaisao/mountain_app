@@ -1,0 +1,32 @@
+.side-nav-wrapper {
+  margin-bottom: 15px;
+  .side-nav {
+    list-style: none;
+    .side-nav-list {
+      width: 180px;
+      margin: 0 0 10px auto;
+      a {
+        font-size: 30px;
+        text-decoration:none;
+        color: green;
+        position: relative;
+        display: inline-block;
+        h4 {
+          color: green;
+          font-size: 24px;
+          i {
+            color: green;
+            color: green;
+            margin-right: 10px;
+            width: 30px;
+            text-align: center;
+          }
+        }
+      }
+      a:hover {
+        border-bottom: 3px solid green;
+      }
+
+    }
+  }
+}

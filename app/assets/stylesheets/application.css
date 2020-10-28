@@ -20,7 +20,6 @@ body {
   background-color: #F5F5F5;
 }
 
-
 .content {
   display: flex;
 }
@@ -36,58 +35,7 @@ body {
   margin-top: 50px;
 }
 
-/* tab */
-.tab-wrapper {
-  margin-bottom: 15px;
-}
 
-.tab-wrapper .tab {
-  list-style: none;
-}
-
-.tab-wrapper .tab .tab-list {
-  width: 180px;
-  margin: 0 0 10px auto;
-}
-
-.tab-wrapper .tab li a {
-  font-size: 30px;
-  text-decoration:none;
-  color: green;
-}
-
-.tab-wrapper .tab li a:hover {
-  border-bottom: 3px solid green;
-}
-
-.tab-wrapper .tab li a:visited {
-
-}
-
-.tab-wrapper .tab li a:active {
-
-}
-
-i {
-  color: green;
-}
-
-.tab-wrapper .tab-list a {
-  position: relative;
-  display: inline-block;
-}
-
-.tab-wrapper .tab-list a h4 {
-  color: green;
-  font-size: 24px;
-}
-
-.tab-wrapper .tab-list a h4 i {
-  color: green;
-  margin-right: 10px;
-  width: 30px;
-  text-align: center;
-}
 
 /* iconの色 */
 .header-list-right .fa-user-circle {
