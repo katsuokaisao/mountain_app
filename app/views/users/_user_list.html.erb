@@ -2,8 +2,10 @@
   <% @users.each do |user| %>
     <div class="friends-list">
       <div class="friends-list-left">
+        <%= link_to  user_dailys_own_path(user.id) do %>
         <%= render partial: 'layouts/profile_avatar', locals: {user: user} %>
         <p><%= user.username %></p>
+        <% end %>
         <div id="follow-form-<%= user.id %>">
           <% if @user.follow?(user) %>
             <%= render partial: 'unfollow_form', locals: {user: user } %>

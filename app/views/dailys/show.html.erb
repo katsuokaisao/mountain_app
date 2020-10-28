@@ -9,8 +9,10 @@
     <p><%= @daily.user.username %></p>
   </div>
   <div class="daily-wrapper">
-    <%= link_to user_daily_path(@daily.user, @daily.id), method: :delete do %>
-      <i class="fas fa-trash-alt fa-3x"></i>
+    <% if current_user == @daily.user %>
+      <%= link_to user_daily_path(@daily.user, @daily.id), method: :delete do %>
+        <i class="fas fa-trash-alt fa-3x"></i>
+      <% end %>
     <% end %>
     <h3 class="mountain-name"><%= @daily.mountain_name %></h3>
     <h3 class="title"><%= @daily.title %></h3>

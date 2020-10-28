@@ -8,17 +8,17 @@
       <th>標高</th>
     </tr>
     <% @mountains.each do |mountain| %>
-      <tr>
-        <% if current_page?(user_dailys_mountain_path(current_user.id)) %>
-          <td><%= link_to mountain.name, mountain_dailys_mountain_show_path(mountain.id) %></td>
-        <% end %>
-        <% if current_page?(mountains_path) %>
-          <td><%= link_to mountain.name, mountain_path(mountain.id) %></td>
-        <% end %>
-        <td><%= mountain.area %></td>
-        <td><%= mountain.prefecture%></td>
-        <td><%= mountain.height %>m</td>
-      </tr>
+        <tr>
+          <% if current_page?(user_dailys_mountain_path(current_user.id)) %>
+            <td><%= link_to mountain.name, mountain_dailys_mountain_show_path(mountain.id) %></td>
+          <% end %>
+          <% if current_page?(mountains_path) %>
+            <td><%= link_to mountain.name, mountain_path(mountain.id) %></td>
+          <% end %>
+          <td><%= mountain.area %></td>
+          <td><%= mountain.prefecture%></td>
+          <td><%= mountain.height %>m</td>
+        </tr>
     <% end %>
   </table>
 </div>

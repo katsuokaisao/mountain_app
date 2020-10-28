@@ -55,6 +55,7 @@ header {
       .signin-dropdown-menu {
         position: absolute;
         z-index: 20;
+        border: 3px solid #333333;
         background: white;
         list-style: none;
         border-radius: 5px;
@@ -66,14 +67,14 @@ header {
           padding: 0px 3px;
           text-align: center;
           a {
-            color: black;
+            color: #333333;
             text-decoration: none;
             font-weight: 600;
           }
         }
         .logout {
           padding-top: 3px;
-          border-top: 2px solid black;
+          border-top: 2px solid #333333;
         }
       }
       .is-active {

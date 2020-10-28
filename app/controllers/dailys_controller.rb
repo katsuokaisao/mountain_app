@@ -3,7 +3,7 @@ class DailysController < ApplicationController
   # createやupdate、deleteができないようにする
   before_action :authenticate_user!
   before_action :set_user, except: [:mountain, :mountain_show]
-  before_action :current_user?, except: [:mountain, :mountain_show]
+  before_action :current_user?, except: [:own, :show, :mountain, :mountain_show]
   before_action :set_daily, only: [:show, :destroy]
 
   def home
@@ -14,7 +14,6 @@ class DailysController < ApplicationController
   end
 
   def own
-    # current_userに限らずそのページのuser自身の投稿一覧
     @dailys = @user.dailys.page(params[:page]).per(6)
   end
 

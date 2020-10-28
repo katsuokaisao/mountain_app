@@ -4,12 +4,14 @@
         <div class="post-box-left">
           <%= link_to user_dailys_own_path(daily.user.id) do %>
             <%= render partial: 'layouts/profile_avatar', locals: {user: daily.user} %>
+            <p><%= daily.user.username %>さん</p>
           <% end %>
-          <p><%= daily.user.username %>さん</p>
           <p><%= l daily.updated_at %></p>
         </div>
         <div class="post-box-center">
-          <h4 class="post-title"><%= daily.title %></h4>
+          <%= link_to  user_daily_path(daily.user.id, daily.id) do %>
+            <h4 class="post-title"><%= daily.title %></h4>
+          <% end %>
           <p>山名：<span><%= daily.mountain.name %></span></p>
           <p>場所：<span><%= daily.mountain.prefecture %></span></p>
           <p>標高：<span><%= daily.mountain.height %>m</span></p>
