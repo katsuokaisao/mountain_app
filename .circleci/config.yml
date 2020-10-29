@@ -47,8 +47,7 @@ executors: #jobでexecutorから使用できる
   #     - run: bundle exec rake db:schema:load --trace
   #     - run:
   #         name: Rspceテスト
-  #         command: bin/rspec
-    
+  #         command: bin/rspec   
 workflows:
   version: 2
   build-and-deploy: 
