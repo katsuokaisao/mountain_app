@@ -13,7 +13,7 @@ services:
       - seccomp:unconfined
   app:
     build: .
-    command: bundle exec unicorn -p 3000 -c /mountain_app/config/unicorn.conf.rb
+    command: bash -c "rm -f tmp/pids/unicorn.pid && bundle exec unicorn -p 3000 -c /mountain_app/config/unicorn.conf.rb"
     volumes: 
       - .:/mountain_app
       # - tmp-data:/mountain_app/tmp/sockets

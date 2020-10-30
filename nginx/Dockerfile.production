@@ -2,4 +2,4 @@ FROM nginx:stable
 RUN rm -f /etc/nginx/conf.d/* \
     && apt update -qq && apt install -y vim
 COPY ./nginx.conf.production /etc/nginx/mountain_app.conf
-CMD /usr/sbin/nginx -g 'daemon off;' -c /etc/nginx/nginx.conf
+CMD /usr/sbin/nginx -g 'daemon off;' -c /etc/nginx/nginx.conf production -D
