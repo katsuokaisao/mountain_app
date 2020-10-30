@@ -3,41 +3,28 @@ upstream unicorn {
 }
 
 server {
-  #IPとポートの指定
   listen 80 default;
 
-  #バーチャルサーバの命名
   server_name localhost;
 
-  #ログの出力先 /var/log/nginx/access.log; /var/log/nginx/error.log;
-  access_log /dev/stdout  main; 
-  error_log  /dev/stderr  warn; 
+  access_log /dev/stdout main; 
+  error_log  /dev/stderr warn; 
 
-  # path for static files
-  # /users/newにリクエストが送られると/mountain_app/public/users/newを参照する 
   root /mountain_app/public;
 
-  #デフォで1m(1MB)と小すぎるので大きくしてあげる
   client_max_body_size 500m;
 
-  #errorが起きた時に何のファイルを返すか(404で200を返すことも可能 )
   error_page 404             /404.html;
   error_page 505 502 503 504 /500.html;
 
-  #try_filesで@uniconに内部リダイレクトされる(location @uniconへ)
   try_files  $uri/index.html $uri @unicorn;
 
-  #アップストリームサーバへの接続持続時間の設定(処理を逐一切断しない)
   keepalive_timeout 5;
 
-  #リバースプロキシとしての機能、上位サーバ(upstrean)に流す
   location @unicorn {
-    #proxy_set_headerでクライアントの情報を格納（中継して消えないように）
-    #unicornにproxyする前の設定
     proxy_set_header X-Real-IP $remote_addr;
     proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
     proxy_set_header Host $http_host;
     proxy_pass http://unicorn;
-    #proxy_passでプロキシ先を指定、upstream unicornへ
   }
 }
