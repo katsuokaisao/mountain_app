@@ -1,8 +1,8 @@
-upstream unicorn {
-  server 127.0.0.1:3000;
-}
-
-server {
+http {
+  upstream unicorn {
+    server 127.0.0.1:3000;
+  }
+  server {
   listen 80 default;
 
   server_name localhost;
@@ -27,4 +27,7 @@ server {
     proxy_set_header Host $http_host;
     proxy_pass http://unicorn;
   }
+  }
 }
+
+
