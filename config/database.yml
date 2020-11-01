@@ -19,5 +19,6 @@ production:
   database: <%= ENV['DB_DATABASE'] %>
   username: <%= ENV['DB_USERNAME'] %>
   password: <%= ENV['DB_PASSWORD'] %>
+  # password: password
   # host: RDSのエンドポイントを設定
   # 定義はECSのタスク定義の環境変数
