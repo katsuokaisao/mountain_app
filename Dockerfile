@@ -16,4 +16,4 @@ COPY entrypoint.sh /usr/bin
 RUN chmod +x /usr/bin/entrypoint.sh
 ENTRYPOINT ["entrypoint.sh"]
 
-CMD ["bundle", "exec", "unicorn", "-p", "3000", "-c", "config/unicorn.conf.rb"]
+CMD ["bundle", "exec", "unicorn", "-p", "3000", "-c", "/mountain_app/config/unicorn.conf.rb"]
