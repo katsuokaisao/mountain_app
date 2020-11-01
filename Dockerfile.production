@@ -11,6 +11,7 @@ COPY Gemfile ${APP_ROOT}/Gemfile
 COPY Gemfile.lock ${APP_ROOT}/Gemfile.lock
 RUN bundle install
 COPY . /${APP_ROOT}
+RUN mkdir pids
 
 COPY entrypoint.sh /usr/bin
 RUN chmod +x /usr/bin/entrypoint.sh
