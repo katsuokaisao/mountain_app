@@ -10,7 +10,7 @@ class DailysController < ApplicationController
     # current_userとcurrent_userがフォローしている人の投稿一覧
     following_ids = @user.following_ids
     id = @user.id
-    @dailys = Daily.where("user_id IN (?) OR user_id = ?", following_ids, id).page(params[:page]).per(8)
+    @dailys = Daily.where("user_id IN (?) OR user_id = ?", following_ids, id).page(params[:page]).per(8).eager_load(:user, :mountain).preload(:images_attachments)
     respond_to do |format|
       format.html
       format.js
@@ -18,7 +18,7 @@ class DailysController < ApplicationController
   end
 
   def own
-    @dailys = @user.dailys.page(params[:page]).per(6)
+    @dailys = @user.dailys.page(params[:page]).per(6).eager_load(:mountain).preload(:images_attachments)
     respond_to do |format|
       format.html
       format.js
@@ -27,7 +27,7 @@ class DailysController < ApplicationController
 
   def mountain_show
     mountain = Mountain.find(params[:mountain_id])
-    @dailys = mountain.dailys
+    @dailys = mountain.dailys.eager_load(user: {profile: :avatar_attachment})
   end
 
   def mountain
