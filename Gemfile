@@ -46,6 +46,7 @@ group :development, :test do
   gem 'launchy'
   gem 'selenium-webdriver'
   gem 'webdrivers'
+  gem 'bullet'
 end
 
 group :development do
