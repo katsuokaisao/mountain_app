@@ -1,15 +1,20 @@
-/*
-*= require lightbox
- *= require_tree 
- *= require_self
- */
-
 $fa-font-path: '@fortawesome/fontawesome-free/webfonts';
 @import '@fortawesome/fontawesome-free/scss/fontawesome';
 @import '@fortawesome/fontawesome-free/scss/solid';
 @import '@fortawesome/fontawesome-free/scss/regular';
 @import '@fortawesome/fontawesome-free/scss/brands';
 @import '@fortawesome/fontawesome-free/scss/v4-shims';
+@import 'devise/devise';
+@import 'active_admin';
+@import 'daily-form';
+@import 'daily';
+@import 'header';
+@import 'mountains';
+@import 'pages';
+@import 'profiles';
+@import 'relationships';
+@import 'side-nav';
+@import 'lightbox';
 
 * {
   margin:0; padding:0;
