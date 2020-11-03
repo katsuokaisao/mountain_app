@@ -24,7 +24,7 @@ Rails.application.configure do
   # デバッグ用にアセットの連結と圧縮をやめるかどうかを指定します。
   config.assets.digest = true
   # 動的にコンパイルするかどうか。本番ではfalseでいい
-  config.assets.compile = true
+  config.assets.compile = false
   # Compress CSS using a preprocessor.
   config.assets.css_compressor = :sass
 
