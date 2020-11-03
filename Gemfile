@@ -31,6 +31,7 @@ gem 'rails-i18n'
 gem 'lightbox2-rails'
 gem 'kaminari'
 gem 'active_storage_validations'
+gem 'activeadmin'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

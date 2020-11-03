@@ -188,3 +188,4 @@ users.each do |user|
 end
 
 # `latitude: ${location.href.split('@')[1].split(',')[0]}, longitude: ${location.href.split('@')[1].split(',')[1]}`
+AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
