@@ -17,8 +17,9 @@ test:
 production:
   <<: *default
   database: mountain_app_production
-  # username: <%= ENV['DB_USERNAME'] %>
-  # password: <%= ENV['DB_PASSWORD'] %>
+  username: <%= ENV['DB_USERNAME'] %>
+  password: <%= ENV['DB_PASSWORD'] %>
 
   # host: RDSのエンドポイントを設定
   # 定義はECSのタスク定義の環境変数
+
