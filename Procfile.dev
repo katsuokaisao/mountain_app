@@ -1,3 +1,0 @@
-unicorn: bundle exec unicorn -p 3000 -c /mountain_app/conf.rb -D
-
-webpack: ./bin/webpack-dev-server
