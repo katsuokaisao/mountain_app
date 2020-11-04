@@ -8,7 +8,7 @@ config.after_initialize do
     Bullet.rails_logger  = true
     Bullet.add_footer    = true
   end 
-  config.web_console.whitelisted_ips = '0.0.0.0/0'
+  config.web_console.allowed_ips = '0.0.0.0/0'
   config.cache_classes = false
   config.eager_load = false
   config.consider_all_requests_local = true
