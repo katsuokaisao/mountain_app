@@ -1,24 +1,34 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## サイト概要
+***
+このアプリでは山と人の交流を深めるをコンセプトにした山日記アプリです。
 
-Things you may want to cover:
+1. 登山に行った記録を残したいけど
+2. ただ記録を残したいだけでなく、Twitterのように気軽にシェアしたい
+3. 登山をしている人ともっとカジュアルにつながりたい 
 
-* Ruby version
+という方に向いています。  
+現状、山の記録を残せるアプリがありますが自分の記録を正確に残したり、登山する前にコースを決めるために他の人の記録を参考にしたりする用途に特化しているように感じました。そこでもっとフランクに情報を共有できて人の交流に特化したアプリを作成したいという経緯からこちらのアプリを作成致しました。
 
-* System dependencies
+## 使用技術
+***
 
-* Configuration
+## 機能一覧
+***
 
-* Database creation
+## 工夫点
+***
 
-* Database initialization
+## インフラ構成図
+***
 
-* How to run the test suite
+## 改善・気になっている点
+***
 
-* Services (job queues, cache servers, search engines, etc.)
+## 作成の背景
+***
 
-* Deployment instructions
+## 転職軸
+***
 
-* ...

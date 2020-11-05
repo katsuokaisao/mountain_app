@@ -38,7 +38,6 @@ config.after_initialize do
   # 18nで訳文が見つからない場合にエラーを発生するかどうかを指定します。
   # config.action_view.raise_on_missing_translations = true
 
-
   # docker-compose restartしないとコードが反映されない問題の解決
   config.file_watcher = ActiveSupport::FileUpdateChecker
   config.hosts << "unicorn"
