@@ -8,12 +8,10 @@ listen $listen
 pid $pid
 worker_processes $worker
 working_directory $app_dir
-# stderr_path File.expand_path 'log/strderr_path', $app_dir
-# stdout_path File.expand_path 'log/strdout_path', $app_dir
+stderr_path File.expand_path 'log/strderr_path', $app_dir
+stdout_path File.expand_path 'log/strdout_path', $app_dir
 # stdout_path $stderr
 # stdout_path $stdout
-# stderr_path File.expand_path('../../log/unicorn_stderr.log', __FILE__)
-# stdout_path File.expand_path('../../log/unicorn_stdout.log', __FILE__)
 
 timeout $timeout
 
