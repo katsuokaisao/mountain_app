@@ -1,14 +1,13 @@
 $worker  = 2
-$timeout = 30
-$app_dir = "~/mountain_app" 
+$timeout = 30 
 $listen  = 3000
 $pid     = File.expand_path 'tmp/pids/unicorn.pid', $app_dir
 listen $listen
 pid $pid
 worker_processes $worker
 working_directory $app_dir
-stderr_path File.expand_path('../../log/stderr.log', __FILE__)
-stdout_path File.expand_path('../../log/stdout.log', __FILE__)
+stderr_path File.expand_path('../../tmp/log/stderr.log', __FILE__)
+stdout_path File.expand_path('../../tmp/log/stdout.log', __FILE__)
 timeout $timeout
 preload_app true
 
