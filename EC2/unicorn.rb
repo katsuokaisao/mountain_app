@@ -7,8 +7,8 @@ listen $listen
 pid $pid
 worker_processes $worker
 working_directory $app_dir
-stderr_path File.expand_path 'log/strderr_path', $app_dir
-stdout_path File.expand_path 'log/strdout_path', $app_dir
+stderr_path File.expand_path('../../log/stderr.log', __FILE__)
+stdout_path File.expand_path('../../log/stdout.log', __FILE__)
 timeout $timeout
 preload_app true
 
