@@ -1,7 +1,7 @@
 $worker  = 2
 $timeout = 30 
 $listen  = 3000
-$app_dir = "~/mountain_app"
+$app_dir = "/mountain_app"
 $pid     = File.expand_path 'tmp/pids/unicorn.pid', $app_dir
 listen $listen
 pid $pid
