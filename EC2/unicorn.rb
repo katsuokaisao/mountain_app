@@ -1,5 +1,5 @@
 $worker  = 2
-$timeout = 30 
+$timeout = 30
 $app_dir = File.expand_path '../../', __FILE__
 $listen  = File.expand_path 'tmp/sockets/unicorn.sock', $app_dir
 $pid     = File.expand_path 'tmp/pids/unicorn.pid', $app_dir
