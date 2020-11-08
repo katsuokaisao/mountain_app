@@ -16,17 +16,13 @@ Rails.application.configure do
 
   # Disable serving static files from the `/public` folder by default since
   # Apache or NGINX already handles this.
-  config.public_file_server.enabled = ENV['RAILS_SERVE_STATIC_FILES'].present?
-  # config.public_file_server.enabled = true
+  config.public_file_server.enabled = true
   
   # アセットパイプラインを有効にするかどうかを指定します。
   config.assets.enabled = true
-  # デバッグ用にアセットの連結と圧縮をやめるかどうかを指定します。
   config.assets.digest = true
   # 動的にコンパイルするかどうか。本番ではfalseでいい
-  config.assets.compile = false
-  # Compress CSS using a preprocessor.
-  config.assets.css_compressor = :sass
+  config.assets.compile = true
 
   # アセットを置くためのホストを設定します。これは、アセットをホストする場所としてアプリケーションサーバーの代りにCDN(コンテンツ配信ネットワーク)を使いたい場合に便利です。
   # config.action_controller.asset_host = 'http://assets.example.com'
