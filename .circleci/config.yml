@@ -56,13 +56,13 @@ jobs:
           command: ssh $SSH_USER@$SSH_HOST "cd /home/ec2-user/mountain_app && git pull origin master && yarn install --check-files"
       - run:
           name: precompile 
-          command: ssh $SSH_USER@$SSH_HOST "cd /home/ec2-user/mountain_app && rake assets:precompile RAILS_ENV=production"
+          command: ssh $SSH_USER@$SSH_HOST "cd /home/ec2-user/mountain_app && ~/.rbenv/shims/rake assets:precompile RAILS_ENV=production"
       - run: 
           name: bundle install 
-          command: ssh $SSH_USER@$SSH_HOST "cd /home/ec2-user/mountain_app && bundle install"
+          command: ssh $SSH_USER@$SSH_HOST "cd /home/ec2-user/mountain_app && ~/.rbenv/shims/bundle install"
       - run: 
           name: migrate
-          command: ssh $SSH_USER@$SSH_HOST "cd /home/ec2-user/mountain_app && rails db:migrate RAILS_ENV=production"
+          command: ssh $SSH_USER@$SSH_HOST "cd /home/ec2-user/mountain_app && ~/.rbenv/shims/rails db:migrate RAILS_ENV=production"
 
 workflows:
   version: 2

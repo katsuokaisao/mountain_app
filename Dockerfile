@@ -10,6 +10,8 @@ WORKDIR /${APP_ROOT}
 COPY Gemfile ${APP_ROOT}/Gemfile
 COPY Gemfile.lock ${APP_ROOT}/Gemfile.lock
 RUN bundle install
+RUN yarn install --check-files
+RUN bundle exec rails assets:precompile
 COPY . /${APP_ROOT}
 
 COPY entrypoint.sh /usr/bin

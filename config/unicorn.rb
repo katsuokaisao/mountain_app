@@ -1,6 +1,6 @@
 $worker  = 2
 $timeout = 30
-$app_dir = "/mountain_app" 
+$app_dir = File.expand_path '../../', __FILE__ 
 $listen  = 3000
 $pid     = File.expand_path 'tmp/pids/unicorn.pid', $app_dir
 
@@ -8,8 +8,8 @@ listen $listen
 pid $pid
 worker_processes $worker
 working_directory $app_dir
-stderr_path File.expand_path 'log/strderr_path', $app_dir
-stdout_path File.expand_path 'log/strdout_path', $app_dir
+stderr_path File.expand_path('tmp/log/stderr.log', $app_dir)
+stdout_path File.expand_path('tmp/log/stdout.log', $app_dir)
 # stdout_path $stderr
 # stdout_path $stdout
 
