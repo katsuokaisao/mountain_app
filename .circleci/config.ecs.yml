@@ -1,0 +1,101 @@
+version: 2.1
+orbs:
+  aws-ecr: circleci/aws-ecr@6.12.0
+  aws-ecs: circleci/aws-ecs@1.3.0
+
+executors: #jobでexecutorから使用できる
+  test-executor: 
+    docker:
+      - image: cimg/ruby:2.6
+        environment: 
+          BUNDLE_PATH: vendor/bundle
+          BUNDLER_VERSION: 2.1.4
+          RAILS_ENV: test
+          DB_HOST: 127.0.0.1
+      - image: circleci/mysql:8.0-ram
+        environment: 
+          MYSQL_USER: test-user
+          MYSQL_DB: mountain_app_test
+          MYSQL_PASSWORD: password
+          MYSQL_ROOT_PASSWORD: password
+        command: mysqld --default-authentication-plugin=mysql_native_password
+    working_directory: ~/mountain_app
+jobs:
+  test: 
+    executor: test-executor
+    steps: 
+      - checkout
+      - restore_cache:
+          keys: 
+            - v1-rails-bundle-{{ checksum "Gemfile.lock" }}
+            - v1-rails-bundle-
+      - run:
+          name: gemの依存関係のインストール
+          command: |
+            sudo gem update --system
+            bundle config set path 'vendor/bundle'
+            bundle check || bundle install
+      - save_cache:
+          key: v1-rails-bundle-{{ checksum "Gemfile.lock" }}
+          paths:
+            - vendor/bundle
+      - run:
+          name: データベースの起動を待機
+          command: |
+            dockerize -wait tcp://127.0.0.1:3306 -timeout 120s
+      - run: bundle exec rake db:create
+      - run: bundle exec rake db:schema:load --trace
+      - run:
+          name: Rspceテスト
+          command: bin/rspec   
+workflows:
+  version: 2
+  build-and-deploy: 
+    jobs:
+      # - test
+      - aws-ecr/build-and-push-image:
+          name: rails-build-and-push-image
+          # requires:
+          #   - test
+          aws-access-key-id: AWS_ACCESS_KEY_ID
+          aws-secret-access-key: AWS_SECRET_ACCESS_KEY
+          region: AWS_REGION 
+          account-url: AWS_ECR_ACCOUNT_URL #ECRのURI（末尾の/nginxや/railsを除いた物）
+          repo: 'rails' #リポジトリ名
+          tag: "${CIRCLE_SHA1}" #リポジトリの最終コミットのハッシュ（ビルドイン環境変数の一つ）
+          path: './' 
+          dockerfile: 'Dockerfile.production'
+          filters: 
+            branches: 
+              only: master
+      - aws-ecr/build-and-push-image:
+          name: nginx-build-and-push-image
+          # requires: 
+          #   - test
+          aws-access-key-id: AWS_ACCESS_KEY_ID
+          aws-secret-access-key: AWS_SECRET_ACCESS_KEY
+          region: AWS_REGION 
+          account-url: AWS_ECR_ACCOUNT_URL #ECRのURI（末尾の/nginxや/railsを除いた物）
+          repo: 'nginx' #リポジトリ名
+          tag: "${CIRCLE_SHA1}" #リポジトリの最終コミットのハッシュ（ビルドイン環境変数の一つ）
+          path: './nginx/'
+          dockerfile: 'Dockerfile.production'
+          filters: 
+            branches: 
+              only: master
+      - aws-ecs/deploy-service-update:
+          name: rails-deploy-service-update
+          requires: 
+            - rails-build-and-push-image
+          family: mountain #タスク名
+          cluster-name: mountain
+          service-name: mountain
+          container-image-name-updates: 'container=rails, image-and-tag=${AWS_ECR_ACCOUNT_URL}/rails:${CIRCLE_SHA1}'
+      - aws-ecs/deploy-service-update:
+          name: nginx-deploy-service-update
+          requires:
+            - nginx-build-and-push-image
+          family: mountain
+          cluster-name: mountain
+          service-name: mountain
+          container-image-name-updates: 'container=nginx, image-and-tag=${AWS_ECR_ACCOUNT_URL}/nginx:${CIRCLE_SHA1}'

@@ -33,6 +33,7 @@ gem 'kaminari'
 gem 'active_storage_validations'
 gem 'activeadmin'
 gem 'dotenv-rails'
+gem 'aws-sdk-s3'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -40,7 +41,6 @@ group :development, :test do
   gem 'pry-byebug'
   gem 'rubocop', require: false
   gem 'rubocop-rails'
-  gem 'foreman'
   gem 'rspec-rails'
   gem 'spring-commands-rspec'
   gem 'factory_bot_rails'
@@ -59,7 +59,6 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'rails-erd'
-  gem 'aws-sdk-s3'
   gem 'font-awesome-sass'
 end
 

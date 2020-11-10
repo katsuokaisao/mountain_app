@@ -40,7 +40,7 @@ Rails.application.configure do
   # config.action_cable.allowed_request_origins = [ 'http://example.com', /http:\/\/example.*/ ]
 
   # ActionDispatch::SSLミドルウェアを用いて、すべてのリクエストをHTTPSプロトコル下で実行するよう強制
-  # config.force_ssl = true
+  config.force_ssl = true
 
   # Railsのログ出力をどのぐらい詳細にするかを指定します。デフォルトではすべての環境で:debugが指定されます。
   config.log_level = :debug
