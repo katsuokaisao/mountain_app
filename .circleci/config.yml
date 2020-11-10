@@ -52,9 +52,17 @@ jobs:
           fingerprints: 
             - '03:fa:f1:5d:0b:a2:5c:98:45:a4:b7:c9:0d:a3:bf:8b'
       - run: 
-          name: CD
-          working_directory: /home/ec2-user/mountain_app
-          command: ssh $SSH_USER@$SSH_HOST "git pull origin master && yarn install --check-files && rake assets:precompile RAILS_ENV=production && bundle install && rails db:migrate RAILS_ENV=production"
+          name: git pull
+          command: ssh $SSH_USER@$SSH_HOST "cd /home/ec2-user/mountain_app && git pull origin master && yarn install --check-files"
+      - run:
+          name: precompile 
+          command: ssh $SSH_USER@$SSH_HOST "cd /home/ec2-user/mountain_app && rake assets:precompile RAILS_ENV=production"
+      - run: 
+          name: bundle install 
+          command: ssh $SSH_USER@$SSH_HOST "cd /home/ec2-user/mountain_app && bundle install"
+      - run: 
+          name: migrate
+          command: ssh $SSH_USER@$SSH_HOST "cd /home/ec2-user/mountain_app && rails db:migrate RAILS_ENV=production"
 
 workflows:
   version: 2
