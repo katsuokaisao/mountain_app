@@ -32,7 +32,7 @@ https://www.mountain-app.com/
 - AWS(EC2, ALB, Route53, ACM, RDS, S3)
 - CircleCI(CI/CD)
   - CIはmasterブランチにpush後にRubocopとRspecを行う 
-  - CDはCircleCIでEC2にssh接続してgit pullを行う（予定）
+  - CDはCircleCIでEC2にssh接続してgit pullを行う
 
 ## 機能一覧
 ***
