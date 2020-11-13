@@ -1,7 +1,7 @@
 $worker  = 2
 $timeout = 30
-$app_dir = File.expand_path '../../', __FILE__ 
-$listen  = 3000
+$app_dir = '/mountain_app'
+$listen  = File.expand_path 'tmp/sockets/.unicorn.sock', $app_dir
 $pid     = File.expand_path 'tmp/pids/unicorn.pid', $app_dir
 
 listen $listen
@@ -10,12 +10,7 @@ worker_processes $worker
 working_directory $app_dir
 stderr_path File.expand_path('tmp/log/stderr.log', $app_dir)
 stdout_path File.expand_path('tmp/log/stdout.log', $app_dir)
-# stdout_path $stderr
-# stdout_path $stdout
-
 timeout $timeout
-
-# loading booster
 preload_app true
 
 # before starting processes
