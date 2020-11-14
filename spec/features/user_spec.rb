@@ -31,14 +31,14 @@ RSpec.feature "Users", type: :feature do
   end
   describe 'ログイン' do
     before do
-      user = FactoryBot.create(:user)
+      user = FactoryBot.create(:user, email: 'SignIn@exapmle.com', password: 'signin' )
       profile = Profile.create(user_id: user.id, introduce_text: "ここにプロフィール文を入れてください")
       visit new_user_session_path  
-      fill_in 'メールアドレス', with: 'foobarbazz@exapmle.com' 
+      fill_in 'メールアドレス', with: 'SignIn@exapmle.com' 
     end
     context '正しい値が入力された時' do 
       it '自分の日記投稿ページに遷移する' do
-        fill_in 'パスワード', with: 'foobarbazz'
+        fill_in 'パスワード', with: 'signin'
         click_button 'ログイン'
         expect(page).to have_selector 'div#wrapper-for-ajax'
       end
@@ -48,7 +48,7 @@ RSpec.feature "Users", type: :feature do
         fill_in 'パスワード', with: 'a'
         click_button 'ログイン'
         expect(current_path).to eq new_user_session_path
-        expect(page).to have_field 'メールアドレス', with: 'foobarbazz@exapmle.com'
+        expect(page).to have_field 'メールアドレス', with: 'SignIn@exapmle.com'
       end
     end
   end

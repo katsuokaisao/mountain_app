@@ -26,7 +26,7 @@ end
 RSpec.configure do |config|
   #sign_inヘルパーを提供してくれる
   config.include Devise::Test::IntegrationHelpers, type: :feature 
-
+  config.include Devise::Test::IntegrationHelpers, type: :request
   # FactoryBotのデータ呼び出しを簡略化できる。
   # (テストデータの呼び出しを、FactoryBot.create(:◯◯) → create(:◯◯)に簡略化出来る)
   # config.include FactoryBot::Syntax::Methods
