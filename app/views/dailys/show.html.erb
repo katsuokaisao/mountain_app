@@ -10,7 +10,7 @@
   </div>
   <div class="daily-wrapper">
     <% if current_user == @daily.user %>
-      <%= link_to user_daily_path(@daily.user, @daily.id), method: :delete do %>
+      <%= link_to user_daily_path(@daily.user, @daily.id), method: :delete, class: 'trash-button' do %>
         <i class="fas fa-trash-alt fa-3x"></i>
       <% end %>
     <% end %>
