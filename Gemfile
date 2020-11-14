@@ -19,36 +19,33 @@ gem 'jbuilder', '~> 2.7'
 # gem 'bcrypt', '~> 3.1.7'
 
 # Use Active Storage variant
-gem 'image_processing', '~> 1.2'
-
-# Reduces boot times through caching; required in config/boot.rb
-gem 'bootsnap', '>= 1.4.2', require: false
-gem 'devise'
-gem 'unicorn', '5.4.1'
 gem 'sprockets', '<4.0.0'
-# rails-i18nがなくて日本語化対応につまずいた
-gem 'rails-i18n'
-gem 'lightbox2-rails'
+gem 'unicorn', '5.4.1'
+gem 'devise'
 gem 'kaminari'
+gem 'rails-i18n'
+gem 'lightbox2-rails'#画像の拡大
 gem 'active_storage_validations'
-gem 'activeadmin'
-gem 'dotenv-rails'
+gem 'image_processing', '~> 1.2'
 gem 'aws-sdk-s3'
+gem 'activeadmin'
+gem 'bootsnap', '>= 1.4.2', require: false
+gem 'dotenv-rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'pry-byebug'
-  gem 'rubocop', require: false
-  gem 'rubocop-rails'
+  gem 'rubocop-rails', require: false
   gem 'rspec-rails'
   gem 'spring-commands-rspec'
   gem 'factory_bot_rails'
-  gem 'capybara'
+  gem 'capybara' # test環境だけにinstallした方がいい
   gem 'launchy'
-  gem 'selenium-webdriver'
+  # gem 'selenium-webdriver' webdriversに包含される
   gem 'webdrivers'
-  gem 'bullet'
+  gem 'capybara-screenshot'
+  gem 'bullet' #N+1
 end
 
 group :development do
@@ -58,9 +55,6 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
-  gem 'rails-erd'
+  gem 'rails-erd' #er図を簡単に作成できる
   gem 'font-awesome-sass'
 end
-
-# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-# gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]

@@ -44,6 +44,8 @@ jobs:
   #     - run:
   #         name: Rspceテスト
   #         command: bin/rspec   
+  #     - store_test_results:
+            # path: /tmp/test-results
   deploy:
     machine: 
       image: circleci/classic:edge
