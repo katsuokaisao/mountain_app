@@ -65,9 +65,9 @@ jobs:
       - run: 
           name: migrate
           command: ssh $SSH_USER@$SSH_HOST "cd /home/ec2-user/mountain_app && ~/.rbenv/shims/rails db:migrate RAILS_ENV=production"
-      - run: 
-          name: seeds
-          command: ssh $SSH_USER@$SSH_HOST "cd /home/ec2-user/mountain_app && ~/.rbenv/shims/rails db:seed RAILS_ENV=production"
+      # - run: 
+      #     name: seeds
+      #     command: ssh $SSH_USER@$SSH_HOST "cd /home/ec2-user/mountain_app && ~/.rbenv/shims/rails db:seed RAILS_ENV=production"
 
 workflows:
   version: 2
