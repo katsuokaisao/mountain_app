@@ -56,12 +56,12 @@ jobs:
       - run: 
           name: git pull
           command: ssh $SSH_USER@$SSH_HOST "cd /home/ec2-user/mountain_app && git pull origin master && yarn install --check-files"
-      - run:
-          name: precompile 
-          command: ssh $SSH_USER@$SSH_HOST "cd /home/ec2-user/mountain_app && ~/.rbenv/shims/rake assets:precompile RAILS_ENV=production"
       - run: 
           name: bundle install 
           command: ssh $SSH_USER@$SSH_HOST "cd /home/ec2-user/mountain_app && ~/.rbenv/shims/bundle install"
+      - run:
+          name: precompile 
+          command: ssh $SSH_USER@$SSH_HOST "cd /home/ec2-user/mountain_app && ~/.rbenv/shims/rake assets:precompile RAILS_ENV=production"
       - run: 
           name: migrate
           command: ssh $SSH_USER@$SSH_HOST "cd /home/ec2-user/mountain_app && ~/.rbenv/shims/rails db:migrate RAILS_ENV=production"
