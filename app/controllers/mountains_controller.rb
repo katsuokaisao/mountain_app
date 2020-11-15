@@ -1,7 +1,9 @@
 class MountainsController < ApplicationController
   # ログインしてなくてもcurrent_userじゃなくても山情報は見れてもいい
   def index
-    @mountains = Mountain.all
+    @search = Mountain.ransack(params[:q])
+    @mountains = @search.result(distinct: true)
+    # @mountains = Mountain.all
   end
 
   def show

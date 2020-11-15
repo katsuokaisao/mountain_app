@@ -1,5 +1,11 @@
 <div class="table-wrapper">
-  <h2>地方で並び替え</h2>
+  <div class="search-wrapper ">
+    <h2>地方で絞り込む！</h2>
+    <%= search_form_for @search, class: 'search_container' do |f| %>
+      <%= f.select :area_eq, [['でっかい道','北海道'], ['東北','東北'], ['関東','関東'], ['中部','中部'], ['近畿','近畿'], ['中国','中国'], ['四国','四国'], ['九州','九州']] %>
+      <%= f.submit '検索' %>
+    <% end %>
+  </div>
   <table class="table_box">
     <tr>
       <th>名前</th>

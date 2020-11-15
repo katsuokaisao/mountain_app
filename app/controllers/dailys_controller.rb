@@ -31,7 +31,8 @@ class DailysController < ApplicationController
   end
 
   def mountain
-    @mountains = Mountain.all
+    @search = Mountain.ransack(params[:q])
+    @mountains = @search.result(distinct: true)
   end
 
   def new 
