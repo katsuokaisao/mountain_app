@@ -402,8 +402,8 @@ DEPENDENCIES
   rails (~> 6.0.0)
   rails-erd
   rails-i18n
+  ransack
   rspec-rails
-  rubocop
   rubocop-rails
   sass-rails (~> 5)
   spring
