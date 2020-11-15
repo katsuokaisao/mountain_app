@@ -4,8 +4,8 @@ ActiveAdmin.setup do |config|
   # Set the title that is displayed on the main layout
   # for each of the active admin pages.
   #
-  config.site_title = "Docker App"
-
+  config.site_title = "管理者ページ"
+  # config.root_to = admin_admin_users_path
   # Set the link url for the title. For example, to take
   # users to your main site. Defaults to no link.
   #
@@ -117,7 +117,7 @@ ActiveAdmin.setup do |config|
   # roots for each namespace.
   #
   # Default:
-  # config.root_to = 'dashboard#index'
+  config.root_to = 'dashboard#index'
 
   # == Admin Comments
   #
