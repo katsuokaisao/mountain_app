@@ -7,7 +7,12 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
-    user_dailys_own_path(resource)
+    stored_location_for(resource) ||
+    if resource.class == AdminUser
+      admin_root_path
+    else
+      user_dailys_own_path(resource)
+    end
   end
 
   def current_user?
