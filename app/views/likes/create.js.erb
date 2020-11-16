@@ -1,0 +1,1 @@
+document.getElementById("like-btn-<%= @daily.id %>").innerHTML = "<%= escape_javascript(render partial: 'likes/like', locals: {daily: @daily})  %>" 
