@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_03_071857) do
+ActiveRecord::Schema.define(version: 2020_11_15_232505) do
 
   create_table "active_admin_comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "namespace"
@@ -71,6 +71,15 @@ ActiveRecord::Schema.define(version: 2020_11_03_071857) do
     t.index ["user_id"], name: "index_dailies_on_user_id"
   end
 
+  create_table "likes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "daily_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["daily_id"], name: "index_likes_on_daily_id"
+    t.index ["user_id"], name: "index_likes_on_user_id"
+  end
+
   create_table "mountains", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
     t.string "area", null: false
@@ -117,5 +126,7 @@ ActiveRecord::Schema.define(version: 2020_11_03_071857) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "dailies", "mountains"
   add_foreign_key "dailies", "users"
+  add_foreign_key "likes", "dailies"
+  add_foreign_key "likes", "users"
   add_foreign_key "profiles", "users"
 end
