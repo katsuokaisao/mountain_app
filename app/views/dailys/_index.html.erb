@@ -1,0 +1,5 @@
+<% @dailys.each do |daily| %>
+  <%= render 'dailys/post_content', daily: daily %>
+<% end %>
+<%#= render partial: 'dailys/post_content', collection: @dailys%>
+<%= paginate @dailys, remote: true %>

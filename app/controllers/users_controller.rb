@@ -13,6 +13,15 @@ class UsersController < ApplicationController
     render 'show_followers'
   end
 
+  def likes
+    user = User.find(params[:id])
+    if user == current_user
+      @dailys = current_user.like_posts.page(params[:page]).per(8)
+    else
+      redirect_back
+    end
+  end
+
   private 
   def set_user
     @user = User.find(params[:id])

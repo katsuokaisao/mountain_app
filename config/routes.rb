@@ -18,6 +18,7 @@ Rails.application.routes.draw do
     resource :profiles, only: [:edit, :update, :create]
     member do
       get :following, :followers
+      get :likes
     end
   end
   resources :mountains, only: [:index, :show] do
