@@ -13,6 +13,18 @@ class UsersController < ApplicationController
     render 'show_followers'
   end
 
+  def likes
+    if @user == current_user
+      @dailys = current_user.like_posts.eager_load({user: {profile: :avatar_attachment}}, :mountain).preload(:images_attachments).page(params[:page]).per(8)
+      respond_to do |format|
+        format.html
+        format.js
+      end
+    else
+      redirect_back
+    end
+  end
+
   private 
   def set_user
     @user = User.find(params[:id])
