@@ -14,9 +14,8 @@ class UsersController < ApplicationController
   end
 
   def likes
-    user = User.find(params[:id])
-    if user == current_user
-      @dailys = current_user.like_posts.page(params[:page]).per(8)
+    if @user == current_user
+      @dailys = current_user.like_posts.eager_load({user: {profile: :avatar_attachment}}, :mountain).preload(:images_attachments).page(params[:page]).per(8)
     else
       redirect_back
     end
