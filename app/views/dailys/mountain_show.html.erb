@@ -5,14 +5,19 @@
       <div class="card card-skin">
         <div class="card__imgframe">
           <% if daily.user.profile.avatar.attached? %>
-                <%= image_tag daily.user.profile.avatar %>
-              <% else %>
-                <%= image_tag 'stockfoto_12670415.jpg' %>
-              <% end %>
+            <%= image_tag daily.user.profile.avatar %>
+          <% else %>
+            <%= image_tag 'stockfoto_12670415.jpg' %>
+          <% end %>
         </div>
         <div class="card__textbox">
           <div class="card__titletext">
             <%= daily.title%>
+            <% unless current_user == daily.user %>
+              <div id="like-btn-<%= daily.id %>">
+                <%= render 'likes/like', daily: daily %>
+              </div>
+            <% end %>
           </div>
           <div class="card__overviewtext">
             <%= daily.comment.slice(0..100) %>

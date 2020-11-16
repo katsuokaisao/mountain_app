@@ -1,0 +1,9 @@
+<% if daily.like?(current_user) %>
+  <%= link_to(daily_removeLike_path(daily), method: :delete, id: :"like-button-#{daily.id}") do %>
+      <i class="fa-lg fas fa-heart icon-btn liked"></i>
+  <% end %>
+<% else %>
+  <%= link_to(daily_addLike_path(daily), method: :daily, id: :"like-button-#{daily.id}") do %>
+      <i class="fa-lg far fa-heart icon-btn not-like"></i>
+  <% end %>
+<% end %>

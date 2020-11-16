@@ -17,6 +17,11 @@
     <h3 class="mountain-name"><%= @daily.mountain_name %></h3>
     <h3 class="title"><%= @daily.title %></h3>
     <p class="comment"><%= @daily.comment %></p>
+    <% unless current_user == @daily.user %>
+      <div id="like-btn-<%= @daily.id %>">
+        <%= render 'likes/like', daily: @daily %>
+      </div>
+    <% end %>
     <div class="daily-photo-wrapper">
       <div class="daily-photo">
           <% if @daily.images.attached? %>

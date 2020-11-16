@@ -26,4 +26,8 @@ Rails.application.routes.draw do
   
   resources :relationships, only: [:create, :destroy]
   
+  resources :dailys do
+    post    'addLike', to: 'likes#create'
+    delete  'removeLike', to: 'likes#destroy'
+  end
 end 

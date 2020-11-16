@@ -26,6 +26,11 @@
           <% end %>
         <% end %>
         <%= link_to '詳細を見る', user_daily_path(daily.user.id, daily.id) %>
+        <% unless current_user == daily.user %>
+          <div id="like-btn-<%= daily.id %>">
+            <%= render 'likes/like', daily: daily %>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>
