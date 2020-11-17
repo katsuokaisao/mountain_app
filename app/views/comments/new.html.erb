@@ -1,5 +1,10 @@
-<%= form_with model: [@daily, @comment], local: true do |f| %>
-  <%= f.label :content %>
-  <%= f.text_field :content %>
+<%= form_with model: [@daily, @comment], local: true, class: 'comment-form' do |f| %>
+  <div class="field">
+    <%= f.label :content, 'コメント' %> 
+    <% if @comment.errors.include?(:content) %>
+      <p style="color: red"><%= @comment.errors.full_messages_for(:content).first %></p>
+    <% end %>
+    <%= f.text_area :content %>
+  </div>
   <%= f.submit 'コメントする' %>
 <% end %>
