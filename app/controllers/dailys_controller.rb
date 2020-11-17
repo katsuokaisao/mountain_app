@@ -77,7 +77,7 @@ class DailysController < ApplicationController
 
   private 
   def daily_create_params
-    params.require(:daily).permit(:mountain_name, :title, :comment, :user_id, :mountain_id, images: [])
+    params.require(:daily).permit(:mountain_name, :title, :comment, images: []).merge(user_id: current_user.id, mountain_id: 1)
   end
 
   def set_user

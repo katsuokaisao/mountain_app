@@ -1,9 +1,6 @@
 <div class="daily-form-wrapper">
   <h3>投稿する</h3>
   <%= form_with url: user_dailys_path, scope: :daily, local: true, class: 'daily-form' do |f| %>
-    <%= f.hidden_field :user_id, :value => current_user.id %>
-    <%= f.hidden_field :mountain_id, :value => 1 %>
-
     <div class="field">
       <%= f.label :mountain_name, '山の名前' %>
       <%= select("daily", "mountain_name", Mountain.all.collect { |mountain| [ mountain.name, mountain.name ] }) %>
