@@ -1,7 +1,7 @@
 <div class="profile-wrapper">
   <div class="profile-image">
   <%= form_with model: @profile, url: user_profiles_path, local: true do |f| %>
-    <% if @profile.avatar.attached? %>
+    <% if @profile && @profile.avatar.attached? %>
       <%= image_tag @profile.avatar.variant(resize_to_fill: [200, 200]) %>
     <% else %>
       <%= image_tag 'stockfoto_12670415.jpg' %>
@@ -11,8 +11,8 @@
     </div>
     <div class="field">
       <%= f.label :introduce_text, '自己紹介文' %>
-      <%= f.text_area :introduce_text, placeholder: @profile.introduce_text %>
-      <% if @profile.errors.include?(:introduce_text) %>
+      <%= f.text_area :introduce_text %>
+      <% if @profile && @profile.errors.include?(:introduce_text) %>
         <p style="color: red"><%= @profile.errors.full_messages_for(:introduce_text).first %></p>
       <% end %>
     </div>

@@ -178,7 +178,6 @@ relationship_user.each do |user|
 end
 
 users.each do |user|
-  Profile.create(user_id: user.id, introduce_text: "ここにプロフィール文を入れてください")
   mountains52 = Mountain.limit(52)
   mountains52.each do |mountain| 
     daily = Daily.create!(mountain_name: mountain.name, title: "#{mountain.name}に行ってみた", comment: "#{mountain.name}に行ってみた"*10, user_id: user.id, mountain_id: mountain.id)
