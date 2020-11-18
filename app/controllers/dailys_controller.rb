@@ -57,10 +57,6 @@ class DailysController < ApplicationController
   end
 
   def show 
-    unless @user.dailys.include?(@daily) 
-      flash[:danger] = "不正な操作です"
-      redirect_back fallback_location: root_path
-    end
     @comments = @daily.comments
   end
 
