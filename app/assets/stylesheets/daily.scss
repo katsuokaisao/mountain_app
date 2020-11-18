@@ -150,7 +150,7 @@
   }
   .daily-wrapper {
     position: relative;
-    a {
+    .icon-wrapper {
       position: absolute;
       top: 0;
       right: 0;
@@ -166,6 +166,9 @@
       margin-bottom: 30px;
       width: 70%;
     }
+    a {
+
+    }
     .daily-photo-wrapper {
       .daily-photo {
         img {
@@ -174,6 +177,25 @@
           object-fit: contain;
           margin: 0 50px 50px 0;
         }
+      }
+    }
+  }
+  .comment-top {
+    display: flex;
+    margin-bottom: 20px;
+    h3 {
+      font-size: 28px;
+      margin-right: 10px;
+    }
+    .comment-link {
+      line-height: 42px;
+      i {
+        color: blue;
+      }
+      p {
+        display: inline-block;
+        font-size: 20px;
+        color: blue;
       }
     }
   }

@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+  before_action :authenticate_user!
   def new 
     @comment = Comment.new
     @daily = Daily.find_by(id: params[:daily_id])
