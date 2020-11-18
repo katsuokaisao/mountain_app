@@ -16,7 +16,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
     # ここでUser.save（と同等の操作）を行う
     resource.save
-    profile = Profile.create(user_id: resource.id, introduce_text: "ここにプロフィール文を入れてください")
 
     # ブロックが与えられたらresource(=User)を呼ぶ
     yield resource if block_given?

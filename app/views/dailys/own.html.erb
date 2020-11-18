@@ -20,7 +20,7 @@
             <% end %>
           </div>
       </div>
-      <p><%= @user.profile.introduce_text %></p>
+      <p><%= @user.profile.introduce_text if @user.profile %></p>
     </div>
 </div>
 <% end %>

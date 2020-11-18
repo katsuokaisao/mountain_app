@@ -4,7 +4,7 @@
     <%= link_to  user_daily_path(daily.user.id, daily.id) do %>
       <div class="card card-skin">
         <div class="card__imgframe">
-          <% if daily.user.profile.avatar.attached? %>
+          <% if daily.user.profile && daily.user.profile.avatar.attached? %>
             <%= image_tag daily.user.profile.avatar %>
           <% else %>
             <%= image_tag 'stockfoto_12670415.jpg' %>

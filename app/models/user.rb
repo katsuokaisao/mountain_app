@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
   # UserモデルのidとLikeモデルのuser_idが一致するカラムをLikeカラムから取得する
   has_many :like_posts, through: :likes, source: :daily
+  has_many :comments, dependent: :destroy
 
   # has_many :active_relationships
   # active_relationshipsメソッドで

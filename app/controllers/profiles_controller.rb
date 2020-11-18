@@ -4,15 +4,31 @@ class ProfilesController < ApplicationController
   before_action :current_user?
 
   def edit
-    @profile = @user.profile
+    if current_user.profile
+      @profile = current_user.profile
+    else
+      @profile = Profile.new
+    end
+  end
+
+  def create 
+    @profile =  Profile.new(profile_params)
+    @profile.user_id = current_user.id
+    if @profile.save
+      redirect_to edit_user_profiles_path(current_user.id)
+    else
+      redirect_to rot_path
+    end
   end
 
   def update 
-    profile = Profile.find_by(id: @user.id)
-    if profile.update(profile_params)
-    redirect_to edit_user_profiles_path
-    else 
-      render 'edit'
+    # プロフィールは存在する前提(userを作った時に自動で追加される)
+    @profile =  current_user.profile
+    if @profile
+      @profile.update(profile_params)
+      redirect_to edit_user_profiles_path(current_user.id)
+    else
+      redirect_to root_path
     end
   end
 

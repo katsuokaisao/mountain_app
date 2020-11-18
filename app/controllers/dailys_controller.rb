@@ -57,10 +57,7 @@ class DailysController < ApplicationController
   end
 
   def show 
-    unless @user.dailys.include?(@daily) 
-      flash[:danger] = "不正な操作です"
-      redirect_back fallback_location: root_path
-    end
+    @comments = @daily.comments
   end
 
   def destroy
@@ -76,7 +73,7 @@ class DailysController < ApplicationController
 
   private 
   def daily_create_params
-    params.require(:daily).permit(:mountain_name, :title, :comment, :user_id, :mountain_id, images: [])
+    params.require(:daily).permit(:mountain_name, :title, :comment, images: []).merge(user_id: current_user.id, mountain_id: 1)
   end
 
   def set_user
