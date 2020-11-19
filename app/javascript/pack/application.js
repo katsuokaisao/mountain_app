@@ -2,23 +2,34 @@
 // dropdownが開かれていない状態でdropdownTriggerをクリックすればdropdownが開く
 // dropdownが開いているならdropdownTriggerをもう一度クリックするかdropdownTrigger以外をクリックしても
 // dropdownが閉じる
-{
+
+
+$(function() {
+  $('.jscroll').jscroll({
+    nextSelector: 'a.next',
+    contentSelector: '.jscroll', 
+    loadingHtml: '読み込み中',
+    padding: 100
+  });
+});
+
+document.addEventListener("DOMContentLoaded", function(){
   const dropdownTrigger = document.getElementsByClassName('dropdown-trigger')[0];
   const dropdown = document.getElementById('dropdown');
   dropdownTrigger.addEventListener('click', function() {
-  if(!dropdown.classList.contains('is-active')) {
-    dropdown.classList.add('is-active');
-  } else {
-    dropdown.classList.remove('is-active');
-  }
-  document.addEventListener('click', (e)=> {
-    const clickLocation = e.target;
-    if (!clickLocation.classList.contains('dropdown-trigger') && dropdown.classList.contains('is-active')) {
+    if(!dropdown.classList.contains('is-active')) {
+      dropdown.classList.add('is-active');
+    } else {
       dropdown.classList.remove('is-active');
     }
-  })
-});
-}
+    document.addEventListener('click', (e)=> {
+      const clickLocation = e.target;
+      if (!clickLocation.classList.contains('dropdown-trigger') && dropdown.classList.contains('is-active')) {
+        dropdown.classList.remove('is-active');
+      }
+    })
+  });
+}, false);
 
 // フォロー・フォロワーリストのtab
 // {
