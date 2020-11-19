@@ -23,18 +23,29 @@ $fa-font-path: '@fortawesome/fontawesome-free/webfonts';
   color: #333333;
 }
 
+html {
+  height: 100%;
+}
+
 body {
-  background-color: #F5F5F5;
+  background-color: white;
+  height: 100%;
+}
+
+img {
+  border: 1px solid black;
 }
 
 .content {
   display: flex;
+  height: 100%;
 }
 
 .left {
-  width: 25%;
+  min-width: 25%;
   border-right: 3px solid green;
   padding-top: 50px;
+  height: 100%;
 }
 
 .right {
