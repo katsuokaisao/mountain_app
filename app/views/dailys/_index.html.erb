@@ -2,4 +2,5 @@
   <%= render 'dailys/post_content', daily: daily %>
 <% end %>
 <%#= render partial: 'dailys/post_content', collection: @dailys%>
-<%= paginate @dailys, remote: true %>
+<%= link_to_prev_page @dailys, '前のページ', class: "prev" %>
+<%= link_to_next_page @dailys, '次のページ', class: "next" %>
