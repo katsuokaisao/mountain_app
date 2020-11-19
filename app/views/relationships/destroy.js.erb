@@ -1,1 +1,1 @@
-document.getElementById('follow-form-<%= @other_user.id %>').innerHTML = "<%= escape_javascript(render partial: 'users/follow_form', locals: {user: @other_user }) %>"
+document.getElementById('follow-form-<%= @other_user.id %>').innerHTML = "<%= escape_javascript(render partial: 'users/follow_form', locals: {followed_user: @other_user, user: current_user }) %>"
