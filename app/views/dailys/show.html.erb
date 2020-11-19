@@ -1,12 +1,10 @@
 <% @title = "山日記" %>
 <div class="daily-show">
   <div class="user">
-    <% if @daily.user.profile && @daily.user.profile.avatar.attached? %>
-      <%= image_tag @daily.user.profile.avatar.variant(resize_to_fill: [200, 200]) %>
-    <% else %>
-      <%= image_tag 'stockfoto_12670415.jpg' %>
+    <%= link_to  user_dailys_own_path(@daily.user.id) do %>
+      <%= render partial: 'layouts/profile_avatar', locals: {user: @daily.user, a: 80, b: 80} %>
+      <p><%= @daily.user.username %></p>
     <% end %>
-    <p><%= @daily.user.username %></p>
   </div>
   <div class="daily-wrapper">
     <div class="icon-wrapper">
@@ -23,7 +21,7 @@
     </div>
     <h3 class="mountain-name"><%= @daily.mountain_name %></h3>
     <h3 class="title"><%= @daily.title %></h3>
-    <p class="comment"><%= @daily.comment %></p>
+    <%= simple_format(@daily.comment, class: 'comment') %>
     <div class="daily-photo-wrapper">
       <div class="daily-photo">
           <% if @daily.images.attached? %>

@@ -1,18 +1,22 @@
 .profile {
-  width: 70%;
-  margin: 0 auto 30px;
+  width: 100%;
+  margin-bottom: 30px;
+  padding-left: 20px;
+  border-bottom: 3px solid black;
   .profile-content {
     display: flex;
     margin-bottom: 10px;
-    img {
-      width: 80px;
-      height: 80px;
-      border-radius: 50%;
-      border: 3px solid black;
-      margin-right: 20px;
-    }
-    .profile-content-center {
-      margin-right: 20px;
+    .profile-content-left {
+      img {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        border: 3px solid black;
+        margin: - auto;
+      }
+      p {
+        text-align: center;
+      }
       h4 {
         margin-bottom: 10px;
       }
@@ -22,6 +26,10 @@
           width: 100%;
           border-radius: 3px;
         }
+      }
+    .profile-content-center {
+      margin-right: 20px;
+      
       }
       .follow-form {
         input[type="submit"] {
@@ -45,45 +53,108 @@
   }
 }
 .post-content {
-  width: 70%;
+  width: 100%;
   margin: 0 auto 30px;
-  border: 1px solid black;
+  border-bottom: 1px solid black;
+  .post-box-bottom {
+    padding-left: 100px;
+    margin-bottom: 20px;
+    img {
+      border-radius: 20px;
+      margin-right: 30px;
+    }
+  }
   .post-box {
     display: flex;
-    justify-content: space-around;
     margin: 0 auto;
     height: 100%;
-    padding: 20px 0;
+    padding: 20px;
     box-sizing: border-box;
+    &:first-child {
+      padding-top: 0;
+    }
     .post-box-left {
-      text-align: left;
       margin-right: 2%;
       p:first-of-type {
         font-weight: 600;
       }
+      .avatar {
+        display: block;
+      }
+      .like-btn {
+        display: inline-block;
+        margin-right: 5px;
+      }
+      .comment-link {
+        display: inline-block;
+        i {
+          font-size: 20px;
+        }
+      }
       img {
-        width: 100px;
-        height: 100px;
-        border-radius: 50%;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;;
       }
-    }
-    .post-box-center {
-      margin-right: 2%;
-      h4 {
-        margin-bottom: 20px;
-        // border-bottom: 2px solid green;
-        text-decoration: underline;
-        color: green;
-      }
-      p span {
-        margin-left: 2px;
-      }
-    }
-    .post-box-text {
-      margin-right: 2%;
-      width: 250px;
     }
     .post-box-right {
+      border: 1px solid black;
+      flex-grow: 2;
+      padding: 10px;
+      position: relative;
+      border: solid 3px #555;
+      .post-box-right-title {
+        margin-right: 2%;
+        margin-bottom: 20px;
+        h4 {
+          margin-right: 10px;
+          text-decoration: underline;
+          color: green;
+        }
+        p {
+          margin-right: 10px;
+        }
+        .post-box-right-title-top {
+          display: flex;
+          margin-bottom: 5px;
+          .username {
+            font-weight: 600;
+          }
+        }
+        .post-box-right-title-bottom {
+          display: flex;
+          .post-title {
+            font-size: 20px;
+          }
+          p {
+            line-height: 30px;
+          }
+        }
+        
+      }
+      .post-box-right-text {
+        margin-right: 2%;
+      }
+    }
+    .post-box-right:before {
+      content: "";
+      position: absolute;
+      top: 20%;
+      left: -24px;
+      margin-top: -12px;
+      border: 12px solid transparent;
+      border-right: 12px solid #FFF;
+      z-index: 2;
+    }
+    .post-box-right:after {
+      content: "";
+      position: absolute;
+      top: 20%;
+      left: -30px;
+      margin-top: -14px;
+      border: 14px solid transparent;
+      border-right: 14px solid #555;
+      z-index: 1;
     }
   }
 }
@@ -164,10 +235,9 @@
     }
     .comment {
       margin-bottom: 30px;
-      width: 70%;
-    }
-    a {
-
+      border: 3px solid black;
+      padding: 10px;
+      border-radius: 10px;
     }
     .daily-photo-wrapper {
       .daily-photo {
@@ -176,6 +246,7 @@
           height: 300px;
           object-fit: contain;
           margin: 0 50px 50px 0;
+          border-radius: 10px;
         }
       }
     }

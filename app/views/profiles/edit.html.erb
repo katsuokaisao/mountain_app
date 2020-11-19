@@ -1,13 +1,9 @@
 <div class="profile-wrapper">
   <div class="profile-image">
   <%= form_with model: @profile, url: user_profiles_path, local: true do |f| %>
-    <% if @profile && @profile.avatar.attached? %>
-      <%= image_tag @profile.avatar.variant(resize_to_fill: [200, 200]) %>
-    <% else %>
-      <%= image_tag 'stockfoto_12670415.jpg' %>
-    <% end %>
+    <%= render partial: 'layouts/profile_avatar', locals: {user: @profile.user, a: 200, b: 200} %>
     <div class="field">
-      <%= f.file_field :avatar, class: 'image-up'%>
+      <%= f.file_field :avatar, accept: "image/jpg, image/jpeg,image/gif,image/png", class: 'image-up'%>
     </div>
     <div class="field">
       <%= f.label :introduce_text, '自己紹介文' %>

@@ -1,35 +1,41 @@
-  <div class="post-content">
-    <div class="post-box">
-      <div class="post-box-left">
-        <%= link_to user_dailys_own_path(daily.user.id) do %>
-          <%= render partial: 'layouts/profile_avatar', locals: {user: daily.user} %>
-          <p><%= daily.user.username %>さん</p>
-        <% end %>
-        <p><%= l daily.updated_at %></p>
+<div class="post-content">
+  <div class="post-box">
+    <div class="post-box-left">
+      <%= link_to user_dailys_own_path(daily.user.id), class: 'avatar' do %>
+        <%= render partial: 'layouts/profile_avatar', locals: {user: daily.user, a: 40, b: 40} %>
+      <% end %>
+      <%#= link_to '詳細を見る', user_daily_path(daily.user.id, daily.id) %>
+      <div id="like-btn-<%= daily.id %>" class="like-btn">
+        <%= render 'likes/like', daily: daily %>
       </div>
-      <div class="post-box-center">
-        <%= link_to  user_daily_path(daily.user.id, daily.id) do %>
-          <h4 class="post-title"><%= daily.title %></h4>
-        <% end %>
-        <p>山名：<span><%= daily.mountain.name %></span></p>
-        <p>場所：<span><%= daily.mountain.prefecture %></span></p>
-        <p>標高：<span><%= daily.mountain.height %>m</span></p>
-      </div>
-      <div class="post-box-text">
-        <p><%= daily.comment.slice(0..100) %></p>
-      </div>
-      <div class="post-box-right">
-        <% if daily.images.attached? %>
-          <%= link_to daily.images.first, "data-lightbox"=> daily.images.first do  %>
-            <%= image_tag daily.images.first.variant(resize_to_fill: [150, 150]) %>
+      <%= link_to new_daily_comment_path(daily.id), class: 'comment-link' do %>
+        <i class="far fa-comment-alt"></i>
+      <% end %>
+    </div>
+    <div class="post-box-right">
+      <div class="post-box-right-title">
+        <div class="post-box-right-title-top">
+          <p class="username"><%= daily.user.username %>さん</p>
+          <p><%= l daily.updated_at %></p>
+        </div>
+        <div class="post-box-right-title-bottom">
+          <%= link_to  user_daily_path(daily.user.id, daily.id) do %>
+            <h4 class="post-title"><%= daily.title %></h4>
           <% end %>
-        <% end %>
-        <%= link_to '詳細を見る', user_daily_path(daily.user.id, daily.id) %>
-        <% unless current_user == daily.user %>
-          <div id="like-btn-<%= daily.id %>">
-            <%= render 'likes/like', daily: daily %>
-          </div>
-        <% end %>
+          <p>山名：<span><%= daily.mountain.name %></span></p>
+          <p>場所：<span><%= daily.mountain.prefecture %></span></p>
+        </div>
+      </div>
+      <div class="post-box-right-text">
+        <p><%= simple_format(daily.comment.slice(0..100)) %></p>
       </div>
     </div>
   </div>
+    <div class="post-box-bottom">
+      <% if daily.images.attached? %>
+        <%= link_to daily.images.first, "data-lightbox"=> daily.images.first do  %>
+          <%= image_tag daily.images.first.variant(resize_to_fill: [150, 150]) %>
+        <% end %>
+      <% end %>
+    </div>
+</div>
