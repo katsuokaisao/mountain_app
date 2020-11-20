@@ -9,6 +9,14 @@ class User < ApplicationRecord
   has_many :like_posts, through: :likes, source: :daily
   has_many :comments, dependent: :destroy
 
+  # has_many :active_notifications #自分から他の人に通知を送る
+  # active_notificationsメソッドでactiveNotificationモデルのuser_idにこのモデルのidをセットする除隊=>notificationモデルに対してセットしたい=>user_idは存在しない（visitor_idにセットして欲しい）
+  # active_notificationsメソッドでNotificationモデルのvisitor_idにこのモデルのidをセットする状態が理想、またUserを削除した時にNotificationsも削除したい
+  # passive_notificationsメソッドでNotificationsモデルのvisited_idにこのモデルのidをセットする状態が理想、またUserを削除した時にNotificationsも削除したい
+
+  has_many :active_notifivations, class_name:  'Notification', foreign_key: 'visitor_id', dependent: :destroy
+  has_many :passive_notifivations, class_name:  'Notification', foreign_key: 'visited_id', dependent: :destroy
+
   # has_many :active_relationships
   # active_relationshipsメソッドで
   # Userモデルのidとactiverelationshipモデルのuser_idが一致するカラムを
