@@ -14,8 +14,8 @@ class User < ApplicationRecord
   # active_notificationsメソッドでNotificationモデルのvisitor_idにこのモデルのidをセットする状態が理想、またUserを削除した時にNotificationsも削除したい
   # passive_notificationsメソッドでNotificationsモデルのvisited_idにこのモデルのidをセットする状態が理想、またUserを削除した時にNotificationsも削除したい
 
-  has_many :active_notifivations, class_name:  'Notification', foreign_key: 'visitor_id', dependent: :destroy
-  has_many :passive_notifivations, class_name:  'Notification', foreign_key: 'visited_id', dependent: :destroy
+  has_many :active_notifications, class_name:  'Notification', foreign_key: 'visitor_id', dependent: :destroy
+  has_many :passive_notifications, class_name:  'Notification', foreign_key: 'visited_id', dependent: :destroy
 
   # has_many :active_relationships
   # active_relationshipsメソッドで
@@ -46,6 +46,22 @@ class User < ApplicationRecord
 
   def follow?(other_user)
     !!self.active_relationships.find_by(followed_id: other_user.id)
+  end
+
+  def create_notification_follow!(user)
+    confirm_exists_follow_notification = Notification.where(["visitor_id = ? and visited_id = ? and action = ?", user.id, self.id, 'follow'])
+    if confirm_exists_follow_notification.blank?
+      notification = user.active_notifications.new(
+        # visitor_id: user.id
+        visited_id: self.id,
+        action: 'follow'
+      )
+      notification.save if notification.valid?
+    end
+    # 自分で自分をフォローすることはありえない
+    # if notification.visitor_id == notification.visited_id
+    #   notification.checked = true
+    # end
   end
 
 end

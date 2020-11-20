@@ -40,5 +40,6 @@ config.after_initialize do
 
   # docker-compose restartしないとコードが反映されない問題の解決
   config.file_watcher = ActiveSupport::FileUpdateChecker
+  config.reload_classes_only_on_change = false
   config.hosts << "unicorn"
 end
