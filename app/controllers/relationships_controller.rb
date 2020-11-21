@@ -3,7 +3,11 @@ class RelationshipsController < ApplicationController
   def create
     @user = current_user #勝手に他の人のフォロ・アンフォローをしない
     @other_user = User.find_by(id: params[:followed_id])
-    current_user.follow(@other_user) unless @user == @other_user
+    unless @user == @other_user
+      current_user.follow(@other_user) 
+      # @other_userに@userが通知を送る
+      @other_user.create_notification_follow!(@user)
+    end
     respond_to do |format|
       format.html { redirect_back fallback_location: following_user_path(@user.id) }
       format.js

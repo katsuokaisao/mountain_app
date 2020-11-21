@@ -1,0 +1,31 @@
+.n-circle {
+  position: absolute;
+  padding-left: 1rem;
+  padding-top: 0rem;
+  color: #efa04c;
+}
+
+.notification {
+  .notification-list {
+    padding-left: 10%;
+    margin-bottom: 30px;
+    .notification-list-profile {
+      img {
+        width: 50;
+        height: 50;
+        border-radius: 50%;
+      }
+    }
+    .notification-list-comment {
+      span {
+        .visitor-name {
+          font-weight: 600;
+        }
+        .notification-daily {
+          color: blue;
+          font-weight: 600;
+        }
+      }
+    }
+  }
+}

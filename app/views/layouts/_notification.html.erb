@@ -1,0 +1,8 @@
+<%= link_to notifications_path do %>
+  <% if unchecked_notifications.any? %>
+    <h4><i class="fas fa-bell fa-lg fa-stack-2x"></i>通知</h4>
+    <h4><i class="fas fa-circle n-circle fa-stack-1x"></i></i></h4>
+  <% else %>
+    <h4><i class="fas fa-bell fa-lg"></i>通知</h4>
+  <% end %>
+<% end %>
