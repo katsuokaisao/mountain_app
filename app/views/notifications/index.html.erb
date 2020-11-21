@@ -1,0 +1,6 @@
+<% if @notifications.exists? %>
+  <%= render   @notifications %>
+  <%= paginate @notifications %>
+<% else %>
+  <h3>通知はありません</h3>
+<% end %>

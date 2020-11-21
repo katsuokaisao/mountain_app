@@ -34,7 +34,7 @@ class Daily < ApplicationRecord
       #自分の投稿の場合は通知済みとする
       #保存できるなら保存する（saveに失敗するとfalseが返り値になってしまうのを防ぐ）
 
-      confirm_exists_like_notification = Notification.where(["visitor_id = ? and visited_id = ? and daily_id = ? and action = ?", visitor_user.id, self.user_id, self.daily_id, action: 'like']) 
+      confirm_exists_like_notification = Notification.where(["visitor_id = ? and visited_id = ? and daily_id = ? and action = ?", visitor_user.id, self.user_id, self.id, 'like']) 
       
       if confirm_exists_like_notification.blank? 
         notification = visitor_user.active_notifications.build(
@@ -42,7 +42,7 @@ class Daily < ApplicationRecord
           daily_id: self.id,
           action: 'like'
         )
-        if notification.user == visitor_user
+        if notification.visitor_id == notification.visited_id
           notification.checked = true
         end
         notification.save if notification.valid?
@@ -66,24 +66,26 @@ class Daily < ApplicationRecord
 
       comment_users = Comment.select(:user_id).where(daily_id: self.id).distinct
 
-      save_notification_comment!(visitor_user, comment_id)
+      save_notification_comment!(visitor_user, comment_id, comment_users)
 
       # もしまだ誰もコメントしていなかったら日記の作成者に通知を送る
       # これはリファクタしたらわかりづらくなるからあえてしない
-      notification = visitor_user.active_notifications.build(
-          visited_id: self.user_id,
-          daily_id: self.id,
-          comment_id: comment_id,
-          action: 'comment'
-      )
-      if notification.visitor_id == notification.visited_id
-        notification.checked = true
+      if comment_users.blank?
+        notification = visitor_user.active_notifications.build(
+            visited_id: self.user_id,
+            daily_id: self.id,
+            comment_id: comment_id,
+            action: 'comment'
+        )
+        if notification.visitor_id == notification.visited_id
+          notification.checked = true
+        end
+        
+        notification.save if notification.valid?
       end
-      
-      notification.save if notification.valid?
     end
       
-    def save_notification_comment!(visitor_user, comment_id)
+    def save_notification_comment!(visitor_user, comment_id, comment_users)
       comment_users.each do |comment_user|
         notification = visitor_user.active_notifications.build(
           visited_id: comment_user[:user_id],
@@ -91,12 +93,13 @@ class Daily < ApplicationRecord
           comment_id: comment_id,
           action: 'comment'
         )
+        if notification.visitor_id == notification.visited_id
+          notification.checked = true
+        end
+        
+        notification.save if notification.valid?
       end
 
-      if notification.visitor_id == notification.visited_id
-        notification.checked = true
-      end
       
-      notification.save if notification.valid?
     end
 end

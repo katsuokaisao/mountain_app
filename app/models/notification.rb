@@ -6,6 +6,6 @@ class Notification < ApplicationRecord
   # optional: trueはnilでもいい
   belongs_to :visitor, class_name: 'User', foreign_key: 'visitor_id', optional: true
   belongs_to :visited, class_name: 'User', foreign_key: 'visitor_id', optional: true
-  belongs_to :daily, optional: true
+  belongs_to :daily,   optional: true
   belongs_to :comment, optional: true
 end

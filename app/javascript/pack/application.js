@@ -9,7 +9,7 @@ $(function() {
     nextSelector: 'a.next',
     contentSelector: '.jscroll', 
     loadingHtml: '読み込み中',
-    padding: 100
+    padding: 50
   });
 });
 

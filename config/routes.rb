@@ -32,4 +32,6 @@ Rails.application.routes.draw do
     delete  'removeLike', to: 'likes#destroy'
     resources :comments, only: [:new, :create, :edit, :destroy]
   end
+
+  resources :notifications, only: :index
 end 
