@@ -5,23 +5,23 @@
     </div>
     <div class="notification-list-comment">
       <span>
-        <%= notification.visitor.username %>さんが
+        <span class="visitor-name"><%= notification.visitor.username %>さんが</span>
         <% case notification.action %>
         <% when 'follow' then %>
           あなたをフォローしました。
         <% when 'like' then %>
-          あなたの<%= link_to '投稿', user_daily_path(current_user.id, notification.daily.id) %>にいいねしました。
+          あなたの<%= link_to '投稿', user_daily_path(current_user.id, notification.daily.id), class: 'notification-daily' %>にいいねしました。
         <% when 'comment' then %>
           <%# 通知の日記投稿者が自分の場合 %>
           <% if notification.daily.user_id == notification.visited.id %>
-            <%= notification.visitor.username %>があなたの
-            <%= link_to '投稿', user_daily_path(current_user.id, notification.daily.id) %>
-            にコメントしました
+            <%= notification.visitor.username %>の
+            <%= link_to '投稿', user_daily_path(current_user.id, notification.daily.id), class: 'notification-daily' %>
+            にコメントしました。
           <% else %>
             <%= notification.visitor.username %>が
             <%= notification.daily.user.username %>の
-            <%= link_to '投稿', user_daily_path(current_user.id, notification.daily.id) %>
-            にコメントしました
+            <%= link_to '投稿', user_daily_path(current_user.id, notification.daily.id), class: 'notification-daily' %>
+            にコメントしました。
           <% end %>
         <% end %>
       </span>
