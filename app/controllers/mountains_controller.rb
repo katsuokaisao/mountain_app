@@ -10,4 +10,9 @@ class MountainsController < ApplicationController
     @mountain = Mountain.find(params[:id])
     @apiKey = Rails.application.credentials.api_key[:GOOGLEMAP]
   end
+
+  def map 
+    @mountains = Mountain.all
+    @apiKey = Rails.application.credentials.api_key[:GOOGLEMAP]
+  end
 end
