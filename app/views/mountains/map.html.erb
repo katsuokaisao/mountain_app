@@ -1,0 +1,37 @@
+<h4 class="feature-title">地図</h4>
+<div id="map">
+
+<script type="text/javascript">
+  const head = document.getElementsByTagName('head')[0]
+  const insertBefore = head.insertBefore
+  head.insertBefore = (newElement, referenceElement) => {
+    if (newElement.href && newElement.href.indexOf('https://fonts.googleapis.com/css?family=Roboto') === 0)
+      return
+    insertBefore.call(head, newElement, referenceElement)
+  }
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=<%= @apiKey %>&callback=initMap" async defer></script>
+<script>
+function initMap(){
+  const tokyoTower = { lat: 35.6585, lng: 139.7486 }
+  const map = new google.maps.Map(document.getElementById('map'), {
+    center: tokyoTower,
+    zoom: 5,
+  });
+  <% @mountains.each do |mountain| %>
+  (function(){
+    var marker = new google.maps.Marker({
+      position: {lat: <%= mountain.latitude %>, lng: <%= mountain.longitude %>},
+      map: map
+    });
+    var contentString = "<%= mountain.name %>"+"<br>"+"<a href='/mountains/<%= mountain.id%>'>この山情報を表示</a>"
+    var infoWindow = new google.maps.InfoWindow ({
+      content: contentString 
+    });
+    marker.addListener("click", () => {
+      infoWindow.open(map, marker);
+    });
+  })();
+  <% end %>
+}
+</script>

@@ -24,6 +24,8 @@ Rails.application.routes.draw do
   resources :mountains, only: [:index, :show] do
     get 'dailys/mountain_show'
   end
+
+  get 'map', to: 'mountains#map'
   
   resources :relationships, only: [:create, :destroy]
   
