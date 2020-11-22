@@ -8,7 +8,7 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: password
     volumes: 
-      - mysql-data:/var/lib/mysql
+      - mysql-data:/var/lib/mysql:delegated
     security_opt:
       - seccomp:unconfined
   app:
@@ -17,9 +17,9 @@ services:
       dockerfile: Dockerfile
     command: bash -c "rm -f tmp/pids/unicorn.pid && bundle exec unicorn -p 3000 -c /mountain_app/config/unicorn.rb"
     volumes: 
-      - .:/mountain_app
-      - tmp-data:/mountain_app/tmp/sockets
-      - public-data:/mountain_app/public
+      - .:/mountain_app:delegated
+      - tmp-data:/mountain_app/tmp/sockets:delegated
+      - public-data:/mountain_app/public:delegated
     ports: 
       - "3000:3000"
     depends_on:
@@ -34,8 +34,8 @@ services:
       - "80:80"
     restart: always
     volumes: 
-      - tmp-data:/mountain_app/tmp/sockets
-      - public-data:/mountain_app/public
+      - tmp-data:/mountain_app/tmp/sockets:delegated
+      - public-data:/mountain_app/public:delegated
 volumes: 
   mysql-data:
     driver: local
