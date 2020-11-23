@@ -1,8 +1,6 @@
 <div class="comment-list-wrapper">
   <div class="comment-list">
-    <% if comment.user.profile && comment.user.profile.avatar.attached? %>
-        <%= image_tag comment.user.profile.avatar.variant(resize_to_fill: [40, 40]) %>
-    <% end %>
+  <%= render partial: 'layouts/profile_avatar', locals: {user: comment.user, a: 40, b: 40} %>
     <div class="comment-list-content">
       <div class="comment-list-content-top">
         <p><%= comment.user.username %></p>

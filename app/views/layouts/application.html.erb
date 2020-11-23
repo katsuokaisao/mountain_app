@@ -30,6 +30,7 @@
       </div>
       <div class="header-list-right header-list-right-signed">
       <%= render 'layouts/daily-create' %>
+        <%#= render partial: 'layouts/profile_avatar', locals: {user: current_user, a: 60, b: 60} %>
         <% if current_user.profile && current_user.profile.avatar.attached? %>
           <%= image_tag current_user.profile.avatar.variant(resize_to_fill: [60, 60]), class: "dropdown-trigger" %>
         <% else %>

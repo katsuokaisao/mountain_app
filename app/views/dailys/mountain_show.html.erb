@@ -4,11 +4,7 @@
     <%= link_to  user_daily_path(daily.user.id, daily.id) do %>
       <div class="card card-skin">
         <div class="card__imgframe">
-          <% if daily.user.profile && daily.user.profile.avatar.attached? %>
-            <%= image_tag daily.user.profile.avatar %>
-          <% else %>
-            <%= image_tag 'stockfoto_12670415.jpg' %>
-          <% end %>
+          <%= render partial: 'layouts/profile_avatar', locals: {user: daily.user, a: 200, b: 200} %>
         </div>
         <div class="card__textbox">
           <div class="card__titletext">
