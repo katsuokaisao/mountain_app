@@ -27,6 +27,7 @@ gem 'rails-i18n'
 gem 'lightbox2-rails'#画像の拡大
 gem 'active_storage_validations'
 gem 'image_processing', '~> 1.2'
+gem "mini_magick"
 gem 'aws-sdk-s3'
 gem 'activeadmin'
 gem 'bootsnap', '>= 1.4.2', require: false
