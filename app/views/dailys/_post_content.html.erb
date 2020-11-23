@@ -34,7 +34,7 @@
     <div class="post-box-bottom">
       <% if daily.images.attached? %>
         <%= link_to daily.images.first, "data-lightbox"=> daily.images.first do  %>
-          <%= image_tag daily.images.first.variant(resize_to_fill: [150, 150]).service_url %>
+          <%= image_tag daily.images.first.variant(resize_to_fill: [150, 150]) %>
         <% end %>
       <% end %>
     </div>
