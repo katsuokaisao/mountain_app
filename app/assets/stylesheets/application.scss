@@ -175,3 +175,12 @@ img {
   line-height: 64px;
   margin-right: 5px;
 }
+
+// ログイン前のユーザー操作のページのmargin-topを設ける
+// ログイン後と分けるため
+.margin-top {
+  padding-top: 60px;
+  @include md {
+    padding-top: 40px;
+  }
+}
