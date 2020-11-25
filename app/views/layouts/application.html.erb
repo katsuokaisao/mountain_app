@@ -45,8 +45,8 @@
       <% end %>
     </ul>
     </header>
-    <div id="modal"><i class="fas fa-sign-in-alt fa-3x"></i></div>
     <% if user_signed_in? %>
+    <div id="modal"><i class="fas fa-sign-in-alt fa-3x"></i></div>
       <div class="content">
         <div class="left">
           <%= render 'layouts/side_nav' %>
@@ -54,15 +54,18 @@
         <div class="right">
           <%= yield %>
         </div>
+        <div class="modal">
+          <div class="inner">
+            <%= render 'layouts/side_nav' %>
+          </div>
+        </div>
       </div>
     <% else %>
       <%= yield %>
-    <% end %>
-    <div class="modal">
-      <div class="inner">
-        <%= render 'layouts/side_nav' %>
+      <div>
+        <%# <p id="modal"></p> %>
       </div>
-    </div>
+    <% end %>
   </body>
 </html>
 

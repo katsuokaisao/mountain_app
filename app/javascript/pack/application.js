@@ -60,18 +60,20 @@ document.addEventListener("DOMContentLoaded", function(){
 
 document.addEventListener('DOMContentLoaded', function(){
   const modal = document.getElementById('modal')
-  modal.addEventListener('click', showModal);
-  const modalElement = document.getElementsByClassName('modal')[0];
-  function showModal() {
-    modalElement.classList.add('active');
-  }
-  document.addEventListener('click', (ev) => {
-    if (modalElement.classList.contains('active') && !ev.target.classList.contains('fas') ) {
-      console.log(ev.target);
-      console.log(ev.target.classList);
-      modalElement.classList.remove('active');
+  if (modal !== null) {
+    modal.addEventListener('click', showModal);
+    const modalElement = document.getElementsByClassName('modal')[0];
+    function showModal() {
+      modalElement.classList.add('active');
     }
-  })  
+    document.addEventListener('click', (ev) => {
+      if (modalElement.classList.contains('active') && !ev.target.classList.contains('fas') ) {
+        console.log(ev.target);
+        console.log(ev.target.classList);
+        modalElement.classList.remove('active');
+      }
+    })  
+  }
 })
 
 // document.addEventListener('DOMContentLoaded', function(){
