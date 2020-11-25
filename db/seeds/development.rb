@@ -178,12 +178,13 @@ relationship_user.each do |user|
 end
 
 users.each do |user|
-  mountains52 = Mountain.limit(52)
-  mountains52.each do |mountain| 
+  mountains10 = Mountain.limit(10)
+  mountains10.each do |mountain| 
     daily = Daily.create!(mountain_name: mountain.name, title: "#{mountain.name}に行ってみた", comment: "#{mountain.name}に行ってみた"*10, user_id: user.id, mountain_id: mountain.id)
-    # daily.images.attach(io: File.open(Rails.root.join('app','assets', 'images', 'stockfoto_12670415.jpg')), filename: "stockfoto_12670415.jpg", content_type: "image/jpg")
+    # daily.images.attach(io: File.open(Rails.root.join('app','assets', 'images', 'IMG_0494.jpeg')), filename: "IMG_0494.jpeg", content_type: "image/jpeg")
+    daily.images.attach(io: File.open(Rails.root.join('app','assets', 'images', 'IMG_3381.jpeg')), filename: "IMG_3381.jpeg", content_type: "image/jpeg")
+    # daily.images.attach(io: File.open(Rails.root.join('app','assets', 'images', 'IMG_3326.jpeg')), filename: "IMG_3326.jpeg", content_type: "image/jpeg")
   end
 end
-
 # `latitude: ${location.href.split('@')[1].split(',')[0]}, longitude: ${location.href.split('@')[1].split(',')[1]}`
 AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?

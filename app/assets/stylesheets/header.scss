@@ -7,6 +7,11 @@ header {
     display: flex;
     justify-content: space-between;
     width: 75%;
+    @include md {
+      width: 100%;
+      padding: 5px 40px;
+      box-sizing: border-box;
+    }
     margin: 0 auto;
     .header-list-item-link {
       color: white;
@@ -14,6 +19,14 @@ header {
       font-weight: 700;
     }
     .header-list-left {
+      list-style: none;
+      display: flex;
+      h3 {
+        @include md {
+          font-size: 30px;
+          vertical-align: middle;
+        }
+      }
       .header-list-item {
         h1 {
           .header-list-item-link {
@@ -46,6 +59,9 @@ header {
     .header-list-right.header-list-right-signed {
       width: 150px;
       display: flex;
+      @include md {
+        width: auto;
+      }
       img {
         width: 60px;
         height: 60px;

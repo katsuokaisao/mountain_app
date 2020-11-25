@@ -1,8 +1,4 @@
 'user strict'
-// dropdownが開かれていない状態でdropdownTriggerをクリックすればdropdownが開く
-// dropdownが開いているならdropdownTriggerをもう一度クリックするかdropdownTrigger以外をクリックしても
-// dropdownが閉じる
-
 
 $(function() {
   $('.jscroll').jscroll({
@@ -12,6 +8,11 @@ $(function() {
     padding: 50
   });
 });
+
+
+// dropdownが開かれていない状態でdropdownTriggerをクリックすればdropdownが開く
+// dropdownが開いているならdropdownTriggerをもう一度クリックするかdropdownTrigger以外をクリックしても
+// dropdownが閉じる
 
 document.addEventListener("DOMContentLoaded", function(){
   const dropdownTrigger = document.getElementsByClassName('dropdown-trigger')[0];
@@ -57,3 +58,61 @@ document.addEventListener("DOMContentLoaded", function(){
 //   }
 // });
 
+document.addEventListener('DOMContentLoaded', function(){
+  const modal = document.getElementById('modal')
+  if (modal !== null) {
+    modal.addEventListener('click', showModal);
+    const modalElement = document.getElementsByClassName('modal')[0];
+    function showModal() {
+      modalElement.classList.add('active');
+    }
+    document.addEventListener('click', (ev) => {
+      if (modalElement.classList.contains('active') && !ev.target.classList.contains('fas') ) {
+        console.log(ev.target);
+        console.log(ev.target.classList);
+        modalElement.classList.remove('active');
+      }
+    })  
+  }
+})
+
+// document.addEventListener('DOMContentLoaded', function(){
+//   document.getElementById('modal').addEventListener('click', showModal);
+
+//   function showModal() {
+    // const modalElement = document.createElement('div');
+    // modalElement.classList.add('modal');
+    // const innerElement = document.createElement('div');
+    // innerElement.classList.add('inner');
+
+    // innerElement.innerHTML = '<input type="button" id="closeBtn" value="close">'
+
+    // const sideNav = document.getElementsByClassName('left')[0];
+    // innerElement.appendChild(sideNav);
+    // sideNav.classList.add('active');
+
+    // modalElement.appendChild(innerElement);
+    // document.body.appendChild(modalElement);
+
+    // modalElement.classList.add('active');
+    // const right = document.getElementsByClassName('right')[0];
+    
+    // right.addEventListener('click', (e) => {
+    //   closeModal(modalElement);
+    // })
+    // innerElement.addEventListener('click', (e) => {
+    //   closeModal(modalElement);
+    // });
+//   }
+
+//   function closeModal(modalElement) {
+//     if (document.getElementsByClassName('modal').length == 2) {
+//       document.getElementsByClassName('modal')[0].remove();
+//     }
+//     modalElement.classList.remove('active');
+//     const content = document.getElementsByClassName('content')[0];
+//     const sideNav = document.getElementsByClassName('left')[0];
+//     content.prepend(sideNav);
+//     sideNav.classList.remove('active');
+//   }
+// })

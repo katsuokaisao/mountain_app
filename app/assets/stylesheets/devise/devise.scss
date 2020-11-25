@@ -83,9 +83,21 @@ $xl: 1200px;
   }
 }
 
-@include lg {
+@include xl {
   .devise-form-wrapper {
     width: 50%;
+  }
+}
+
+@include lg {
+  .devise-form-wrapper {
+    width: 60%;
+  }
+}
+
+@include md {
+  .devise-form-wrapper {
+    width: 60%;
   }
 }
 
