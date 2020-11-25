@@ -1,13 +1,30 @@
 .profile-wrapper {
   width: 50%;
   height: 500px;
-  margin: 40px auto;
+  margin: 40px auto 0;
+  @include md {
+    margin: 20px auto 0;
+  }
+  @include sm {
+    width: 70%;
+    margin: 10px auto 0;
+  }
   .profile-image {
     form {
       text-align: center;
       margin: 30px 0;
+      @include md {
+        margin: 10px 0;
+      }
+      @include sm {
+        margin: 0;
+      }
       img {
         border-radius: 50%;
+        @include md {
+          width: 100px;
+          height: 100px;
+        }
       }
       .field {
         margin-bottom: 30px;
@@ -20,10 +37,16 @@
           margin-bottom: 5px;
         }
         textarea {
-          width: 60%;
+          width: 70%;
           height: 100px;
           font-size: 16px;
           padding: 5px;
+          @include xl {
+            width: 80%;
+          }
+          @include lg {
+            width: 100%;
+          }
         }
       }
       input[type="submit"] {

@@ -57,6 +57,12 @@ img {
   flex-grow: 1;
   margin-top: 50px;
   overflow: scroll;
+  @include md {
+    margin-top: 20px;
+  }
+  @include sm {
+    margin-top: 0;
+  }
 }
 
 .jscroll {
