@@ -1,6 +1,8 @@
 <% @title = "山日記" %>
 <div class="card-wrapper">
   <% @dailys.each do |daily| %>
+    <%# このdivがあることでflexが崩れるのを防ぐ（link_toで生成された空のaタグがflexの対象になる） %>
+    <div> 
     <%= link_to  user_daily_path(daily.user.id, daily.id) do %>
       <div class="card card-skin">
         <div class="card__imgframe">
@@ -21,5 +23,6 @@
         </div>
       </div>
     <% end %>
+    </div>
   <% end %>
 </div>

@@ -31,8 +31,8 @@ https://www.mountain-app.com/
 - ソース管理(Cit, GitHub)
 - AWS(EC2, ALB, Route53, ACM, RDS, S3)
 - CircleCI(CI/CD)
-  - CIはmasterブランチにpush後にRubocopとRspecを行う 
-  - CDはCircleCIでEC2にssh接続してgit pullを行う
+  - CIはmasterブランチにpushもしくはマージ後にRubocopとRspecを行う
+  - CDはCircleCIでEC2にssh接続してgit pull等を行う
 
 ## 機能一覧
 ***
@@ -48,11 +48,12 @@ https://www.mountain-app.com/
 - 投稿画像プレビュー機能（予定）
 - フォロー機能(ajax)
 - いいね機能(ajax)
-- コメント機能(予定)
-- 通知機能（予定）
+- コメント機能
+- 通知機能
+- 活動歴暦機能（予定）
 - 山一覧絞り込み機能
 - DM機能（予定）
-- レスポンシィブ対応（予定）
+- レスポンシィブ対応
 
 ## 工夫点
 ***
@@ -81,4 +82,3 @@ https://www.mountain-app.com/
 - リファクタリングが不十分、コードに無駄がある
 - 命名に不適切な点がある(日記を表すdialyをdailyと間違えてしまった点や英単語の複数形を間違えてしまった点)
 - インフラのコード化に取り組めていない
-
