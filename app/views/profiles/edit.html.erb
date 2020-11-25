@@ -1,7 +1,7 @@
 <div class="profile-wrapper">
   <div class="profile-image">
   <%= form_with model: @profile, url: user_profiles_path, local: true do |f| %>
-    <%= render partial: 'layouts/profile_avatar', locals: { a: 200, b: 200} %>
+    <%= render partial: 'layouts/profile_avatar', locals: { user: current_user, a: 200, b: 200} %>
     <div class="field">
       <%= f.file_field :avatar, accept: "image/jpg, image/jpeg,image/gif,image/png", class: 'image-up'%>
     </div>

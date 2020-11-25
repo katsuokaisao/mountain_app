@@ -1,5 +1,5 @@
-<% if current_user.profile && current_user.profile.avatar.attached? %>
-  <%= image_tag current_user.profile.avatar.variant(resize_to_fill: [a, b]) %>
+<% if user.profile && user.profile.avatar.attached? %>
+  <%= image_tag user.profile.avatar.variant(resize_to_fill: [a, b]) %>
 <% else %>
   <%= image_tag 'stockfoto_12670415.jpg'%>
 <% end %>
