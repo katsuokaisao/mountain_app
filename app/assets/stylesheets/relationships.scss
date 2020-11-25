@@ -1,6 +1,12 @@
 .friends-content {
   width: 70%;
   margin: 0 auto;
+  @include lg {
+    width: 80%;
+  }
+  @include sm {
+    width: 90%;
+  }
   .tab-group {
     list-style: none;
     display: flex;
