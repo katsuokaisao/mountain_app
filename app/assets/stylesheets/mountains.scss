@@ -2,6 +2,16 @@
 .table-wrapper {
   width: 60%;
   margin: 0 auto 0;
+  @include xl {
+    width: 70%;
+  }
+  @include lg {
+    width: 90%;
+  }
+  @include sm {
+    width: 95%;
+  }
+
   .search-wrapper {
     text-align: center;
     margin-bottom: 20px;
