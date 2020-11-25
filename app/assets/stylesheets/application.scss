@@ -139,7 +139,7 @@ img {
   display: none;
   @include md {
     display: inline-block;
-    padding-left: 10px;
+    padding-left: 25px;
   }
 }
 .modal {
@@ -162,6 +162,7 @@ img {
   background-color: rgba(255, 255, 255, 1);
   border: solid 3px #dfe4ea;
   border-radius: 10px;
+  padding-top: 120px;
 }
 
 .fa-sign-in-alt {
