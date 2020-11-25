@@ -91,6 +91,12 @@
   max-width: 1000px;
   width: 70%;
   margin: 0 auto 50px;
+  @include xl {
+    width: 80%;
+  }
+  @include md {
+    width: 90%;
+  }
   .mountain-information-top {
     margin-bottom: 40px;
     i {
@@ -104,6 +110,9 @@
       font-size: 32px;
       width: 40%;
       display: inline-block;
+      @include sm {
+        display: block;
+      }
     }
     .mountain-prefecture {
       width: 20%;
