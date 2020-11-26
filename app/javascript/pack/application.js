@@ -32,32 +32,6 @@ document.addEventListener("DOMContentLoaded", function(){
   });
 }, false);
 
-// フォロー・フォロワーリストのtab
-// {
-//   const tabs = document.getElementsByClassName('user-tab');
-//   for(let i = 0; i < tabs.length; i++ ) {
-//     tabs[i].addEventListener('click', (e)=> {
-//       e.preventDefault();
-//       const currentTab = e.currentTarget;
-//       for(let i = 0; i < tabs.length;  i++) {
-//         tabs[i].classList.remove('is-active');
-//       }
-//       currentTab.classList.add('is-active');
-//     });
-//   }
-// }
-
-// const images = document.getElementById('daily_images');
-// images.addEventListener('click', ()=> {
-//   for(i=0; i<images.files.length; i++) {
-//     const size_in_megabytes = this.files[i].size/1024/1024;
-//     if (size_in_megabytes > 5) {
-//       alert("最大5MBまでです。");
-//       images.value = "";
-//     }
-//   }
-// });
-
 document.addEventListener('DOMContentLoaded', function(){
   const modal = document.getElementById('modal')
   if (modal !== null) {
@@ -75,48 +49,6 @@ document.addEventListener('DOMContentLoaded', function(){
     })  
   }
 })
-
-// document.addEventListener('DOMContentLoaded', function(){
-//   document.getElementById('modal').addEventListener('click', showModal);
-
-//   function showModal() {
-    // const modalElement = document.createElement('div');
-    // modalElement.classList.add('modal');
-    // const innerElement = document.createElement('div');
-    // innerElement.classList.add('inner');
-
-    // innerElement.innerHTML = '<input type="button" id="closeBtn" value="close">'
-
-    // const sideNav = document.getElementsByClassName('left')[0];
-    // innerElement.appendChild(sideNav);
-    // sideNav.classList.add('active');
-
-    // modalElement.appendChild(innerElement);
-    // document.body.appendChild(modalElement);
-
-    // modalElement.classList.add('active');
-    // const right = document.getElementsByClassName('right')[0];
-    
-    // right.addEventListener('click', (e) => {
-    //   closeModal(modalElement);
-    // })
-    // innerElement.addEventListener('click', (e) => {
-    //   closeModal(modalElement);
-    // });
-//   }
-
-//   function closeModal(modalElement) {
-//     if (document.getElementsByClassName('modal').length == 2) {
-//       document.getElementsByClassName('modal')[0].remove();
-//     }
-//     modalElement.classList.remove('active');
-//     const content = document.getElementsByClassName('content')[0];
-//     const sideNav = document.getElementsByClassName('left')[0];
-//     content.prepend(sideNav);
-//     sideNav.classList.remove('active');
-//   }
-// })
-
 
 // 複数画像のプレビュー機能
 document.addEventListener('DOMContentLoaded', function(){
@@ -144,3 +76,40 @@ document.addEventListener('DOMContentLoaded', function(){
     }
   })
 });
+
+// トップに戻るボタン
+const scrollBtn = document.getElementById('scroll-btn');
+scrollBtn.addEventListener('click', function() {
+  scrollTop()
+});
+function scrollTop() {
+  const scrolledHeight = getScrolled();
+  window.
+}
+
+
+// フォロー・フォロワーリストのtab
+// {
+//   const tabs = document.getElementsByClassName('user-tab');
+//   for(let i = 0; i < tabs.length; i++ ) {
+//     tabs[i].addEventListener('click', (e)=> {
+//       e.preventDefault();
+//       const currentTab = e.currentTarget;
+//       for(let i = 0; i < tabs.length;  i++) {
+//         tabs[i].classList.remove('is-active');
+//       }
+//       currentTab.classList.add('is-active');
+//     });
+//   }
+// }
+
+// const images = document.getElementById('daily_images');
+// images.addEventListener('click', ()=> {
+//   for(i=0; i<images.files.length; i++) {
+//     const size_in_megabytes = this.files[i].size/1024/1024;
+//     if (size_in_megabytes > 5) {
+//       alert("最大5MBまでです。");
+//       images.value = "";
+//     }
+//   }
+// });
