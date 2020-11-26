@@ -64,6 +64,11 @@
       .image-up {
         padding-top: 5px;
       }
+      #preview {
+        img {
+          width: 100%;
+        }
+      }
     }
     .btn {
       width: 100%;
