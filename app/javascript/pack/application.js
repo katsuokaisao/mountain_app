@@ -1,5 +1,6 @@
 'user strict'
 
+// 無限スクロール
 $(function() {
   $('.jscroll').jscroll({
     nextSelector: 'a.next',
@@ -8,7 +9,6 @@ $(function() {
     padding: 50
   });
 });
-
 
 // dropdownが開かれていない状態でdropdownTriggerをクリックすればdropdownが開く
 // dropdownが開いているならdropdownTriggerをもう一度クリックするかdropdownTrigger以外をクリックしても
@@ -116,3 +116,31 @@ document.addEventListener('DOMContentLoaded', function(){
 //     sideNav.classList.remove('active');
 //   }
 // })
+
+
+// 複数画像のプレビュー機能
+document.addEventListener('DOMContentLoaded', function(){
+  document.getElementById('image-up').addEventListener('change', function(e) {
+    // console.log(e);
+    // console.log(e.target);
+    // console.log(e.target.files);
+    // console.log(e.target.files.length);
+    for(let i = 0; i < e.target.files.length; i++) {
+      const file = e.target.files[i];
+      const reader = new FileReader();
+      const preview = document.getElementById('preview');
+      const previewImage = document.getElementById('previewImage');
+      if (previewImage != null) {
+        preview.removeChild(previewImage);
+      }
+      // onloadは、FileReaderのイベントです。データの読み込みが正常に完了した時にloadイベントが発生し、ここに設定したコールバック関数が呼び出されます。
+      reader.onload = function(event) {
+        const img = document.createElement('img');
+        img.setAttribute('src', reader.result);
+        img.setAttribute('id',  'previewImage');
+        preview.appendChild(img);
+      }
+      reader.readAsDataURL(file);
+    }
+  })
+});
