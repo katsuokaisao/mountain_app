@@ -33,6 +33,25 @@ body {
   height: 100%;
 }
 
+.top-btn {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+    
+  /*-----装飾-----*/
+  width: 64px;
+  height: 64px;
+  line-height: 64px;
+  text-align: center;
+  background-color: #333;
+  color: #fff;
+  .fa-arrow-circle-up {
+    color: white;
+    font-size: 32px;
+    line-height: 64px;
+  }
+}
+
 img {
   border: 1px solid black;
 }
