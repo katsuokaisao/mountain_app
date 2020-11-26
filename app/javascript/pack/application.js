@@ -77,16 +77,6 @@ document.addEventListener('DOMContentLoaded', function(){
   })
 });
 
-// トップに戻るボタン
-const scrollBtn = document.getElementById('scroll-btn');
-scrollBtn.addEventListener('click', function() {
-  scrollTop()
-});
-function scrollTop() {
-  const scrolledHeight = getScrolled();
-  window.
-}
-
 
 // フォロー・フォロワーリストのtab
 // {
