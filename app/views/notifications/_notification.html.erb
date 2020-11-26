@@ -18,7 +18,6 @@
             <%= link_to '投稿', user_daily_path(current_user.id, notification.daily.id), class: 'notification-daily' %>
             にコメントしました。
           <% else %>
-            <%= notification.visitor.username %>が
             <%= notification.daily.user.username %>の
             <%= link_to '投稿', user_daily_path(current_user.id, notification.daily.id), class: 'notification-daily' %>
             にコメントしました。
