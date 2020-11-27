@@ -1,4 +1,5 @@
 class Daily < ApplicationRecord
+  default_scope -> { order(created_at: :desc) }
   has_many_attached :images
   # userメソッドでdaily_
   belongs_to :user

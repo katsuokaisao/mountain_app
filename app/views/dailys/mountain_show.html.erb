@@ -6,15 +6,24 @@
     <%= link_to  user_daily_path(daily.user.id, daily.id) do %>
       <div class="card card-skin">
         <div class="card__imgframe">
-          <%= render partial: 'layouts/profile_avatar', locals: {user: daily.user, a: 200, b: 200} %>
+          <% if daily.images.attached? %>
+            <%= link_to daily.images.first, "data-lightbox"=> daily.images.first do  %>
+              <%= image_tag daily.images.first.variant(resize_to_fill: [150, 150]) %>
+            <% end %>
+          <% end %>
         </div>
         <div class="card__textbox">
           <div class="card__titletext">
-            <%= daily.title%>
+            <%= link_to user_dailys_own_path(daily.user.id), class: 'avatar' do %>
+              <%= render partial: 'layouts/profile_avatar', locals: {user: daily.user, a: 40, b: 40} %>
+            <% end %>
             <% unless current_user == daily.user %>
               <div id="like-btn-<%= daily.id %>">
                 <%= render 'likes/like', daily: daily %>
               </div>
+            <% end %>
+            <%= link_to user_daily_path daily.user.id, daily.id do %>
+              <p><%= daily.title%></p>
             <% end %>
           </div>
           <div class="card__overviewtext">

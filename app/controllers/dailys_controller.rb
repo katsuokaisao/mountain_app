@@ -10,7 +10,7 @@ class DailysController < ApplicationController
     # current_userとcurrent_userがフォローしている人の投稿一覧
     following_ids = @user.following_ids
     id = @user.id
-    @dailys = Daily.where("user_id IN (?) OR user_id = ?", following_ids, id).eager_load( :mountain).preload({user: {profile: :avatar_attachment}}, :images_attachments).page(params[:page]).without_count.per(50)
+    @dailys = Daily.where("user_id IN (?) OR user_id = ?", following_ids, id).eager_load( :mountain).preload({user: {profile: :avatar_attachment}}, images_attachments: :blob).page(params[:page]).without_count.per(50)
     respond_to do |format|
       format.html
       format.js
@@ -18,7 +18,7 @@ class DailysController < ApplicationController
   end
 
   def own
-    @dailys = @user.dailys.page(params[:page]).eager_load(:user, :mountain).preload(:images_attachments).without_count.per(50)
+    @dailys = @user.dailys.page(params[:page]).eager_load(:user, :mountain).preload(images_attachments: :blob).without_count.per(50)
     respond_to do |format|
       format.html
       format.js
@@ -27,7 +27,7 @@ class DailysController < ApplicationController
 
   def mountain_show
     mountain = Mountain.find(params[:mountain_id])
-    @dailys = mountain.dailys.eager_load(user: {profile: :avatar_attachment})
+    @dailys = mountain.dailys.eager_load(user: {profile: :avatar_attachment}).preload(:images_attachments)
   end
 
   def mountain
@@ -46,7 +46,7 @@ class DailysController < ApplicationController
       |mountain| mountain.name == @daily.mountain_name
     }
     if name_matched_mountain.first && @daily.valid?
-      flash[:success] = "投稿できました！"
+      # flash[:success] = "投稿できました！" マイページにリダイレクトして確認できるからいらない
       @daily.mountain_id = name_matched_mountain.first.id
       @daily.save
       redirect_to user_dailys_own_path

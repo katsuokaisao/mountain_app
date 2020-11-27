@@ -8,7 +8,7 @@ ja:
       truncate: "..."
   time:  
     formats: 
-      default: "%m月%d日%H時"
+      default: "%m月%d日%H時%M分"
   errors:
     messages:
       not_found: "は見つかりませんでした"
