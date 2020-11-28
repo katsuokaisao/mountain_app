@@ -75,6 +75,9 @@
           width: 350px;
           padding: 10px;
           font-size: 16px;
+          @include sm {
+            width: 100%;
+          }
         }
       }
       .friends-list-right {

@@ -7,6 +7,9 @@
   .profile-content {
     display: flex;
     margin-bottom: 10px;
+    @include sm {
+      display: block;
+    }
     .profile-content-left {
       img {
         width: 80px;
@@ -17,6 +20,10 @@
       }
       p {
         text-align: center;
+        @include sm {
+          display: inline-block;
+          text-align: left;
+        }
       }
       h4 {
         margin-bottom: 10px;
@@ -44,10 +51,14 @@
         }
       }
     }
-    .profile-content-center {
-    }
     .profile-introduce {
+      padding: 0;
+    }
+    p{
       padding: 10px 15px;
+      @include sm {
+        padding: 010px;
+      }
     }
   }
 }

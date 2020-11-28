@@ -79,6 +79,7 @@ img {
   overflow: scroll;
   @include md {
     margin-top: 20px;
+    overflow: visible;
   }
   @include sm {
     margin-top: 0;

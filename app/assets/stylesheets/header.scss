@@ -12,6 +12,9 @@ header {
       padding: 5px 40px;
       box-sizing: border-box;
     }
+    @include sm {
+      font-size: 12px;
+    }
     margin: 0 auto;
     .header-list-item-link {
       color: white;

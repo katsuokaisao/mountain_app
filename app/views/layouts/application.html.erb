@@ -17,7 +17,7 @@
     <ul class="header-list">
     <% unless user_signed_in? %>
       <div class="header-list-left">
-        <li class="header-list-item" ><h1><%= link_to '100名山', root_path, class: "header-list-item-link" %></h1></li>
+        <li class="header-list-item" ><h1><%= link_to '百名山', root_path, class: "header-list-item-link" %></h1></li>
       </div>
       <div class="header-list-right dropdown">
         <li class="header-list-item" ><%= link_to '新規登録', new_user_registration_path, class: "header-list-item-link header-list-item-signup" %></li>
@@ -27,7 +27,7 @@
       </div>
     <% else %>
       <div class="header-list-left">
-        <li class="header-list-item" ><h1><%= link_to '100名山', user_dailys_own_path(current_user.id) , class: "header-list-item-link" %></h1></li>
+        <li class="header-list-item" ><h1><%= link_to '百名山', user_dailys_own_path(current_user.id) , class: "header-list-item-link" %></h1></li>
       </div>
       <div class="header-list-right header-list-right-signed">
       <%= render 'layouts/daily-create' %>
