@@ -256,13 +256,24 @@
       position: absolute;
       top: 0;
       right: 0;
+      i {
+        @include sm {
+          font-size: 26px;
+        }
+      }
     }
     .mountain-name {
-      font-size: 30px;
+      font-size: 26px;
+      @include sm {
+        font-size: 20px;
+      }
     }
     .title {
       font-size: 30px;
       margin-bottom: 10px;
+      @include sm {
+        font-size: 24px;
+      }
     }
     .comment {
       margin-bottom: 30px;
@@ -278,6 +289,10 @@
           object-fit: contain;
           margin: 0 50px 50px 0;
           border-radius: 10px;
+          @include sm {
+            width: 200px;
+            height: 200px;
+          }
         }
       }
     }
@@ -285,6 +300,9 @@
   .comment-top {
     display: flex;
     margin-bottom: 20px;
+    @include sm {
+      display: block;
+    }
     h3 {
       font-size: 28px;
       margin-right: 10px;

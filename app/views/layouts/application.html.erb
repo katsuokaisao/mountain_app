@@ -48,6 +48,9 @@
     </header>
     <% if user_signed_in? %>
     <div id="modal"><i class="fas fa-sign-in-alt fa-3x"></i></div>
+    <div class="daily-create-responsive">
+      <%= render 'layouts/daily-create' %>
+    </div>
       <div class="content">
         <div class="left">
           <%= render 'layouts/side_nav' %>

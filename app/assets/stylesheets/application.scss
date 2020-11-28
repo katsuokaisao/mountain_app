@@ -94,10 +94,28 @@ img {
 /* _daily-create.html.erb */
 .daily-create {
   margin-right: 10px;
-  @include md {
-    
+  @include sm {
+    display: none;
   }
 }
+.daily-create-responsive {
+  display: inline-block;
+  position: absolute;
+  right: 0;
+  .daily-create {
+    @include sm {
+      display: block;
+    }
+    .container {
+      .btn-border {
+        background: gray;
+      }
+      .btn-border:hover {
+    }
+    }
+  }
+}
+
 
 .daily-create .container {
   height: 60px;
