@@ -99,16 +99,21 @@ img {
   }
 }
 .daily-create-responsive {
-  display: inline-block;
-  position: absolute;
-  right: 0;
+  display: none;
+  @include sm {
+    display: inline-block;
+    position: absolute;
+    right: 0;
+  }
   .daily-create {
+    display: none;
     @include sm {
       display: block;
     }
     .container {
       .btn-border {
         background: gray;
+        width: 80px;
       }
       .btn-border:hover {
     }

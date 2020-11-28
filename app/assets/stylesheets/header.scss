@@ -81,6 +81,9 @@ header {
         transform: translate(110%, 60%);
         width: 110px;
         display: none;
+        @include sm {
+          transform: translate(-20%, 75%);
+        }
         li {
           margin: 5px 0;
           padding: 0px 3px;
