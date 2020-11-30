@@ -7,7 +7,7 @@ https://www.mountain-app.com/
 
 ## サイト概要
 ***
-このアプリでは山と人の交流を深めるをコンセプトにした山日記アプリです。
+山と人の交流を深めるをコンセプトにした山日記アプリです。
 
 1. 登山に行った記録を残したいけど
 2. ただ記録を残したいだけでなく、Twitterのように気軽にシェアしたい
@@ -31,7 +31,7 @@ https://www.mountain-app.com/
 - ソース管理(Cit, GitHub)
 - AWS(EC2, ALB, Route53, ACM, RDS, S3)
 - CircleCI(CI/CD)
-  - CIはmasterブランチにpushもしくはマージ後にRubocopとRspecを行う
+  - CIはmasterブランチにpushもしくはマージ後にRspecで自動テストを行う
   - CDはCircleCIでEC2にssh接続してgit pull等を行う
 
 ## 機能一覧
@@ -53,9 +53,9 @@ https://www.mountain-app.com/
 - 通知機能（フォロー・いいね・コメント）
 - 山一覧絞り込み機能(ransack)
 - DM機能（予定）
-- 大まかなレスポンシィブ対応
+- レスポンシィブ対応
 - サイドバーの設置  
-  （768px以下でモーダルウィンドウに設置）
+  （768px以下でモーダルウィンドウに切り替わる）
 - ER図（rails-erd)
 
 ## 工夫点
@@ -69,6 +69,7 @@ https://www.mountain-app.com/
 - eager_loadもしくはpreloadメソッドを用いてN+1問題の解消することでページの表示スピードの遅延防止に取り組んでいる点
 - 画像投稿にActiveStorageを用いている点
 - 開発環境でDockerを採用して開発環境構築をコード化している点
+- 本番環境でAWSの基本的なサービスを活用している点
 - 本番環境でCircleCIを採用して自動テスト・自動デプロイを実装している点
 
 ## インフラ構成図
