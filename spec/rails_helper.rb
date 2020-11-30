@@ -3,7 +3,7 @@ require 'spec_helper'
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../config/environment', __dir__)
 # 本番環境のときにデータベースのTRUNCATEを防ぎます。
-abort("The Rails environment is running in production mode!") if Rails.env.production?
+abort('The Rails environment is running in production mode!') if Rails.env.production?
 require 'rspec/rails'
 require 'capybara/rspec'
 require 'capybara-screenshot/rspec'
@@ -24,8 +24,8 @@ rescue ActiveRecord::PendingMigrationError => e
 end
 
 RSpec.configure do |config|
-  #sign_inヘルパーを提供してくれる
-  config.include Devise::Test::IntegrationHelpers, type: :feature 
+  # sign_inヘルパーを提供してくれる
+  config.include Devise::Test::IntegrationHelpers, type: :feature
   config.include Devise::Test::IntegrationHelpers, type: :request
   # FactoryBotのデータ呼び出しを簡略化できる。
   # (テストデータの呼び出しを、FactoryBot.create(:◯◯) → create(:◯◯)に簡略化出来る)
@@ -39,7 +39,7 @@ RSpec.configure do |config|
   config.use_transactional_fixtures = true
   # デフォルトのtrueの場合、exampleごとにトランザクションが行われる設定になっています。つまり、exampleが始まるときにはきれいなデータベースが用意され、終わると全てのデータを削除します。Database Cleanerなどを使って手動で削除する場合や、特定のSpecでだけトランザクションのロールバックを無効にする場合はfalseにします。
 
-  #この行のコメントを解除して、ActiveRecordサポートを完全にオフにすることができます。
+  # この行のコメントを解除して、ActiveRecordサポートを完全にオフにすることができます。
   # config.use_active_record = false
 
   # RSpec Railsでは、ファイルの場所に応じた動作を使用することができます。例えば、spec/controllers配下のファイルでは、getやpostを使うことができる仕様となっています。
@@ -60,7 +60,7 @@ RSpec.configure do |config|
 end
 
 # .rspec file
-#デフォルトだと--require spec_helperとなっているが、RailsでRSpecを使う場合は、--require rails_helperを使うのがベター。
+# デフォルトだと--require spec_helperとなっているが、RailsでRSpecを使う場合は、--require rails_helperを使うのがベター。
 # 理由としては、後述するrails_helper.rbで既にrequire spec_helperを行なっているため。
 # .rspecの設定	シュチュエーション
 # --require rails_helper RailsでRSpecを使う時

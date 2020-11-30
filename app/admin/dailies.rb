@@ -1,5 +1,5 @@
 ActiveAdmin.register Daily do
-  menu label: "日記", priority: 3
+  menu label: '日記', priority: 3
   includes :mountain, :user
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
@@ -15,5 +15,4 @@ ActiveAdmin.register Daily do
   #   permitted << :other if params[:action] == 'create' && current_user.admin?
   #   permitted
   # end
-  
 end

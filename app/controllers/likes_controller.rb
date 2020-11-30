@@ -1,7 +1,7 @@
 class LikesController < ApplicationController
   before_action :authenticate_user!
 
-  def create 
+  def create
     user = current_user
     @daily = Daily.find(params[:daily_id])
     Like.create(user_id: user.id, daily_id: @daily.id)

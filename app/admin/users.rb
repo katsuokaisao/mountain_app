@@ -1,5 +1,5 @@
 ActiveAdmin.register User do
-  menu label: "一般ユーザー", priority: 2
+  menu label: '一般ユーザー', priority: 2
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   #
@@ -14,5 +14,4 @@ ActiveAdmin.register User do
   #   permitted << :other if params[:action] == 'create' && current_user.admin?
   #   permitted
   # end
-  
 end

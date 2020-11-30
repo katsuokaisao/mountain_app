@@ -20,9 +20,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
     # ブロックが与えられたらresource(=User)を呼ぶ
     yield resource if block_given?
     if resource.persisted?
-    # 先程のresource.saveが成功していたら
+      # 先程のresource.saveが成功していたら
       if resource.active_for_authentication?
-      # confirmable/lockableどちらかのactive_for_authentication?がtrueだったら
+        # confirmable/lockableどちらかのactive_for_authentication?がtrueだったら
         # flashメッセージを設定
         set_flash_message! :notice, :signed_up
         # サインアップ操作
@@ -36,7 +36,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
         respond_with resource, location: after_inactive_sign_up_path_for(resource)
       end
     else
-    # 先程のresource.saveが失敗していたら
+      # 先程のresource.saveが失敗していたら
       # passwordとpassword_confirmationをnilにする
       clean_up_passwords resource
       # validatable有効時に、パスワードの最小値を設定する

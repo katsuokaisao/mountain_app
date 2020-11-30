@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
+
   protected
 
   def configure_permitted_parameters
@@ -7,7 +8,7 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
-    if resource.class == AdminUser
+    if resource.instance_of?(AdminUser)
       admin_admin_users_path
     else
       user_dailys_own_path(resource)
@@ -15,8 +16,6 @@ class ApplicationController < ActionController::Base
   end
 
   def current_user?
-    unless current_user == @user
-      redirect_to root_path
-    end
-  end 
+    redirect_to root_path unless current_user == @user
+  end
 end

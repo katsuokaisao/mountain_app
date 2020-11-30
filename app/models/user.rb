@@ -14,8 +14,8 @@ class User < ApplicationRecord
   # active_notificationsメソッドでNotificationモデルのvisitor_idにこのモデルのidをセットする状態が理想、またUserを削除した時にNotificationsも削除したい
   # passive_notificationsメソッドでNotificationsモデルのvisited_idにこのモデルのidをセットする状態が理想、またUserを削除した時にNotificationsも削除したい
 
-  has_many :active_notifications, class_name:  'Notification', foreign_key: 'visitor_id', dependent: :destroy
-  has_many :passive_notifications, class_name:  'Notification', foreign_key: 'visited_id', dependent: :destroy
+  has_many :active_notifications, class_name: 'Notification', foreign_key: 'visitor_id', dependent: :destroy
+  has_many :passive_notifications, class_name: 'Notification', foreign_key: 'visited_id', dependent: :destroy
 
   # has_many :active_relationships
   # active_relationshipsメソッドで
@@ -37,23 +37,23 @@ class User < ApplicationRecord
   end
 
   def follow(other_user)
-    self.active_relationships.create(followed_id: other_user.id)
+    active_relationships.create(followed_id: other_user.id)
   end
 
   def unfollow(other_user)
-    self.active_relationships.find_by(followed_id: other_user.id).destroy
+    active_relationships.find_by(followed_id: other_user.id).destroy
   end
 
   def follow?(other_user)
-    !!self.active_relationships.find_by(followed_id: other_user.id)
+    !!active_relationships.find_by(followed_id: other_user.id)
   end
 
   def create_notification_follow!(visitor_user)
-    confirm_exists_follow_notification = Notification.where(["visitor_id = ? and visited_id = ? and action = ?", visitor_user.id, self.id, 'follow'])
+    confirm_exists_follow_notification = Notification.where(['visitor_id = ? and visited_id = ? and action = ?', visitor_user.id, id, 'follow'])
     if confirm_exists_follow_notification.blank?
       notification = visitor_user.active_notifications.new(
         # visitor_id: user.id
-        visited_id: self.id,
+        visited_id: id,
         action: 'follow'
       )
       notification.save if notification.valid?
@@ -63,5 +63,4 @@ class User < ApplicationRecord
     #   notification.checked = true
     # end
   end
-
 end
