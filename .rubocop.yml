@@ -18,6 +18,8 @@ AllCops:
     - 'script/**/*'
     - !ruby/regexp /old_and_unused\.rb$/
     - 'node_modules/**/*'
+    - 'EC2/unicorn.rb'
+    - 'spec/**/*'
 
 # 日本語でのコメントを許可
 AsciiComments:
@@ -34,3 +36,21 @@ ClassAndModuleChildren:
 # 文字リテラルのイミュータブル宣言を無視（freezeになるのはRuby3以降）
 Style/FrozenStringLiteralComment:
   Enabled: false
+
+Metrics/MethodLength: 
+  Enabled: false
+
+Metrics/AbcSize:
+  Enabled: false
+
+GlobalVars:
+  AllowedVariables: [$worker, $timeout, $app_dir, $listen, $pid]
+
+Rails/InverseOf: 
+  Enabled: false
+
+Layout/LineLength:
+  Max: 140
+
+
+

@@ -6,7 +6,8 @@ class Users::SessionsController < Devise::SessionsController
   def new_guest
     user = User.guest
     # profile = Profile.create(user_id: user.id, introduce_text: "ここにプロフィール文を入れてください")
-    # profile.avatar.attach(io: File.open(Rails.root.join('app','assets', 'images', 'stockfoto_12670415.jpg')), filename: "stockfoto_12670415.jpg", content_type: "image/jpg")
+    # profile.avatar.attach(io: File.open(Rails.root.join('app','assets', 'images', 'stockfoto_12670415.jpg')),
+    # filename: "stockfoto_12670415.jpg", content_type: "image/jpg")
     # strong_parametersdではねられているかも
     # profile.save
     sign_in user

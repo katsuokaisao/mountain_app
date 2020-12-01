@@ -1,4 +1,4 @@
-class UsersController < ApplicationController 
+class UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :set_user
   before_action :current_user?
@@ -15,7 +15,8 @@ class UsersController < ApplicationController
 
   def likes
     if @user == current_user
-      @dailys = current_user.like_posts.eager_load({user: {profile: :avatar_attachment}}, :mountain).preload(:images_attachments).page(params[:page]).per(8)
+      paginate_like_posts = current_user.like_posts.page(params[:page]).per(8)
+      @dailys = paginate_like_posts.eager_load({ user: { profile: :avatar_attachment } }, :mountain).preload(:images_attachments)
       respond_to do |format|
         format.html
         format.js
@@ -25,7 +26,8 @@ class UsersController < ApplicationController
     end
   end
 
-  private 
+  private
+
   def set_user
     @user = User.find(params[:id])
   end

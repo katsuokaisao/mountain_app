@@ -1,8 +1,11 @@
-# このファイルは、 `rails generate rspec：install`コマンドによって生成されました。 従来、すべてのスペックは、RSpecが `$ LOAD_PATH`に追加する` spec`ディレクトリの下にあります。生成された `.rspec`ファイルには` --require spec_helper`が含まれています。これにより、ファイルで明示的に要求することなく、このファイルが常にロードされます。
+# このファイルは、 `rails generate rspec：install`コマンドによって生成されました。
+# 従来、すべてのスペックは、RSpecが `$ LOAD_PATH`に追加する` spec`ディレクトリの下にあります。
+# 生成された `.rspec`ファイルには` --require spec_helper`が含まれています。
+# これにより、ファイルで明示的に要求することなく、このファイルが常にロードされます。
 # 常にロードされることを考えると、このファイルをできるだけ軽量に保持することをお勧めします
 # このファイルから重い依存関係を要求すると、すべてのファイルをロードする必要がない個々のファイルであっても、すべてのテスト実行でテストスイートの起動時間が長くなります。
 # 代わりに、追加の依存関係を必要とし、追加のセットアップを実行する別のヘルパーファイルを作成し、実際にそれを必要とするスペックファイルからそれを要求することを検討してください。
-#実際はrails_helperが各specで読み込まれている。rails_helperでspec_helperを読み込んでいる。
+# 実際はrails_helperが各specで読み込まれている。rails_helperでspec_helperを読み込んでいる。
 
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
@@ -30,52 +33,52 @@ RSpec.configure do |config|
   end
 
   # This option will default to `:apply_to_host_groups` in RSpec 4 (and will
-  # have no way to turn it off -このオプションはRspec3との後方互換性のために存在します). It causes shared context metadata to be inherited by the metadata hash of host groups and examples, rather than triggering implicit auto-inclusion in groups with matching metadata.
+  # have no way to turn it off -このオプションはRspec3との後方互換性のために存在します)
+  # It causes shared context metadata to be inherited by the metadata hash of host groups and
+  # examples, rather than triggering implicit auto-inclusion in groups with matching metadata.
 
   config.shared_context_metadata_behavior = :apply_to_host_groups
 
-# 以下の設定は、RSpecの優れた初期体験を提供するために提案されていますが、心ゆくまでカスタマイズしてください。
-=begin
-  # This allows you to limit a spec run to individual examples or groups
-  # you care about by tagging them with `:focus` metadata. When nothing
-  # is tagged with `:focus`, all examples get run. RSpec also provides
-  # aliases for `it`, `describe`, and `context` that include `:focus`
-  # metadata: `fit`, `fdescribe` and `fcontext`, respectively.
-  config.filter_run_when_matching :focus
-
-  # Allows RSpec to persist some state between runs in order to support
-  # the `--only-failures` and `--next-failure` CLI options. We recommend
-  # you configure your source control system to ignore this file.
-  config.example_status_persistence_file_path = "spec/examples.txt"
-
-  # Limits the available syntax to the non-monkey patched syntax that is
-  # recommended. For more details, see:
-  #   - http://rspec.info/blog/2012/06/rspecs-new-expectation-syntax/
-  #   - http://www.teaisaweso.me/blog/2013/05/27/rspecs-new-message-expectation-syntax/
-  #   - http://rspec.info/blog/2014/05/notable-changes-in-rspec-3/#zero-monkey-patching-mode
-  config.disable_monkey_patching!
-
-  # 多くのRSpecユーザーは通常、スイート全体または個別のファイルを実行します。個別の仕様ファイルを実行する場合は、より詳細な出力を許可すると便利です。
-  if config.files_to_run.one?
-    # Use the documentation formatter for detailed output,
-    # unless a formatter has already been configured
-    # (e.g. via a command-line flag).
-    config.default_formatter = "doc"
-  end
-
-  スペック実行の最後に、最も遅い10個の例とサンプルグループを出力して、どのスペックが特に遅いかを明らかにします。
-  config.profile_examples = 10
-
-  # Run specs in random order to surface order dependencies. If you find an
-  # order dependency and want to debug it, you can fix the order by providing
-  # the seed, which is printed after each run.
-  #     --seed 1234
-  config.order = :random
-
-  # Seed global randomization in this process using the `--seed` CLI option.
-  # Setting this allows you to use `--seed` to deterministically reproduce
-  # test failures related to randomization by passing the same `--seed` value
-  # as the one that triggered the failure.
-  Kernel.srand config.seed
-=end
+  # 以下の設定は、RSpecの優れた初期体験を提供するために提案されていますが、心ゆくまでカスタマイズしてください。
+  #   # This allows you to limit a spec run to individual examples or groups
+  #   # you care about by tagging them with `:focus` metadata. When nothing
+  #   # is tagged with `:focus`, all examples get run. RSpec also provides
+  #   # aliases for `it`, `describe`, and `context` that include `:focus`
+  #   # metadata: `fit`, `fdescribe` and `fcontext`, respectively.
+  #   config.filter_run_when_matching :focus
+  #
+  #   # Allows RSpec to persist some state between runs in order to support
+  #   # the `--only-failures` and `--next-failure` CLI options. We recommend
+  #   # you configure your source control system to ignore this file.
+  #   config.example_status_persistence_file_path = "spec/examples.txt"
+  #
+  #   # Limits the available syntax to the non-monkey patched syntax that is
+  #   # recommended. For more details, see:
+  #   #   - http://rspec.info/blog/2012/06/rspecs-new-expectation-syntax/
+  #   #   - http://www.teaisaweso.me/blog/2013/05/27/rspecs-new-message-expectation-syntax/
+  #   #   - http://rspec.info/blog/2014/05/notable-changes-in-rspec-3/#zero-monkey-patching-mode
+  #   config.disable_monkey_patching!
+  #
+  #   # 多くのRSpecユーザーは通常、スイート全体または個別のファイルを実行します。個別の仕様ファイルを実行する場合は、より詳細な出力を許可すると便利です。
+  #   if config.files_to_run.one?
+  #     # Use the documentation formatter for detailed output,
+  #     # unless a formatter has already been configured
+  #     # (e.g. via a command-line flag).
+  #     config.default_formatter = "doc"
+  #   end
+  #
+  #   スペック実行の最後に、最も遅い10個の例とサンプルグループを出力して、どのスペックが特に遅いかを明らかにします。
+  #   config.profile_examples = 10
+  #
+  #   # Run specs in random order to surface order dependencies. If you find an
+  #   # order dependency and want to debug it, you can fix the order by providing
+  #   # the seed, which is printed after each run.
+  #   #     --seed 1234
+  #   config.order = :random
+  #
+  #   # Seed global randomization in this process using the `--seed` CLI option.
+  #   # Setting this allows you to use `--seed` to deterministically reproduce
+  #   # test failures related to randomization by passing the same `--seed` value
+  #   # as the one that triggered the failure.
+  #   Kernel.srand config.seed
 end
