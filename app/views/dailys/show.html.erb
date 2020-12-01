@@ -1,4 +1,4 @@
-<% @title = "山日記" %>
+<% provide :title, '山日記' %>
 <div class="daily-show">
   <div class="user">
     <%= link_to  user_dailys_own_path(@daily.user.id) do %>
