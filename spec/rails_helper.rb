@@ -9,11 +9,13 @@ require 'capybara/rspec'
 require 'capybara-screenshot/rspec'
 # 追加でrequireする場合はこの下に追加してください。この時点までRailsは読み込まれていません！
 
-# カスタムマッチャやマクロなどを記述したrubyファイルを読み込みたい場合、spec/support/配下に置いてください。spec/配下にある_spec.rbで終わるファイルはbundle exec rspecコマンドを実行すると自動的に走ります。つまり、これをspec/support/内に置くと、読み込み時とテスト時の二回実行されることになります。そのため、spec/support/に_spec.rbで終わるファイルを置くのはやめましょう。この様式はコマンドを打つときに--patternを使うか、~/.rspec, .rspec, .rspec-localで設定できます。
+# カスタムマッチャやマクロなどを記述したrubyファイルを読み込みたい場合、spec/support/配下に置いてください。
+# spec/配下にある_spec.rbで終わるファイルはbundle exec rspecコマンドを実行すると自動的に走ります。つまり、これをspec/support/内に置くと、読み込み時とテスト時の二回実行されることになります。
+# そのため、spec/support/に_spec.rbで終わるファイルを置くのはやめましょう。この様式はコマンドを打つときに--patternを使うか、~/.rspec, .rspec, .rspec-localで設定できます。
 
 # 以下の行は手間を省くために用意されています。この行を有効にするとspec/support/以下の全てのファイルが自動的に読み込まれるため、起動に時間がかかるという難点もあります。
 # 代わりの方法として、それぞれの_spec.rbファイルでrequireを使って必要なファイルだけを読み込む方法もあります。
-Dir[Rails.root.join('spec', 'support', '**', '*.rb')].sort.each { |f| require f }
+Dir[Rails.root.join('spec/support/**/*.rb')].sort.each { |f| require f }
 
 # 保留にされている4マイグレーションを確認し、テストを走らせる前にマイグレーションを適用します。ActiveRecordを使わない場合、以下の行（beginからendまで）を削除できます。
 begin
@@ -37,7 +39,9 @@ RSpec.configure do |config|
 
   # ActiveRecordを使わない、またはトランザクション内で複数のexampleを走らせたい場合は、この行を削除するかオプションをtrueからfalseにしてください。
   config.use_transactional_fixtures = true
-  # デフォルトのtrueの場合、exampleごとにトランザクションが行われる設定になっています。つまり、exampleが始まるときにはきれいなデータベースが用意され、終わると全てのデータを削除します。Database Cleanerなどを使って手動で削除する場合や、特定のSpecでだけトランザクションのロールバックを無効にする場合はfalseにします。
+  # デフォルトのtrueの場合、exampleごとにトランザクションが行われる設定になっています。
+  # つまり、exampleが始まるときにはきれいなデータベースが用意され、終わると全てのデータを削除します。
+  # Database Cleanerなどを使って手動で削除する場合や、特定のSpecでだけトランザクションのロールバックを無効にする場合はfalseにします。
 
   # この行のコメントを解除して、ActiveRecordサポートを完全にオフにすることができます。
   # config.use_active_record = false

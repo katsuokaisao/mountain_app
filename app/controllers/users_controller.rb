@@ -15,7 +15,8 @@ class UsersController < ApplicationController
 
   def likes
     if @user == current_user
-      @dailys = current_user.like_posts.eager_load({ user: { profile: :avatar_attachment } }, :mountain).preload(:images_attachments).page(params[:page]).per(8)
+      paginate_dailys = current_user.page(params[:page]).per(8)
+      @dailys = paginate_dailys.like_posts.eager_load({ user: { profile: :avatar_attachment } }, :mountain).preload(:images_attachments)
       respond_to do |format|
         format.html
         format.js

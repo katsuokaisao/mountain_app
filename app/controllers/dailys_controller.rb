@@ -10,7 +10,9 @@ class DailysController < ApplicationController
     # current_userとcurrent_userがフォローしている人の投稿一覧
     following_ids = @user.following_ids
     id = @user.id
-    @dailys = Daily.where('user_id IN (?) OR user_id = ?', following_ids, id).eager_load(:mountain).preload({ user: { profile: :avatar_attachment } }, images_attachments: :blob).page(params[:page]).without_count.per(50)
+    feed_dailys = Daily.where('user_id IN (?) OR user_id = ?', following_ids, id)
+    paginated_dailys = feed_dailys.page(params[:page]).without_count.per(50)
+    @dailys = paginated_dailys.eager_load(:mountain).preload({ user: { profile: :avatar_attachment } }, images_attachments: :blob)
     respond_to do |format|
       format.html
       format.js
@@ -18,7 +20,8 @@ class DailysController < ApplicationController
   end
 
   def own
-    @dailys = @user.dailys.page(params[:page]).eager_load(:user, :mountain).preload(images_attachments: :blob).without_count.per(50)
+    paginated_dailys = @user.dailys.page(params[:page]).without_count.per(50)
+    @dailys = paginated_dailys.eager_load(:user, :mountain).preload(images_attachments: :blob)
     respond_to do |format|
       format.html
       format.js
@@ -64,17 +67,17 @@ class DailysController < ApplicationController
     if @user.dailys.include?(@daily)
       flash[:success] = '投稿を削除しました'
       @daily.destroy
-      redirect_to root_path
     else
       flash[:danger] = '他の人の投稿は削除できません'
-      redirect_to root_path
     end
+    redirect_to root_path
   end
 
   private
 
   def daily_create_params
-    params.require(:daily).permit(:mountain_name, :title, :comment, images: []).merge(user_id: current_user.id, mountain_id: 1)
+    strong_params = params.require(:daily).permit(:mountain_name, :title, :comment, images: [])
+    strong_params.merge(user_id: current_user.id, mountain_id: 1)
   end
 
   def set_user

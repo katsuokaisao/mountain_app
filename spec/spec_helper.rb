@@ -1,4 +1,7 @@
-# このファイルは、 `rails generate rspec：install`コマンドによって生成されました。 従来、すべてのスペックは、RSpecが `$ LOAD_PATH`に追加する` spec`ディレクトリの下にあります。生成された `.rspec`ファイルには` --require spec_helper`が含まれています。これにより、ファイルで明示的に要求することなく、このファイルが常にロードされます。
+# このファイルは、 `rails generate rspec：install`コマンドによって生成されました。
+# 従来、すべてのスペックは、RSpecが `$ LOAD_PATH`に追加する` spec`ディレクトリの下にあります。
+# 生成された `.rspec`ファイルには` --require spec_helper`が含まれています。
+# これにより、ファイルで明示的に要求することなく、このファイルが常にロードされます。
 # 常にロードされることを考えると、このファイルをできるだけ軽量に保持することをお勧めします
 # このファイルから重い依存関係を要求すると、すべてのファイルをロードする必要がない個々のファイルであっても、すべてのテスト実行でテストスイートの起動時間が長くなります。
 # 代わりに、追加の依存関係を必要とし、追加のセットアップを実行する別のヘルパーファイルを作成し、実際にそれを必要とするスペックファイルからそれを要求することを検討してください。
@@ -30,7 +33,9 @@ RSpec.configure do |config|
   end
 
   # This option will default to `:apply_to_host_groups` in RSpec 4 (and will
-  # have no way to turn it off -このオプションはRspec3との後方互換性のために存在します). It causes shared context metadata to be inherited by the metadata hash of host groups and examples, rather than triggering implicit auto-inclusion in groups with matching metadata.
+  # have no way to turn it off -このオプションはRspec3との後方互換性のために存在します)
+  # It causes shared context metadata to be inherited by the metadata hash of host groups and
+  # examples, rather than triggering implicit auto-inclusion in groups with matching metadata.
 
   config.shared_context_metadata_behavior = :apply_to_host_groups
 

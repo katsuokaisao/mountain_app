@@ -1,4 +1,4 @@
-<% @title = "山情報" %>
+<% provide :title, '山情報' %>
 <div class="mountain-information">
   <div class="mountain-information-top">
     <h3 class="mountain-name"><%= @mountain.name %></h3>
@@ -45,5 +45,5 @@ function initMap(){
     insertBefore.call(head, newElement, referenceElement)
   }
 </script>
-<script src="https://maps.googleapis.com/maps/api/js?key=<%= @apiKey %>&callback=initMap" async defer></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=<%= @api_key %>&callback=initMap" async defer></script>
 

@@ -33,30 +33,34 @@ class Daily < ApplicationRecord
     # 自分の投稿の場合は通知済みとする
     # 保存できるなら保存する（saveに失敗するとfalseが返り値になってしまうのを防ぐ）
 
-    confirm_exists_like_notification = Notification.where(['visitor_id = ? and visited_id = ? and daily_id = ? and action = ?', visitor_user.id, user_id, id, 'like'])
+    confirm_exists_like_notification = Notification.where(['visitor_id = ? and visited_id = ?
+                                                            and daily_id = ? and action = ?',
+                                                           visitor_user.id, user_id, id, 'like'])
 
-    if confirm_exists_like_notification.blank?
-      notification = visitor_user.active_notifications.build(
-        visited_id: user_id,
-        daily_id: id,
-        action: 'like'
-      )
-      notification.checked = true if notification.visitor_id == notification.visited_id
-      notification.save if notification.valid?
-    end
+    return if confirm_exists_like_notification.present?
+
+    notification = visitor_user.active_notifications.build(
+      visited_id: user_id,
+      daily_id: id,
+      action: 'like'
+    )
+    notification.checked = true if notification.visitor_id == notification.visited_id
+    notification.save if notification.valid?
   end
 
   def create_notification_coment!(visitor_user, comment_id)
     # 誰に通知を送るのか(visited_id)=>投稿者に対してだけではなく、他にコメントをしている人がいればその人にも
     # 誰が通知を送るのか(visitor_id)=>コメントを作成した人(メソッドの引数のvisitor_user)
 
-    # notification = visitor_user.active_notification(visited_id: ???, daily_id: self.id, comment_id: self.comment_id, action: 'comment')
+    # notification = visitor_user.active_notification(visited_id: ???,
+    # daily_id: self.id, comment_id: self.comment_id, action: 'comment')
     # このままだとコメントしている人が複数人いた時にそのコメントしている人全員に通知が行かない（モデル側では実装できていない）
     # 日記の全てコメントを取得する（ただし自分でコメントしていたりする場合に自分のコメントは含めない）
     # ループ処理でvisited_idに各コメントのuser_idを入れていく
     # XXXは複数のコメント
     # XXX.each do |YYY|
-    #   notification = visitor_user.active_notification_comment!(visited_id: YYY[:user_id], daily_id: self.id, comment_id: self.comment_id, action: 'comment')
+    #   notification = visitor_user.active_notification_comment!(visited_id: YYY[:user_id],
+    #  daily_id: self.id, comment_id: self.comment_id, action: 'comment')
 
     # 自分が投稿した日記に自分でコメントした場合は通知済みとする
     # distinctで1人が複数のコメントをしていた時にも一つとしてカウントする(:user_idの重複防ぐ)
@@ -67,17 +71,18 @@ class Daily < ApplicationRecord
 
     # もしまだ誰もコメントしていなかったら日記の作成者に通知を送る
     # これはリファクタしたらわかりづらくなるからあえてしない
-    if comment_users.blank?
-      notification = visitor_user.active_notifications.build(
-        visited_id: user_id,
-        daily_id: id,
-        comment_id: comment_id,
-        action: 'comment'
-      )
-      notification.checked = true if notification.visitor_id == notification.visited_id
 
-      notification.save if notification.valid?
-    end
+    return if comment_users.present?
+
+    notification = visitor_user.active_notifications.build(
+      visited_id: user_id,
+      daily_id: id,
+      comment_id: comment_id,
+      action: 'comment'
+    )
+    notification.checked = true if notification.visitor_id == notification.visited_id
+
+    notification.save if notification.valid?
   end
 
   def save_notification_comment!(visitor_user, comment_id, comment_users)
