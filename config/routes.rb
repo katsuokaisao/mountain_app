@@ -36,4 +36,7 @@ Rails.application.routes.draw do
   end
 
   resources :notifications, only: :index
+
+  resources :rooms, only: [:index,:show, :create]
+  resources :messages, only: [:create, :destroy]
 end 
