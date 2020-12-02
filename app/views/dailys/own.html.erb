@@ -14,6 +14,7 @@
               <%= render partial: 'users/follow_form', locals: {followed_user: @user, user: current_user} %>
             <% end %>
           </div>
+          <%= render 'layouts/chat' %>
         <% end %>
       </div>
       <div class="profile-content-center">
