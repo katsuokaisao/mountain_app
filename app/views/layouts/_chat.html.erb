@@ -2,7 +2,9 @@
   <% if (current_user.follow? @user) && (@user.follow? current_user) %>
     <% if @isRoom == true %>
       <p class="user-show-room">
-        <%= link_to 'チャットへ', room_path(@roomId) %>
+        <%= link_to room_path(@roomId) do %>
+          <i class="fas fa-sms fa-2x"></i>
+        <% end %>
       </p>
     <% else %>
       <%= form_with url: rooms_path , local: true do |f| %>
