@@ -8,7 +8,7 @@ class RoomsController < ApplicationController
     # ルームのメッセージの表示
     @room = Room.find(params[:id])
     if Entry.where(user_id: current_user.id, room_id: @room.id).present?
-      @messages = @room.messages.order("created_at asc")
+      @messages = @room.messages.order("created_at asc").preload(user: {profile: :avatar_attachment})
       @message = @room.messages.build
       @entries = @room.entries
     else
@@ -17,7 +17,7 @@ class RoomsController < ApplicationController
   end
 
   def create
-    # ルームの作成とエントリーの作成
+    # ルームの作成とエントリーの作成w
     room = Room.create
     Entry.create(user_id: current_user.id, room_id: room.id)
     Entry.create(chat_params.merge(room_id: room.id))

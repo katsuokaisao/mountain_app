@@ -9,6 +9,9 @@ class MessagesController < ApplicationController
   end
 
   def destroy
+    message = Message.find(params[:id])
+    message.destroy if message.present?
+    redirect_back(fallback_location: room_path(message.room.id))
   end
 
   private 
