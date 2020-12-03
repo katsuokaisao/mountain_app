@@ -9,7 +9,7 @@ class RoomsController < ApplicationController
     @room = Room.find(params[:id])
     if Entry.where(user_id: current_user.id, room_id: @room.id).present?
       @messages = @room.messages.order("created_at asc").preload(user: {profile: :avatar_attachment})
-      @message = @room.messages.build
+      @message = Message.new
       @entries = @room.entries
     else
       redirect_back(fallback_location: root_path)
