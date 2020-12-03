@@ -1,0 +1,11 @@
+<% @entries.each do |entry|%>
+  <div class="chat-index">
+    <% other_entry = Entry.where(room_id: entry.room_id).where.not(user_id: current_user.id) %>
+    <%= render partial: 'layouts/profile_avatar', locals: {user: other_entry.first.user, a: 50, b: 50} %>
+    <div class="chat-index-text">
+      <span><%= other_entry.first.user.username if other_entry.present? %>さんとの</span>
+      <%= link_to 'チャットルームへ', room_path(entry.room_id) %>
+    </div>
+    
+  </div>
+<% end %>

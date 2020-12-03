@@ -5,10 +5,10 @@
 
 require("@rails/ujs").start()
 require("@rails/activestorage").start()
-require("jquery")
 require("channels")
-require("@fortawesome/fontawesome-free");
+require("jquery")
 require("jscroll")
+require("@fortawesome/fontawesome-free");
 import 'pack/application.js'
 
 

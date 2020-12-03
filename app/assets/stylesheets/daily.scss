@@ -16,7 +16,7 @@
         height: 80px;
         border-radius: 50%;
         border: 3px solid black;
-        margin: - auto;
+        margin-left: 8px;
       }
       p {
         text-align: center;
@@ -33,6 +33,21 @@
           display: inline-block;
           width: 100%;
           border-radius: 3px;
+          font-size: 12px;
+          @include sm {
+            width: 120px;
+          }
+        }
+      }
+      .cummon-form {
+        @include sm {
+          display: inline-block;
+        }
+      }
+      .chat-form {
+        margin-top: 10px;
+        input[type="submit"] {
+          padding: 3px;
         }
       }
       .follow-form {

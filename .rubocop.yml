@@ -52,5 +52,5 @@ Rails/InverseOf:
 Layout/LineLength:
   Max: 140
 
-
-
+Rails/HelperInstanceVariable: 
+  Enabled: false

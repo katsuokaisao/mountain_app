@@ -17,12 +17,7 @@
     </li>
     <li class="side-nav-list">
       <%= link_to following_user_path(current_user.id) do %>
-        <h4>山友</h4>
-      <% end %>
-    </li>
-    <li class="side-nav-list">
-      <%= link_to mountains_path  do %>
-        <h4>山情報</h4>
+        <h4><i class="fas fa-users"></i>山友</h4>
       <% end %>
     </li>
     <li class="side-nav-list">
@@ -31,7 +26,17 @@
       <% end %>
     </li>
     <li class="side-nav-list">
+      <%= link_to rooms_path  do %>
+        <h4><i class="fas fa-comments"></i>DM</h4>
+      <% end %>
+    </li>
+    <li class="side-nav-list">
       <%= render partial: 'layouts/notification' %>
+    </li>
+    <li class="side-nav-list">
+      <%= link_to mountains_path  do %>
+        <h4><i class="fas fa-question-circle"></i>山情報</h4>
+      <% end %>
     </li>
     <li class="side-nav-list">
       <%= link_to map_path  do %>

@@ -34,6 +34,10 @@ class User < ApplicationRecord
   has_many :following, through: :active_relationships, source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
 
+  # DM機能の実装
+  has_many :entries, dependent: :destroy
+  has_many :messages, dependent: :destroy
+
   def self.guest
     find_or_create_by!(username: 'ゲスト', email: 'guest@example.com') do |user|
       user.password = SecureRandom.urlsafe_base64
