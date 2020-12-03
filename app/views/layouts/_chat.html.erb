@@ -1,8 +1,8 @@
 <% unless @user.id == current_user.id %>
   <% if (current_user.follow? @user) && (@user.follow? current_user) %>
-    <% if @isRoom == true %>
+    <% if @is_room == true %>
       <p class="user-show-room">
-        <%= link_to room_path(@roomId) do %>
+        <%= link_to room_path(@room_id) do %>
           <i class="fas fa-sms fa-2x"></i>
         <% end %>
       </p>

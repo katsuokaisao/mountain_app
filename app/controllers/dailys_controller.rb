@@ -22,20 +22,19 @@ class DailysController < ApplicationController
   def own
     paginated_dailys = @user.dailys.page(params[:page]).without_count.per(50)
     @dailys = paginated_dailys.eager_load(:user, :mountain).preload(images_attachments: :blob)
-    
     @user = User.find(params[:user_id])
-    @currentUserEntries = Entry.where(user_id: current_user.id)
-    @userEntries = Entry.where(user_id: @user.id)
+    current_user_entries = Entry.where(user_id: current_user.id)
+    user_entries = Entry.where(user_id: @user.id)
     unless @user.id == current_user.id
-      @currentUserEntries.each do |currentUserEntry|
-        @userEntries.each do |userEntry|
-          if currentUserEntry.room_id == userEntry.room_id
-            @isRoom = true
-            @roomId = currentUserEntry.room_id
+      current_user_entries.each do |current_user_entry|
+        user_entries.each do |user_entry|
+          if current_user_entry.room_id == user_entry.room_id
+            @is_room = true
+            @room_id = current_user_entry.room_id
           end
         end
       end
-      unless @isRoom
+      unless @is_room
         @room = Room.new
         @entry = Entry.new
       end

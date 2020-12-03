@@ -8,7 +8,7 @@ class RoomsController < ApplicationController
     # ルームのメッセージの表示
     @room = Room.find(params[:id])
     if Entry.where(user_id: current_user.id, room_id: @room.id).present?
-      @messages = @room.messages.order("created_at asc").preload(user: {profile: :avatar_attachment})
+      @messages = @room.messages.order('created_at asc').preload(user: { profile: :avatar_attachment })
       @message = Message.new
       @entries = @room.entries
     else
@@ -24,9 +24,9 @@ class RoomsController < ApplicationController
     redirect_to room_path(room.id)
   end
 
-  private 
-    def chat_params
-      params.require(:entry).permit(:user_id)
-    end
+  private
 
+  def chat_params
+    params.require(:entry).permit(:user_id)
+  end
 end

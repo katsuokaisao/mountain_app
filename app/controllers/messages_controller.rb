@@ -6,7 +6,7 @@ class MessagesController < ApplicationController
       current_user.messages.create(message_params)
       @messages = entry.first.room.messages
     else
-      flash[:alert] = "メッセージの送信に失敗しました！"
+      flash[:alert] = 'メッセージの送信に失敗しました！'
     end
     respond_to do |format|
       format.html { redirect_back fallback_location: root_path }
@@ -19,13 +19,14 @@ class MessagesController < ApplicationController
     message.destroy if message.present?
     @messages = message.room.messages
     respond_to do |format|
-      format.html {     redirect_back(fallback_location: room_path(message.room.id)) }
+      format.html { redirect_back(fallback_location: room_path(message.room.id)) }
       format.js
     end
   end
 
-  private 
-    def message_params 
-      params.require(:message).permit(:text, :room_id)
-    end
+  private
+
+  def message_params
+    params.require(:message).permit(:text, :room_id)
+  end
 end
