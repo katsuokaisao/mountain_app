@@ -1,33 +1,9 @@
 <div class="chats">
-  <div class="chat">
-    <% if @messages.present? %>
-      <% @messages.each do |message| %>
-        <div class="chat-box">
-          <% if message.user == current_user %>
-            <div class="chat-face">
-              <%= render partial: 'layouts/profile_avatar', locals: {user: message.user, a: 60, b: 60} %>
-              <p><%= message.user.username %></p>
-              <p><%= l message.created_at %></p>
-            </div>
-            <div class="chat-hukidashi"> 
-              <strong><%= message.text %></strong> 
-            </div>
-          <% else %>
-            <div class="chat-hukidashi chat-hukidashi-right"> 
-              <strong><%= message.text %></strong> 
-            </div>
-            <div class="chat-face">
-              <%= render partial: 'layouts/profile_avatar', locals: {user: message.user, a: 60, b: 60} %>
-              <p><%= message.user.username %></p>
-              <p><%= l message.created_at %></p>
-            </div>
-          <% end %>
-        </div>
-      <% end %>
-    <% end %>
+  <div id="chat">
+    <%= render @messages %>
   </div>
   <div class="posts">
-    <%= form_for @message do |f| %>
+    <%= form_with model: @message, remote: true do |f| %>
       <%= f.hidden_field :room_id, value: @room.id %>
       <%= f.text_area :text, placeholder: "メッセージを入力して下さい" , size: 70, class:"form-text-field" %>
       <%= f.submit "投稿",class: 'form-submit'%>
