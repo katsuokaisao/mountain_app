@@ -1,6 +1,9 @@
 .chats {
   width: 70%;
   margin: 0 auto;
+  @include md {
+    width: 90%;
+  }
   .chat {
     .chat-box {
       display: flex;
@@ -26,6 +29,9 @@
           margin-left: auto;
           border: 3px solid black;
           border-radius: 5px;
+          p {
+            font-size: 14px;
+          }
         }
       }
       .chat-hukidashi-right {
