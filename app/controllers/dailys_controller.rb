@@ -65,13 +65,12 @@ class DailysController < ApplicationController
     name_matched_mountain = mountains.select do |mountain|
       mountain.name == @daily.mountain_name
     end
-    if name_matched_mountain.first && @daily.valid?
+    if name_matched_mountain.first.present? && @daily.valid?
       # flash[:success] = "投稿できました！" マイページにリダイレクトして確認できるからいらない
       @daily.mountain_id = name_matched_mountain.first.id
       @daily.save
-      redirect_to user_dailys_own_path
+      redirect_to user_dailys_own_path(@daily.user.id)
     else
-      flash[:danger] = '投稿に失敗しました。'
       render 'new'
     end
   end

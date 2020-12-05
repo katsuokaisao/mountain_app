@@ -10,11 +10,10 @@ RSpec.feature 'DiaryPosts', type: :feature do
     end
     context '適切な値が入力された時' do
       it '自分の日記一覧ページに遷移する' do
-        expect(page).to have_content '投稿する'
         select '富士山', from: '山の名前'
         fill_in 'タイトル', with: '富士山に行ってみた'
         fill_in '内容', with: '初めて富士山で日本一標高の高い山で自分1人で登れるかとても不安でした。5合目までは車で登ってきていて既に森林限界から脱していることに気付きました。'
-        click_button '投稿する'
+        click_button '投稿'
         expect(current_path).to eq user_dailys_own_path(@user.id)
       end
     end
@@ -23,7 +22,7 @@ RSpec.feature 'DiaryPosts', type: :feature do
         select '富士山', from: '山の名前'
         fill_in 'タイトル', with: '富士山に行ってみた'
         fill_in '内容', with: ''
-        click_button '投稿する'
+        click_button '投稿'
         expect(current_path).to eq "/users/#{@user.id}/dailys"
         expect(page).to have_field '山の名前', with: '富士山'
         expect(page).to have_field 'タイトル', with: '富士山に行ってみた'
