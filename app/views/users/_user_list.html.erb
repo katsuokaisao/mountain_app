@@ -10,7 +10,7 @@
           <% if @user.follow?(user) %>
             <%= render partial: 'unfollow_form', locals: {followed_user: user, user: @user } %>
           <% else %>
-            <%= render partial: 'follow_form', locals: {user: user, user: @user} %>
+            <%= render partial: 'follow_form', locals: {followed_user: user, user: @user} %>
           <% end %>
         </div>
       </div>
