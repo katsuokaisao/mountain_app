@@ -4,8 +4,6 @@ URL: https://www.mountain-app.com/
 
 ## サイト概要
 
-***
-
 山と人の交流を深めるをコンセプトにした山日記アプリです。
 
 1. 登山に行った記録を残したい
@@ -16,8 +14,6 @@ URL: https://www.mountain-app.com/
 現状、山の記録を残せるアプリがありますが自分の記録を正確に残したり、登山する前にコースを決めるために他の人の記録を参考にしたりする用途に特化しているように感じました。そこでもっとフランクに情報を共有できて人の交流に特化したアプリを作成したいという経緯からこちらのアプリを作成致しました。
 
 ## 使用技術
-
-***
 
 - 開発環境(Docker, Docker-compose, Nginx, Unicorn, MySQL)
 - Docker Desktop for Mac
@@ -33,11 +29,9 @@ URL: https://www.mountain-app.com/
 - AWS(EC2, ALB, Route53, ACM, RDS, S3)
 - CircleCI(CI/CD)
   1. CIはmasterブランチにpushもしくはマージ後にRspecで自動テストを行う
-  1. CDはCircleCIでEC2にssh接続してgit pull等を行う
+  2. CDはCircleCIでEC2にssh接続してgit pull等を行う
 
 ## 機能一覧
-
-***
 
 - ユーザー登録・ログイン(Devise)
 - 管理ユーザー(ActiveAdmin)
@@ -63,22 +57,18 @@ URL: https://www.mountain-app.com/
 
 ## 工夫点
 
-***
-
 - テストの自動化により網羅的に効率よくエラーの検知を行えるようにしている点
 - デスクトップにおいて、ヘッダーの他に左サイドバーにナビゲーションを配置した2カラムにすることで、可視性やUXの工場に取り組めている点
 - eager_loadもしくはpreloadメソッドを用いてN+1問題の解消することでページの表示スピードの遅延防止に取り組んでいる点
 - 開発環境でDockerを採用して開発環境をコード化している点
 - 本番環境でAWSの基本的なサービスを活用している点
 - 本番環境でCircleCIを採用して自動テスト・自動デプロイを実装している点
-- 一部ajax化に取り組んでいる点（フォロー・いいね・コメント）
+- Ajax化に取り組んでいる点（フォロー・いいね・コメント）
 - CSSフレームワークを用いずに素のCSSを用いることでコードの修正がしやすくしている点
 - 複数画像のプレビュー機能とドロップラウンメニューのJSでの実装
 - 画像投稿にActiveStorageを用いている点
 
 ## インフラ構成図
-
-***
 
 ![aws構成図完成版-ページ2](https://user-images.githubusercontent.com/56217789/100398945-2771e200-3094-11eb-94f6-ccd4ad2edee7.jpg)
 
