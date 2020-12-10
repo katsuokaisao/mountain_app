@@ -48,7 +48,6 @@
   }
   .posts {
     form {
-      text-align: right;
       padding: 5px;
       textarea {
         width: 100%;
@@ -56,10 +55,13 @@
         box-sizing: border-box;
         padding: 5px;
       }
-      input[type="submit"] {
-        box-sizing: border-box;
-        padding: 5px;
-        width: 15%;
+      .form-submit-wrapper {
+        text-align: right;
+        input[type="submit"] {
+          box-sizing: border-box;
+          padding: 5px;
+          width: 15%;
+        }
       }
     }
   }
